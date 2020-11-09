@@ -1,0 +1,10 @@
+name: jdk
+tags:
+  - name: 11
+    vars:
+      jdk_download_url: "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.9+11.1/OpenJDK11U-jdk_x64_linux_hotspot_11.0.9_11.tar.gz"
+  - name: 8
+    vars:
+      jdk_download_url: "https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u272-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u272b10.tar.gz"
+vars:
+  arthas_download_url: "https://github.com/alibaba/arthas/releases/download/arthas-all-3.4.3/arthas-3.4.3.deb"
