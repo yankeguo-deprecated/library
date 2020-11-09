@@ -1,0 +1,18 @@
+name: zookeeper-render-conf
+kind: render
+files:
+  - /opt/zookeeper/conf/zoo.cfg
+---
+name: zookeeper-write-myid
+kind: once
+shell: "bash -eux"
+command:
+  - mkdir -p ${ZKCFG_dataDir}
+  - echo ${ZKAUTOCFG_MYID} > ${ZKCFG_dataDir}/myid
+---
+name: zookeeper
+kind: daemon
+dir: /opt/zookeeper
+command:
+  - zk-server-wrapper
+  - start-foreground

@@ -1,0 +1,5 @@
+name: zookeeper
+tags:
+  - name: 3.6.2
+    vars:
+      zookeeper_download_url: "https://downloads.apache.org/zookeeper/zookeeper-3.6.2/apache-zookeeper-3.6.2-bin.tar.gz"
