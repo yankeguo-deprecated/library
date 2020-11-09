@@ -9,4 +9,5 @@ repos:
   - redis
   - zookeeper
 vars:
+  repo_base: acicn
   minit_version: 1.5.0

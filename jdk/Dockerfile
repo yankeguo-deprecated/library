@@ -1,4 +1,4 @@
-FROM acicn/ubuntu:20.04
+FROM {{.repo_base}}/ubuntu:20.04
 
 RUN curl -sSLo openjdk.tar.gz '{{.jdk_download_url}}' && \
     mkdir -p /opt/jdk && \

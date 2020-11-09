@@ -1,4 +1,4 @@
-FROM acicn/minit:{{.minit_version}} AS minit
+FROM {{.repo_base}}/minit:{{.minit_version}} AS minit
 
 FROM alpine:{{.alpine_version}}
 

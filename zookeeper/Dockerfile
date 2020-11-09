@@ -1,4 +1,4 @@
-FROM adicn/jdk:11
+FROM {{.repo_base}}/jdk:11
 
 RUN curl -sSL -o zookeeper.tar.gz "{{.zookeeper_download_url}}" && \
     mkdir -p /opt/zookeeper && \
