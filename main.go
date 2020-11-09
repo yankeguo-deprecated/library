@@ -25,6 +25,7 @@ const (
 
 type manifestGlobal struct {
 	Base    string                 `yaml:"base"`
+	Doc     string                 `yaml:"doc"`
 	Repos   []string               `yaml:"repos"`
 	Vars    map[string]interface{} `yaml:"vars"`
 	Mirrors []string               `yaml:"mirrors"`
@@ -94,6 +95,7 @@ func main() {
 			}
 			log.Printf("Vars: %v", vars)
 			if err = build(optsBuild{
+				doc:        global.Doc,
 				dir:        dir,
 				base:       global.Base,
 				repo:       repo.Name,
@@ -148,6 +150,7 @@ func main() {
 var tmplFuncs = template.FuncMap{}
 
 type optsBuild struct {
+	doc        string
 	dir        string
 	base       string
 	repo       string
@@ -157,6 +160,18 @@ type optsBuild struct {
 }
 
 func build(opts optsBuild) (err error) {
+	if err = ioutil.WriteFile(
+		filepath.Join(opts.dir, "banner.minit.txt"),
+		[]byte(fmt.Sprintf(
+			"本镜像基于 %s/%s:%s 制作，详细信息参阅 %s 及对应的内容",
+			opts.base,
+			opts.repo,
+			opts.tag,
+			opts.doc,
+		)),
+		0644); err != nil {
+		return
+	}
 	var buf []byte
 	if buf, err = ioutil.ReadFile(filepath.Join(opts.dir, opts.dockerfile)); err != nil {
 		return
@@ -169,6 +184,7 @@ func build(opts optsBuild) (err error) {
 	if err = tmpl.Execute(out, opts.vars); err != nil {
 		return
 	}
+	out.WriteString("\nADD banner.minit.txt /etc/banner.minit.txt")
 	if err = ioutil.WriteFile(filepath.Join(opts.dir, defaultDockerfileOut), sanitize(out.Bytes()), 0640); err != nil {
 		return
 	}

@@ -1,4 +1,5 @@
 base: acicn
+doc: https://github.com/acicn/library
 repos:
   # OS
   - alpine

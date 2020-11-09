@@ -13,8 +13,6 @@ RUN apt-get update && \
         rm -rf /var/lib/apt/lists/* && \
         ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-ADD profile.d /etc/profile.d
-ADD banner.minit.txt /etc/banner.minit.txt
 ADD scripts /opt/bin
 
 COPY --from=minit /minit /opt/bin/minit
