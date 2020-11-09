@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -50,9 +51,16 @@ func exit(err *error) {
 	}
 }
 
+var (
+	optOnly string
+)
+
 func main() {
 	var err error
 	defer exit(&err)
+
+	flag.StringVar(&optOnly, "only", "", "只构建某个目录，用于调试")
+	flag.Parse()
 
 	var buf []byte
 	if buf, err = ioutil.ReadFile("manifest.yml"); err != nil {
@@ -65,6 +73,9 @@ func main() {
 	}
 
 	for _, dir := range global.Repos {
+		if optOnly != "" && dir != optOnly {
+			continue
+		}
 		log.Println("Dir:", dir)
 		var repo manifestRepo
 		if buf, err = ioutil.ReadFile(filepath.Join(dir, "manifest.yml")); err != nil {
@@ -106,6 +117,10 @@ func main() {
 				return
 			}
 		}
+	}
+
+	if optOnly != "" {
+		return
 	}
 
 	for _, mirrorItem := range global.Mirrors {
@@ -191,6 +206,9 @@ func build(opts optsBuild) (err error) {
 	canonicalName := fmt.Sprintf("%s/%s:%s", opts.base, opts.repo, opts.tag)
 	log.Println("Build:", canonicalName)
 	if err = execute(opts.dir, "docker", "build", "-t", canonicalName, "-f", defaultDockerfileOut, "."); err != nil {
+		return
+	}
+	if optOnly != "" {
 		return
 	}
 	log.Println("Push:", canonicalName)
