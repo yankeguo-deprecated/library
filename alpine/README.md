@@ -1,10 +1,10 @@
-# ubuntu
+# alpine
 
-`Ubuntu` 镜像基于官方镜像修改
+`Alpine` 镜像基于官方镜像修改
 
 ## 标签
 
-* `acicn/ubuntu:20.04`
+* `acicn/alpine:3.12`
 
 ## 功能
 

@@ -1,0 +1,5 @@
+name: alpine
+tags:
+  - name: 3.12
+    vars:
+      alpine_version: 3.12

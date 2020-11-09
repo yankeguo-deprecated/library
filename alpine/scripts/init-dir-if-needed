@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 DIR_SRC="$1"
 DIR_DST="$2"

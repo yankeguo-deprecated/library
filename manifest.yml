@@ -1,5 +1,6 @@
 base: acicn
 repos:
+  - alpine
   - ubuntu
 vars:
   minit_version: 1.5.0
