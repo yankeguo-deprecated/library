@@ -1,0 +1,1 @@
+本镜像基于 acicn/ubuntu 制作，详细信息参阅 https://github.com/acicn/library/tree/latest/ubuntu

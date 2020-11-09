@@ -12,6 +12,8 @@ RUN apk upgrade --no-cache && \
     echo $TZ > /etc/timezone && \
     echo $TZ > /etc/TZ
 
+ADD profile.d /etc/profile.d
+ADD banner.minit.txt /etc/banner.minit.txt
 ADD scripts /opt/bin
 
 COPY --from=minit /minit /opt/bin/minit
