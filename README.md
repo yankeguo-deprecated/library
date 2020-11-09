@@ -8,6 +8,7 @@
 * [Ubuntu](https://github.com/acicn/library/tree/latest/ubuntu)
 * [Alpine](https://github.com/acicn/library/tree/latest/alpine)
 * [JDK](https://github.com/acicn/library/tree/latest/jdk)
+* [Elasticsearch](https://github.com/acicn/library/tree/latest/elasticsearch)
 * [Redis](https://github.com/acicn/library/tree/latest/redis)
 * [Zookeeper](https://github.com/acicn/library/tree/latest/zookeeper)
 

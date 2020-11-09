@@ -1,0 +1,19 @@
+name: elasticsearch-render-config
+kind: render
+files:
+  - /opt/elasticsearch/config.origin/jvm.options
+  - /opt/elasticsearch/config.origin/elasticsearch.yml
+---
+name: elasticsearch-init-config
+kind: once
+dir: /opt/elasticsearch
+command:
+  - init-dir-if-needed
+  - config.origin
+  - config
+---
+name: elasticsearch
+kind: daemon
+dir: /opt/elasticsearch
+command:
+  - ./bin/elasticsearch

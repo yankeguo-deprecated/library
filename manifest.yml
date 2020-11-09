@@ -6,6 +6,7 @@ repos:
   # Runtime
   - jdk
   # Infrastructure
+  - elasticsearch
   - redis
   - zookeeper
 vars:

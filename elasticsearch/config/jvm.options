@@ -1,0 +1,28 @@
+{{ if .Env.ESJVM_XSS }}
+-Xss{{ .Env.ESJVM_XSS }}
+{{ end }}
+
+{{ if .Env.ESJVM_XMS }}
+-Xms{{ .Env.ESJVM_XMS }}
+{{ end }}
+
+{{ if .Env.ESJVM_XMX }}
+-Xmx{{ .Env.ESJVM_XMX }}
+{{ end }}
+
+-javaagent:/opt/elasticsearch-tune-1.0.jar
+
+-XX:+UseG1GC
+-XX:MaxGCPauseMillis=200
+-XX:+AlwaysPreTouch
+-XX:-OmitStackTraceInFastThrow
+
+-Djava.awt.headless=true
+-Dfile.encoding=UTF-8
+-Djna.nosys=true
+-Dio.netty.noUnsafe=true
+-Dio.netty.noKeySetOptimization=true
+-Dio.netty.recycler.maxCapacityPerThread=0
+-Dlog4j.shutdownHookEnabled=false
+-Dlog4j2.disable.jmx=true
+-Djava.io.tmpdir=/tmp
