@@ -9,6 +9,10 @@ repos:
   - elasticsearch
   - redis
   - zookeeper
+mirrors:
+  - k8s.gcr.io/ingress-nginx/controller =>  ingress-nginx-controller
+  - k8s.gcr.io/defaultbackend-amd64     =>  ingress-nginx-defaultbackend
+  - jettech/kube-webhook-certgen        =>  ingress-nginx-kube-webhook-certgen
 vars:
   repo_base: acicn
   minit_version: 1.5.0

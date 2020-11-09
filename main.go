@@ -2,12 +2,17 @@ package main
 
 import (
 	"bytes"
+	"context"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"os"
 	"os/exec"
+	"path"
 	"path/filepath"
+	"strings"
 	"text/template"
 
 	"gopkg.in/yaml.v3"
@@ -19,9 +24,10 @@ const (
 )
 
 type manifestGlobal struct {
-	Base  string                 `yaml:"base"`
-	Repos []string               `yaml:"repos"`
-	Vars  map[string]interface{} `yaml:"vars"`
+	Base    string                 `yaml:"base"`
+	Repos   []string               `yaml:"repos"`
+	Vars    map[string]interface{} `yaml:"vars"`
+	Mirrors []string               `yaml:"mirrors"`
 }
 
 type manifestRepo struct {
@@ -99,6 +105,44 @@ func main() {
 			}
 		}
 	}
+
+	for _, mirrorItem := range global.Mirrors {
+		log.Println("Mirror:", mirrorItem)
+		// decode
+		mirrorSplits := strings.SplitN(mirrorItem, "=>", 2)
+		if len(mirrorSplits) != 2 {
+			err = fmt.Errorf("bad syntax for mirrors: %s", mirrorItem)
+			return
+		}
+		src, dst := strings.TrimSpace(mirrorSplits[0]), strings.TrimSpace(mirrorSplits[1])
+		if src == "" || dst == "" {
+			err = fmt.Errorf("bad syntax for mirrors: %s", mirrorItem)
+			return
+		}
+
+		// list tags
+		var tags []string
+		if tags, err = registryListTags(context.Background(), src); err != nil {
+			return
+		}
+
+		for _, tag := range tags {
+			srcImage := src + ":" + tag
+			if err = execute("", "docker", "pull", srcImage); err != nil {
+				return
+			}
+			dstImage := path.Join(global.Base, dst+":"+tag)
+			if err = execute("", "docker", "tag", srcImage, dstImage); err != nil {
+				return
+			}
+			if err = execute("", "docker", "push", dstImage); err != nil {
+				return
+			}
+			if err = execute("", "docker", "rmi", dstImage); err != nil {
+				return
+			}
+		}
+	}
 }
 
 var tmplFuncs = template.FuncMap{}
@@ -130,19 +174,11 @@ func build(opts optsBuild) (err error) {
 	}
 	canonicalName := fmt.Sprintf("%s/%s:%s", opts.base, opts.repo, opts.tag)
 	log.Println("Build:", canonicalName)
-	cmd := exec.Command("docker", "build", "-t", canonicalName, "-f", defaultDockerfileOut, ".")
-	cmd.Dir = opts.dir
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	if err = cmd.Run(); err != nil {
+	if err = execute(opts.dir, "docker", "build", "-t", canonicalName, "-f", defaultDockerfileOut, "."); err != nil {
 		return
 	}
 	log.Println("Push:", canonicalName)
-	cmd = exec.Command("docker", "push", canonicalName)
-	cmd.Dir = opts.dir
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	if err = cmd.Run(); err != nil {
+	if err = execute(opts.dir, "docker", "push", canonicalName); err != nil {
 		return
 	}
 	return
@@ -159,4 +195,71 @@ func sanitize(buf []byte) []byte {
 		out = append(out, line)
 	}
 	return bytes.Join(out, []byte{'\n'})
+}
+
+type registryListTagResponse struct {
+	Name string   `json:"name"`
+	Tags []string `json:"tags"`
+}
+
+type dockerHubTagItem struct {
+	Layer string `json:"layer"`
+	Name  string `json:"name"`
+}
+
+func registryListTags(ctx context.Context, repo string) (tags []string, err error) {
+	comps := strings.Split(repo, "/")
+	if len(comps) < 2 {
+		err = fmt.Errorf("bad format for docker repository: %s", repo)
+		return
+	}
+	isHub := !strings.Contains(comps[0], ".")
+	var urlList string
+	if isHub {
+		urlList = "https://registry.hub.docker.com/v1/repositories/" + strings.Join(comps, "/") + "/tags"
+	} else {
+		urlList = "https://" + comps[0] + "/v2/" + strings.Join(comps[1:], "/") + "/tags/list"
+	}
+	var req *http.Request
+	var res *http.Response
+	if req, err = http.NewRequest(http.MethodGet, urlList, nil); err != nil {
+		return
+	}
+	if res, err = http.DefaultClient.Do(req); err != nil {
+		return
+	}
+	defer res.Body.Close()
+	if res.StatusCode != http.StatusOK {
+		err = fmt.Errorf("bad response: %s", res.Status)
+		return
+	}
+	if isHub {
+		var body []dockerHubTagItem
+		if err = json.NewDecoder(res.Body).Decode(&body); err != nil {
+			return
+		}
+		for _, item := range body {
+			tags = append(tags, item.Name)
+		}
+	} else {
+		var body registryListTagResponse
+		if err = json.NewDecoder(res.Body).Decode(&body); err != nil {
+			return
+		}
+		tags = body.Tags
+	}
+	return
+}
+
+func execute(dir, name string, args ...string) (err error) {
+	log.Printf("Execute: %s %s", name, strings.Join(args, " "))
+	cmd := exec.Command(name, args...)
+	cmd.Dir = dir
+	cmd.Stderr = os.Stderr
+	cmd.Stdout = os.Stdout
+	err = cmd.Run()
+	if ee, ok := err.(*exec.ExitError); ok {
+		log.Printf("completed, code(%d)", ee.ExitCode())
+	}
+	return
 }
