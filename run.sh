@@ -1,3 +1,3 @@
 #!/bin/bash
 
-go run -mod vendor main.go
+go run -mod vendor main.go "$@"
