@@ -16,4 +16,4 @@ mirrors:
   - jettech/kube-webhook-certgen        =>  ingress-nginx-kube-webhook-certgen
 vars:
   repo_base: acicn
-  minit_version: 1.5.0
+  minit_version: 1.5.1
