@@ -1,0 +1,11 @@
+name: redis-render-conf
+kind: render
+files:
+    - /etc/redis.conf
+---
+name: redis
+kind: daemon
+dir: /data
+command:
+    - redis-server
+    - /etc/redis.conf

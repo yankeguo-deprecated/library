@@ -1,0 +1,5 @@
+name: redis
+tags:
+  - name: 5
+    vars:
+      redis_download_url: "https://download.redis.io/releases/redis-5.0.10.tar.gz"

@@ -1,7 +1,11 @@
 base: acicn
 repos:
+  # OS
   - alpine
   - ubuntu
+  # Runtime
   - jdk
+  # Infrastructure
+  - redis
 vars:
   minit_version: 1.5.0
