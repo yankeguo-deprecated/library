@@ -1,0 +1,33 @@
+#!/bin/bash
+
+DIR_SRC="$1"
+DIR_DST="$2"
+
+set -eu
+
+if [ -z "${DIR_SRC}" ] || [ -z "${DIR_DST}"  ]; then
+    echo "Usage: init-dir [SRC] [DST]"
+    exit 1
+fi
+
+if [ ! -d "${DIR_SRC}" ]; then
+    echo "ERROR: '${DIR_SRC}' is not a directory"
+    exit 1
+fi
+
+if [ -e "${DIR_DST}" ] && [ ! -d "${DIR_DST}" ]; then
+    echo "ERROR: '${DIR_DST}' exists and is not a directory"
+    exit 1
+fi
+
+mkdir -p ${DIR_DST}
+
+MARK_FILE="${DIR_DST}/.initialized"
+
+if [ -e "${MARK_FILE}" ]; then
+    echo "'${DIR_DST}' is already initialized"
+else
+    cp -rf ${DIR_SRC}/. ${DIR_DST}/
+    touch "${MARK_FILE}"
+    echo "'${DIR_DST}' initialized with content of '${DIR_SRC}'"
+fi
