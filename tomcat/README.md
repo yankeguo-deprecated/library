@@ -1,11 +1,17 @@
 # tomcat
 
-`acicn/tomcat` 基于 `acicn/jdk:11`
+`acicn/tomcat` 基于 `acicn/jdk`
 
 ## 标签
 
 * `acicn/tomcat:8`
 * `acicn/tomcat:9`
+* `acicn/tomcat:8-on-11`
+* `acicn/tomcat:9-on-11`
+* `acicn/tomcat:8-on-8`
+* `acicn/tomcat:9-on-8`
+
+默认使用 JDK 11，可以使用 `x-on-8` 或者 `x-on-11` 标签指定对应的 JDK 版本
 
 ## 功能
 
