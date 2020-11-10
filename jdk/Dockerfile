@@ -15,5 +15,7 @@ ENV JRE_HOME  /opt/jdk
 ENV JDK_HOME  /opt/jdk
 ENV JAVA_HOME /opt/jdk
 ENV PATH "${JAVA_HOME}/bin:${PATH}"
+# Ubuntu 系统比较邪门，默认 so 库不是安装在 /usr/lib 里面的
+ENV LD_LIBRARY_PATH "/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/local/lib/x86_64-linux-gnu"
 
 ADD scripts /opt/bin
