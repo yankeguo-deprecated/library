@@ -23,6 +23,8 @@
 
     可以直接执行 `as.sh` 启动
 
+* 内置 `Tomcat Native Connector`
+
 * `catalina-wrapper`
 
     镜像内置脚本 `catalina-wrapper` 用以启动 `Tomcat` 的 `catalina.sh` 脚本
