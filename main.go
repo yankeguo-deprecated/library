@@ -34,6 +34,7 @@ type manifestGlobal struct {
 
 type manifestRepo struct {
 	Name string                 `yaml:"string"`
+	Desc string                 `yaml:"desc"`
 	Tags []manifestTag          `yaml:"tags"`
 	Vars map[string]interface{} `yaml:"vars"`
 }
@@ -109,6 +110,7 @@ func main() {
 				doc:        global.Doc,
 				dir:        dir,
 				base:       global.Base,
+				desc:       repo.Desc,
 				repo:       repo.Name,
 				tag:        tag.Name,
 				dockerfile: tag.Dockerfile,
@@ -169,6 +171,7 @@ type optsBuild struct {
 	dir        string
 	base       string
 	repo       string
+	desc       string
 	tag        string
 	dockerfile string
 	vars       map[string]interface{}
@@ -183,7 +186,7 @@ func build(opts optsBuild) (err error) {
 			opts.repo,
 			opts.tag,
 			opts.doc,
-		)),
+		)+opts.desc),
 		0644); err != nil {
 		return
 	}
