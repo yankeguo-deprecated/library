@@ -61,3 +61,8 @@ ENV JAVA_OPTS_GC   "-XX:+UseG1GC"
 # 把启动项目必要的 Java 参数放在这里，比如 "-cp" 和 "-Dspring.profiles.active=${SPRING_PROFILE}" 参数
 ENV MINIT_MAIN "java-wrapper -cp .:./lib/* -Dspring.profiles.active=${SPRING_PROFILE} -jar ms-id.jar"
 ```
+
+## 默认配置
+
+* 安装目录 `/opt/jdk`
+* `/opt/jdk/bin` 已经加入 `$PATH` 环境变量

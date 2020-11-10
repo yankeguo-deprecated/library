@@ -1,0 +1,11 @@
+name: node
+tags:
+  - name: 14
+    vars:
+      node_download_url: 'https://nodejs.org/download/release/v14.15.0/node-v14.15.0-linux-x64.tar.gz'
+  - name: 12
+    vars:
+      node_download_url: 'https://nodejs.org/download/release/v12.19.0/node-v12.19.0-linux-x64.tar.gz'
+  - name: 10
+    vars:
+      node_download_url: 'https://nodejs.org/download/release/v10.23.0/node-v10.23.0-linux-x64.tar.gz'

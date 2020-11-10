@@ -2,7 +2,7 @@ FROM {{.repo_base}}/jdk:11
 
 RUN curl -sSL -o zookeeper.tar.gz "{{.zookeeper_download_url}}" && \
     mkdir -p /opt/zookeeper && \
-    tar -C /opt/zookeeper --strip-components 1 -xvf zookeeper.tar.gz && \
+    tar -C /opt/zookeeper --strip-components 1 -xf zookeeper.tar.gz && \
     rm -rf zookeeper.tar.gz
 
 ENV PATH "/opt/zookeeper/bin:${PATH}"

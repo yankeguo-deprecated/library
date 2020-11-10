@@ -73,6 +73,7 @@
 ## 默认配置
 
 * 工作目录 `/opt/elasticsearch`
+* 安装目录 `/opt/elasticsearch`
 * 配置目录 `/opt/elasticsearch/config`
 * 数据目录 `/data/data`
 * 日志目录 `/data/logs`
