@@ -6,6 +6,7 @@ repos:
   - ubuntu
   # Runtime
   - jdk
+  - node
   # Infrastructure
   - elasticsearch
   - redis
