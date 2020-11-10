@@ -7,6 +7,7 @@ repos:
   # Runtime
   - jdk
   - node
+  - tomcat
   # Infrastructure
   - elasticsearch
   - redis

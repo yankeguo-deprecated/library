@@ -1,0 +1,6 @@
+name: tomcat
+kind: daemon
+dir: /opt/tomcat
+command:
+  - catalina-wrapper
+  - run

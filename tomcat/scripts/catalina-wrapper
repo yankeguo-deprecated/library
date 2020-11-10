@@ -15,12 +15,10 @@ if [ -n "${JAVA_XMS}" ]; then
     JAVA_OPTS="${JAVA_OPTS} -Xms${JAVA_XMS}"
 fi
 
-set -eu
-
-set -- ${JAVA_OPTS} $@
-
 for KEY in ${!JAVA_OPTS_@}; do
-    set -- ${!KEY} $@
+    JAVA_OPTS="${!KEY} ${JAVA_OPTS}"
 done
 
-exec java "$@"
+export JAVA_OPTS
+
+exec catalina.sh "$@"
