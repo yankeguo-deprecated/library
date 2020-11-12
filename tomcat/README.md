@@ -55,5 +55,5 @@
 
 ## 默认配置
 
-* 工作目录 `/opt/tomcat`
-* 安装目录 `/opt/tomcat`
+* 工作目录 `/usr/local/tomcat`
+* 安装目录 `/usr/local/tomcat`

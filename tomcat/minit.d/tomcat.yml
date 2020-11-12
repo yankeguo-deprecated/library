@@ -1,6 +1,6 @@
 name: tomcat
 kind: daemon
-dir: /opt/tomcat
+dir: /usr/local/tomcat
 command:
   - catalina-wrapper
   - run
