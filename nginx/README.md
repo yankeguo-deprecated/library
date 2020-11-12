@@ -43,15 +43,15 @@
 
     * `cors_params.conf`
 
-        包含了开放 `CORS` 所需的配置，可以通过设置环境变量或者其他方式添加到 `location` 字段
+        包含了开放 `CORS` 所需的配置，可以使用环境变量启用
 
-        `NGXCFG_DEFAULT_ROOT_EXTRA_CONF=include /etc/nginx/snippets/cors_params.conf;`
+        `NGXCFG_SNIPPETS_ENABLE_CORS_PARAMS=true`
 
     * `spa.conf`
 
-        包含针对类似于 `Vue` 的单页面应用所需的配置，可以通过设置环境变量或者其他方式添加到 `server` 字段
+        包含针对类似于 `Vue` 的单页面应用所需的配置，可以使用环境变量启用
 
-        `NGXCFG_DEFAULT_EXTRA_CONF=include /etc/nginx/snippets/spa.conf;`
+        `NGXCFG_SNIPPETS_ENABLE_SPA=true`
 
         使用环境变量
 
@@ -61,9 +61,9 @@
 
     * `mute_head_root.conf`
 
-        包含了关闭腾讯云默认健康检查日志打印所需的配置，可以通过设置环境变量或者其他方式添加到 `location` 字段
+        包含了关闭腾讯云默认健康检查日志打印所需的配置，可以使用环境变量启动
 
-        `NGXCFG_DEFAULT_ROOT_EXTRA_CONF=include /etc/nginx/snippets/mute_head_root.conf;`
+        `NGXCFG_SNIPPETS_ENABLE_MUTE_HEAD_ROOT=true`
 
 ## 默认配置
 
