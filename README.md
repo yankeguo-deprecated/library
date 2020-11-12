@@ -14,6 +14,7 @@
     * [Tomcat](https://github.com/acicn/library/tree/latest/tomcat)
 * 基础服务
     * [Elasticsearch](https://github.com/acicn/library/tree/latest/elasticsearch)
+    * [MySQL](https://github.com/acicn/library/tree/latest/mysql)
     * [Redis](https://github.com/acicn/library/tree/latest/redis)
     * [Zookeeper](https://github.com/acicn/library/tree/latest/zookeeper)
 

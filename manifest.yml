@@ -10,6 +10,7 @@ repos:
   - tomcat
   # Infrastructure
   - elasticsearch
+  - mysql
   - redis
   - zookeeper
 mirrors:

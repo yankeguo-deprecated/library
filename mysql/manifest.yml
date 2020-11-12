@@ -1,0 +1,8 @@
+name: mysql
+tags:
+  - name: 5.7
+    vars:
+      base_version: 5.7
+  - name: 5.6
+    vars:
+      base_version: 5.6
