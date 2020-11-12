@@ -1,0 +1,3 @@
+name: nginx
+tags:
+  - name: latest

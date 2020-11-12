@@ -6,6 +6,7 @@ repos:
   - ubuntu
   # Runtime
   - jdk
+  - nginx
   - node
   - tomcat
   # Infrastructure
