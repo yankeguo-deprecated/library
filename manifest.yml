@@ -12,6 +12,7 @@ repos:
   # Infrastructure
   - elasticsearch
   - mysql
+  - postgres
   - redis
   - zookeeper
 mirrors:

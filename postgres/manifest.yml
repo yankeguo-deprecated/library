@@ -1,0 +1,14 @@
+name: postgres
+tags:
+  - name: 9.6
+    vars:
+      base_version: 9.6
+  - name: 10.15
+    vars:
+      base_version: 10.15
+  - name: 11.10
+    vars:
+      base_version: 11.10
+  - name: 12.5
+    vars:
+      base_version: 12.5
