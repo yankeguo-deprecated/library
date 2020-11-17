@@ -9,6 +9,7 @@ repos:
   - nginx
   - node
   - tomcat
+  - python
   # Infrastructure
   - elasticsearch
   - mysql

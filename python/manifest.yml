@@ -1,0 +1,5 @@
+name: python
+tags:
+  - name: 3.8
+    vars:
+      ubuntu_version: 20.04
