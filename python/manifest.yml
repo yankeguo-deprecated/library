@@ -3,3 +3,6 @@ tags:
   - name: 3.8
     vars:
       ubuntu_version: 20.04
+  - name: 3.6
+    vars:
+      ubuntu_version: 18.04
