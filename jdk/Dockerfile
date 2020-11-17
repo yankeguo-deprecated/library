@@ -5,7 +5,7 @@ RUN curl -sSLo openjdk.tar.gz '{{.jdk_download_url}}' && \
     tar -C /opt/jdk --strip-components 1 -xf openjdk.tar.gz && \
     rm -f openjdk.tar.gz && \
     apt-get update && \
-    apt-get install -y telnet && \
+    apt-get install -y telnet fontconfig && \
     rm -rf /var/lib/apt/lists/* && \
     curl -sSLo arthas.deb '{{.arthas_download_url}}' && \
     dpkg -i arthas.deb && \
