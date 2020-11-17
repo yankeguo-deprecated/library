@@ -1,0 +1,15 @@
+#!/bin/bash
+
+VENV_DIR="${VENV_DIR}"
+
+set -eu
+
+if [ -z "${VENV_DIR}" ]; then
+    VENV_DIR="venv"
+fi
+
+if [ -f ${VENV_DIR}/bin/activate ]; then
+    source ${VENV_DIR}/bin/activate
+fi
+
+exec "$@"
