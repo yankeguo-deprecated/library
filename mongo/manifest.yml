@@ -1,0 +1,14 @@
+name: mongo
+tags:
+  - name: 3.6
+    vars:
+      base_version: 3.6
+  - name: 4.0
+    vars:
+      base_version: 4.0
+  - name: 4.2
+    vars:
+      base_version: 4.2
+  - name: 4.4
+    vars:
+      base_version: 4.4

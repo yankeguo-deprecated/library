@@ -16,6 +16,7 @@
 * 基础服务
     * [Elasticsearch](https://github.com/acicn/library/tree/latest/elasticsearch)
     * [MySQL](https://github.com/acicn/library/tree/latest/mysql)
+    * [Mongo](https://github.com/acicn/library/tree/latest/mongo)
     * [PostgreSQL](https://github.com/acicn/library/tree/latest/postgres)
     * [Redis](https://github.com/acicn/library/tree/latest/redis)
     * [Zookeeper](https://github.com/acicn/library/tree/latest/zookeeper)

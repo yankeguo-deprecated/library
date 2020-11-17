@@ -12,6 +12,7 @@ repos:
   # Infrastructure
   - elasticsearch
   - mysql
+  - mongo
   - postgres
   - redis
   - zookeeper

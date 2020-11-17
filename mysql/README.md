@@ -4,5 +4,5 @@
 
 ## 标签
 
-`acicn/mysql:5.7`
-`acicn/mysql:5.6`
+* `acicn/mysql:5.7`
+* `acicn/mysql:5.6`
