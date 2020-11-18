@@ -185,7 +185,7 @@ func build(opts optsBuild) (err error) {
 			opts.base,
 			opts.repo,
 			opts.tag,
-			opts.doc,
+			strings.ReplaceAll(opts.doc, "{{.Repo}}", opts.repo),
 		)+opts.desc),
 		0644); err != nil {
 		return

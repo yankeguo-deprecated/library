@@ -1,5 +1,5 @@
 base: acicn
-doc: https://github.com/acicn/library
+doc: https://github.com/acicn/library/tree/latest/{{.Repo}}
 repos:
   # OS
   - alpine
@@ -9,6 +9,7 @@ repos:
   - nginx
   - node
   - tomcat
+  - php
   - python
   # Infrastructure
   - elasticsearch
