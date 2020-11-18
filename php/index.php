@@ -11,8 +11,13 @@
     <div class="container">
         <div class="row mt-4">
             <div class="col-md-12">
-                <h3>acicn/nginx 镜像启动成功</h3>
-                <p>详情查阅 <a href="https://github.com/acicn/library/tree/latest/nginx">https://github.com/acicn/library/tree/latest/nginx</a></p>
+                <h3>acicn/php 镜像启动成功</h3>
+                <p>详情查阅 <a href="https://github.com/acicn/library/tree/latest/php">https://github.com/acicn/library/tree/latest/php</a></p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <?php phpinfo(); ?>
             </div>
         </div>
     </div>

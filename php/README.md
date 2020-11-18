@@ -46,17 +46,21 @@
 
         会在 `/etc/php/${PHP_VERSION}/fpm/pool.d/www.ini` 文件中的 `[aaaa]` 分段，**增加或者修改**键值 `hello=world`，环境变量名中的 `__xxxx` 后缀会被忽略，用以防止字段名冲突
 
+* `nginx`
+
+    `nginx` 进程完全使用 `acicn/nginx` 的配置模式，详情参考 https://github.com/acicn/library/tree/latest/nginx
+
+    额外的修改
+
+    - 使用文件 `/etc/nginx/default.conf.d/php.conf` 增加了 PHP 的支持（也就是 `location ~ \.php$ {` 区块）
+
+    - 允许使用文件 `/etc/nginx/default.fastcgi.d/*.conf` 扩充上述区块的配置
+
+    - 默认启用 PHP 框架模式，即使用 `/var/www/public/index.php` 来统一处理所有路由
+        - `NGXCFG_SNIPPETS_ENABLE_SPA=true`
+        - `NGXCFG_SNIPPETS_SPA_INDEX=/index.php?$query_string`
 
 ## 默认配置
 
 * PHP-FPM 配置目录 `/etc/php/${PHP_VERSION}/fpm`
-
-   包括
-
-    - `php.ini`
-    - `php-fpm.conf`
-    - `pool.d/www.conf`
-
-    默认使用环境变量修改 `pool.d/www.conf` 中的用户和组为 `root`
-
 * PHP 项目地址 `/var/www/public`
