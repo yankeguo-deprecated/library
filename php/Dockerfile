@@ -6,7 +6,7 @@ FROM {{.repo_base}}/ubuntu:{{.ubuntu_version}}
 
 ENV PHP_VERSION {{.php_version}}
 
-RUN apt-mirror-use-aliyun && apt-get update && \
+RUN apt-get update && \
     apt-get install -y nginx php-fpm && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /etc/nginx && \
