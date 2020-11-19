@@ -25,11 +25,12 @@ const (
 )
 
 type manifestGlobal struct {
-	Base    string                 `yaml:"base"`
-	Doc     string                 `yaml:"doc"`
-	Repos   []string               `yaml:"repos"`
-	Vars    map[string]interface{} `yaml:"vars"`
-	Mirrors []string               `yaml:"mirrors"`
+	Base      string                 `yaml:"base"`
+	Doc       string                 `yaml:"doc"`
+	Upstreams []string               `yaml:"upstreams"`
+	Repos     []string               `yaml:"repos"`
+	Vars      map[string]interface{} `yaml:"vars"`
+	Mirrors   []string               `yaml:"mirrors"`
 }
 
 type manifestRepo struct {
@@ -71,6 +72,14 @@ func main() {
 	var global manifestGlobal
 	if err = yaml.Unmarshal(buf, &global); err != nil {
 		return
+	}
+
+	if optOnly == "" {
+		for _, upstream := range global.Upstreams {
+			if err = execute("", "docker", "pull", upstream); err != nil {
+				return
+			}
+		}
 	}
 
 	for _, dir := range global.Repos {

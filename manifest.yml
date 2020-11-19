@@ -1,5 +1,11 @@
 base: acicn
 doc: https://github.com/acicn/library/tree/latest/{{.Repo}}
+upstreams:
+  - alpine:3.12
+  - ubuntu:20.04
+  - ubuntu:18.04
+  - mysql:5.7
+  - mysql:5.6
 repos:
   # OS
   - alpine
