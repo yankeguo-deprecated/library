@@ -3,7 +3,7 @@ tags:
   - name: 8
     vars:
       jdk_version: 11
-      tomcat_download_url: "https://downloads.apache.org/tomcat/tomcat-8/v8.5.59/bin/apache-tomcat-8.5.59.tar.gz"
+      tomcat_download_url: "https://downloads.apache.org/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz"
   - name: 9
     vars:
       jdk_version: 11
@@ -11,7 +11,7 @@ tags:
   - name: 8-on-11
     vars:
       jdk_version: 11
-      tomcat_download_url: "https://downloads.apache.org/tomcat/tomcat-8/v8.5.59/bin/apache-tomcat-8.5.59.tar.gz"
+      tomcat_download_url: "https://downloads.apache.org/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz"
   - name: 9-on-11
     vars:
       jdk_version: 11
@@ -19,7 +19,7 @@ tags:
   - name: 8-on-8
     vars:
       jdk_version: 8
-      tomcat_download_url: "https://downloads.apache.org/tomcat/tomcat-8/v8.5.59/bin/apache-tomcat-8.5.59.tar.gz"
+      tomcat_download_url: "https://downloads.apache.org/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz"
   - name: 9-on-8
     vars:
       jdk_version: 8
