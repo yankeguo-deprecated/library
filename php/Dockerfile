@@ -6,7 +6,9 @@ FROM {{.repo_base}}/ubuntu:{{.ubuntu_version}}
 
 ENV PHP_VERSION {{.php_version}}
 
-RUN add-apt-repository ppa:ondrej/php && \
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository ppa:ondrej/php && \
     apt-get update && \
     apt-get install -y nginx php-fpm php-apcu php-mysql php-redis php-mongodb php-curl php-mbstring php-xml php-zip php-memcache && \
     rm -rf /var/lib/apt/lists/* && \
