@@ -15,16 +15,31 @@
     - 支持一次性，配置文件渲染，定时任务等多个多种类型的进程
     - 内建 WebDAV 服务器，便于输出调试文件
 
-    
     详细参考 https://github.com/acicn/minit
 
-* PPA 源 `ondrej/php`
+* PHP 模块
 
-    默认引入 PPA 源 `ondrej/php`，提供众多的 PHP 扩展模块
+    - PPA 源 `ondrej/php`
 
-* 默认模块
+      默认引入 PPA 源 `ondrej/php`，提供众多的 PHP 扩展模块
 
-    `apcu`, `mysql`, `redis`, `mongodb`, `curl`, `mbstring`, `xml`, `zip`, `memcache`
+      详细列表参阅 https://launchpad.net/~ondrej/+archive/ubuntu/php
+
+    - 默认模块
+
+      `apcu`, `mysql`, `redis`, `mongodb`, `curl`, `mbstring`, `xml`, `zip`, `memcache`
+
+    - 额外模块安装脚本 `php-extension-install`
+
+      如果默认模块不符合要求，可以使用该命令安装任何 APT 源中已有的 PHP 模块，并且会自动清理临时文件，缩减镜像尺寸。内部调用 `apt-get install -y php-XXXX`
+
+      示例
+
+      ```dockerfile
+      FROM acicn/php:7.2
+      RUN php-extension-install apcu pgsql
+      ADD . /var/www
+      ```
 
 * 使用 `merge-env-to-ini` 工具和环境变量修改 `PHP FPM` 配置文件
 
@@ -67,18 +82,6 @@
     - 默认启用 PHP 框架模式，即使用 `/var/www/public/index.php` 来统一处理所有路由
         - `NGXCFG_SNIPPETS_ENABLE_SPA=true`
         - `NGXCFG_SNIPPETS_SPA_INDEX=/index.php?$query_string`
-
-* 辅助脚本 `php-module-install`
-
-    如果默认模块不符合要求，可以使用该命令安装任何 APT 源中已有的 PHP 模块，并且会自动清理临时文件，缩减镜像尺寸。内部调用 `apt-get install -y php-XXXX`
-
-    示例
-
-    ```dockerfile
-    FROM acicn/php:7.2
-    RUN php-module-install apcu pgsql
-    ADD . /var/www
-    ```
 
 ## 默认配置
 
