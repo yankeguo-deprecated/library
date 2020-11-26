@@ -6,8 +6,9 @@ FROM {{.repo_base}}/ubuntu:{{.ubuntu_version}}
 
 ENV PHP_VERSION {{.php_version}}
 
-RUN apt-get update && \
-    apt-get install -y nginx php-fpm && \
+RUN add-apt-repository ppa:ondrej/php && \
+    apt-get update && \
+    apt-get install -y nginx php-fpm php-apcu php-mysql php-redis php-mongodb php-curl php-mbstring php-xml php-zip php-memcache && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /etc/nginx && \
     mkdir -p /etc/nginx/default.fastcgi.d
@@ -17,6 +18,7 @@ COPY --from=utils-merge-env-to-ini /merge-env-to-ini /opt/bin/merge-env-to-ini
 COPY --from=utils-nginx /etc/nginx /etc/nginx
 COPY --from=utils-nginx /etc/minit.d/nginx.yml /etc/minit.d/nginx.yml
 
+ADD scripts /opt/bin
 ADD minit.d /etc/minit.d
 ADD index.php /var/www/public/index.php
 ADD php.conf /etc/nginx/default.conf.d/php.conf

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -eu
+
+PKGS=""
+
+for MOD in "${@}";do
+    PKGS="${PKGS} php-${MOD}"
+done
+
+apt-get update
+apt-get install -y ${PKGS}
+rm -rf /var/lib/apt/lists/*
