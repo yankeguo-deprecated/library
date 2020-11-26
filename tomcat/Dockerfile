@@ -12,5 +12,11 @@ WORKDIR /usr/local/tomcat
 
 ENV PATH "/usr/local/tomcat/bin:${PATH}"
 
+ADD conf    conf
 ADD minit.d /etc/minit.d
 ADD scripts /opt/bin
+
+ENV TOMCATCFG_SERVER_CONNECTOR_port 8080
+ENV TOMCATCFG_SERVER_CONNECTOR_protocol "HTTP/1.1"
+ENV TOMCATCFG_SERVER_CONNECTOR_connectionTimeout 20000
+ENV TOMCATCFG_SERVER_CONNECTOR_redirectPort 8443

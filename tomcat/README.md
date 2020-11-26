@@ -31,6 +31,17 @@
 
 * 内置 `Tomcat Native Connector`
 
+* 使用环境变量修改 `server.xml`
+
+  使用如下环境变量修改 `server.xml` 中 `Connector` 的属性字段
+
+  ```
+  TOMCATCFG_SERVER_CONNECTOR_port=8080
+  TOMCATCFG_SERVER_CONNECTOR_protocol=HTTP/1.1
+  TOMCATCFG_SERVER_CONNECTOR_connectionTimeout=20000
+  TOMCATCFG_SERVER_CONNECTOR_redirectPort=8443
+  ```
+
 * `catalina-wrapper`
 
     镜像内置脚本 `catalina-wrapper` 用以启动 `Tomcat` 的 `catalina.sh` 脚本

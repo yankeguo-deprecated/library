@@ -1,3 +1,9 @@
+name: tomcat-render-conf
+kind: render
+files:
+  - /usr/local/tomcat/conf/server.xml
+  - /usr/local/tomcat/conf/logging.properties
+---
 name: tomcat
 kind: daemon
 dir: /usr/local/tomcat
