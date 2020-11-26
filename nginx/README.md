@@ -73,4 +73,5 @@
 
 ## 默认配置
 
-根目录 `/var/www/public`
+默认 nginx 根目录 `/var/www/public`
+工作目录 `/var/www/public`
