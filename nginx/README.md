@@ -65,6 +65,12 @@
 
         `NGXCFG_SNIPPETS_ENABLE_MUTE_HEAD_ROOT=true`
 
+    * `healthz.conf`
+
+        /helathz 健康检查接口，直接返回 200 OK，可以使用环境变量启动
+
+        `NGXCFG_SNIPPETS_ENABLE_HEALTHZ=true`
+
 ## 默认配置
 
 根目录 `/var/www/public`
