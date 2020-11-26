@@ -29,7 +29,7 @@
 
       `apcu`, `mysql`, `redis`, `mongodb`, `curl`, `mbstring`, `xml`, `zip`, `memcache`
 
-    - 额外模块安装脚本 `php-extension-install`
+    - 额外模块安装脚本 `php-ext-install`
 
       如果默认模块不符合要求，可以使用该命令安装任何 APT 源中已有的 PHP 模块，并且会自动清理临时文件，缩减镜像尺寸。内部调用 `apt-get install -y php-XXXX`
 
@@ -37,7 +37,7 @@
 
       ```dockerfile
       FROM acicn/php:7.2
-      RUN php-extension-install apcu pgsql
+      RUN php-ext-install apcu pgsql
       ADD . /var/www
       ```
 
