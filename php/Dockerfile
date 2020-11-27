@@ -15,11 +15,7 @@ RUN apt-get update && \
     php{{.php_version}}-apcu \
     php{{.php_version}}-mysql \
     php{{.php_version}}-redis \
-    {{if eq .php_version "5.6"}}
-    php{{.php_version}}-mongo \
-    {{else}}
-    php{{.php_version}}-mongodb \
-    {{end}}
+    php{{.php_version}}-mongo* \
     php{{.php_version}}-curl \
     php{{.php_version}}-mbstring \
     php{{.php_version}}-xml \
