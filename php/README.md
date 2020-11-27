@@ -1,11 +1,12 @@
 # php
 
-`acicn/php` 镜像基于 `acicn/ubuntu` 镜像
+`acicn/php` 镜像基于 `acicn/ubuntu:20.04` 镜像
 
 ## 标签
 
-* `acicn/php:7.2` 基于 `acicn/ubuntu:18.04`
-* `acicn/php:7.4` 基于 `acicn/ubuntu:20.04`
+* `acicn/php:5.6`
+* `acicn/php:7.2`
+* `acicn/php:7.4`
 
 ## 功能
 

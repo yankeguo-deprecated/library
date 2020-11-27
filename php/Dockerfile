@@ -2,7 +2,7 @@ FROM {{.repo_base}}/merge-env-to-ini AS utils-merge-env-to-ini
 
 FROM {{.repo_base}}/nginx AS utils-nginx
 
-FROM {{.repo_base}}/ubuntu:{{.ubuntu_version}}
+FROM {{.repo_base}}/ubuntu:20.04
 
 ENV PHP_VERSION {{.php_version}}
 
@@ -10,7 +10,17 @@ RUN apt-get update && \
     apt-get install -y software-properties-common && \
     add-apt-repository ppa:ondrej/php && \
     apt-get update && \
-    apt-get install -y nginx php-fpm php-apcu php-mysql php-redis php-mongodb php-curl php-mbstring php-xml php-zip php-memcache && \
+    apt-get install -y nginx \
+    php{{.php_version}}-fpm \
+    php{{.php_version}}-apcu \
+    php{{.php_version}}-mysql \
+    php{{.php_version}}-redis \
+    php{{.php_version}}-mongodb \
+    php{{.php_version}}-curl \
+    php{{.php_version}}-mbstring \
+    php{{.php_version}}-xml \
+    php{{.php_version}}-zip \
+    php{{.php_version}}-memcache && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /etc/nginx && \
     mkdir -p /etc/nginx/default.fastcgi.d
@@ -37,4 +47,3 @@ ENV NGXCFG_DEFAULT_EXTRA_INDEX index.php
 
 ENV NGXCFG_SNIPPETS_ENABLE_SPA  true
 ENV NGXCFG_SNIPPETS_SPA_INDEX   "/index.php?\$query_string"
-
