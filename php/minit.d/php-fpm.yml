@@ -25,6 +25,13 @@ command:
   - --to 
   - /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
 ---
+name: php-fpm-mkdir
+kind: once
+command:
+  - mkdir
+  - -p
+  - /run/php
+---
 name: php-fpm
 kind: daemon
 command:
