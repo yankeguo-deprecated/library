@@ -25,7 +25,8 @@ repos:
   - redis
   - zookeeper
   # builder
-  - builder-ubuntu
+  - ubuntu-builder
+  - node-builder
 mirrors:
   - k8s.gcr.io/ingress-nginx/controller =>  ingress-nginx-controller
   - k8s.gcr.io/defaultbackend-amd64     =>  ingress-nginx-defaultbackend

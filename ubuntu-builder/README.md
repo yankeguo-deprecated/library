@@ -1,4 +1,4 @@
-# builder-ubuntu
+# ubuntu-builder
 
 镜像基于官方镜像修改
 

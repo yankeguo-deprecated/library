@@ -5,6 +5,7 @@ FROM ubuntu:{{.ubuntu_version}}
 ENV PATH "/opt/bin:${PATH}"
 ENV LANG zh_CN.UTF-8
 ENV TZ Asia/Shanghai
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
         apt-get install -y language-pack-zh-hans && \
