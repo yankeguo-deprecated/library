@@ -1,5 +1,0 @@
-name: ubuntu-builder
-tags:
-  - name: 20.04
-    vars:
-      ubuntu_version: 20.04

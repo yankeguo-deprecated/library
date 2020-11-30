@@ -211,9 +211,7 @@ func build(opts optsBuild) (err error) {
 	if err = tmpl.Execute(out, opts.vars); err != nil {
 		return
 	}
-	if !strings.HasSuffix(opts.repo, "-builder") {
-		out.WriteString("\nADD banner.minit.txt /etc/banner.minit.txt")
-	}
+	out.WriteString("\nADD banner.minit.txt /etc/banner.minit.txt")
 	if err = ioutil.WriteFile(filepath.Join(opts.dir, defaultDockerfileOut), sanitize(out.Bytes()), 0640); err != nil {
 		return
 	}
