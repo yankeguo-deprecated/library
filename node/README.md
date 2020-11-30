@@ -4,6 +4,7 @@
 
 ## 标签
 
+* `acicn/node:8`
 * `acicn/node:10`
 * `acicn/node:12`
 * `acicn/node:14`
