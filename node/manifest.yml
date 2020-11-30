@@ -1,5 +1,6 @@
 name: node
 tags:
+  # base series
   - name: 14
     vars:
       node_download_url: 'https://nodejs.org/download/release/v14.15.0/node-v14.15.0-linux-x64.tar.gz'
@@ -12,3 +13,20 @@ tags:
   - name: 8
     vars:
       node_download_url: 'https://nodejs.org/download/release/v8.17.0/node-v8.17.0-linux-x64.tar.gz'
+  # builder series
+  - name: builder-8
+    dockerfile: Dockerfile.builder
+    vars:
+      upstream: 8
+  - name: builder-10
+    dockerfile: Dockerfile.builder
+    vars:
+      upstream: 10
+  - name: builder-12
+    dockerfile: Dockerfile.builder
+    vars:
+      upstream: 12
+  - name: builder-14
+    dockerfile: Dockerfile.builder
+    vars:
+      upstream: 14
