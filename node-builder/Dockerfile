@@ -11,4 +11,6 @@ ADD scripts /opt/bin
 RUN npm install -g cnpm && \
     npm cache clean -f
 
-ENTRYPOINT [ "node-builder" ]
+WORKDIR /workspace
+
+CMD [ "node-builder" ]
