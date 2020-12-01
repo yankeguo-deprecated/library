@@ -4,10 +4,14 @@
 
 ## 标签
 
+**运行环境**
+
 * `acicn/jdk:8`
 * `acicn/jdk:11`
 
-## 功能
+**构建环境**
+
+## 运行环境
 
 * 内置 `minit`
 
@@ -63,6 +67,13 @@ ENV JAVA_OPTS_GC   "-XX:+UseG1GC"
 # 把启动项目必要的 Java 参数放在这里，比如 "-cp" 和 "-Dspring.profiles.active=${SPRING_PROFILE}" 参数
 ENV MINIT_MAIN "java-wrapper -cp .:./lib/* -Dspring.profiles.active=${SPRING_PROFILE} -jar ms-id.jar"
 ```
+
+## 构建环境
+
+`acicn/jdk:builder-xxx` 系列镜像额外安装了如下工具
+
+* `build-essential`
+* `maven`
 
 ## 默认配置
 

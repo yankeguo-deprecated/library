@@ -6,5 +6,26 @@ tags:
   - name: 8
     vars:
       jdk_download_url: "https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u272-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u272b10.tar.gz"
+  # builder 系列
+  - name: builder-8-maven-3.6
+    dockerfile: Dockerfile.builder
+    vars:
+      upstream: 8
+      maven_download_url: "https://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz"
+  - name: builder-11-maven-3.6
+    dockerfile: Dockerfile.builder
+    vars:
+      upstream: 11
+      maven_download_url: "https://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz"
+  - name: builder-8-maven-3.5
+    dockerfile: Dockerfile.builder
+    vars:
+      upstream: 8
+      maven_download_url: "https://archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz"
+  - name: builder-11-maven-3.5
+    dockerfile: Dockerfile.builder
+    vars:
+      upstream: 11
+      maven_download_url: "https://archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz"
 vars:
   arthas_download_url: "https://github.com/alibaba/arthas/releases/download/arthas-all-3.4.3/arthas-3.4.3.deb"

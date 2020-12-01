@@ -4,16 +4,21 @@
 
 ## 标签
 
+**运行环境**
+
 * `acicn/node:8`
 * `acicn/node:10`
 * `acicn/node:12`
 * `acicn/node:14`
+
+**构建环境**
+
 * `acicn/node:builder-8`
 * `acicn/node:builder-10`
 * `acicn/node:builder-12`
 * `acicn/node:builder-14`
 
-## 功能
+## 运行环境
 
 * 内置 `minit`
 
@@ -23,9 +28,9 @@
     
     详细参考 https://github.com/acicn/minit
 
-## Builder
+## 构建环境
 
-Builder 额外安装了 
+`acicn/node:builder-xxx` 系列镜像额外安装了如下工具
 
 * `build-essential`
 * `cnpm`
