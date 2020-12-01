@@ -5,3 +5,5 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     npm install -g cnpm && \
     npm cache clean -f
+
+RUN npm config set registry https://r.npm.taobao.org
