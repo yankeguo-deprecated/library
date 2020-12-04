@@ -11,6 +11,11 @@
 
 **构建环境**
 
+* `acicn/jdk:builder-8-maven-3.6`
+* `acicn/jdk:builder-8-maven-3.5`
+* `acicn/jdk:builder-11-maven-3.6`
+* `acicn/jdk:builder-11-maven-3.5`
+
 ## 运行环境
 
 * 内置 `minit`
