@@ -2,12 +2,14 @@ FROM {{.repo_base}}/alpine:3.12
 
 RUN apk add --virtual .build-dependencies --no-cache build-base linux-headers && \
   curl -sSLo redis.tar.gz "{{.redis_download_url}}" && \
-  mkdir -p /opt/src/redis && \
-  tar -C /opt/src/redis --strip-components 1 -xf redis.tar.gz && \
-  rm -f redis.tar.gz && \
-  cd /opt/src/redis && \
+  mkdir -p redis-src && \
+  tar -C redis-src --strip-components 1 -xf redis.tar.gz && \
+  cd redis-src && \
   make && \
-  make PREFIX=/opt install && \
+  make PREFIX=/opt INSTALL_BIN=/opt/bin install && \
+  cd .. && \
+  rm -f redis.tar.gz && \
+  rm -rf redis-src && \
   apk del .build-dependencies
 
 WORKDIR /data
