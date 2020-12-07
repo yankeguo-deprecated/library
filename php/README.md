@@ -80,6 +80,8 @@
 
     - 允许使用文件 `/etc/nginx/default.fastcgi.d/*.conf` 扩充上述区块的配置
 
+    - 允许使用环境变量 `NGXCFG_DEFAULT_PHP_EXTRA_CONF` 扩充上述区块的配置
+
     - 默认启用 PHP 框架模式，即使用 `/var/www/public/index.php` 来统一处理所有路由
         - `NGXCFG_SNIPPETS_ENABLE_SPA=true`
         - `NGXCFG_SNIPPETS_SPA_INDEX=/index.php?$query_string`
