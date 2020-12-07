@@ -1,6 +1,6 @@
 # jdk
 
-`acicn/jdk` 基于 `acicn/ubuntu:20.04` 和 `AdoptOpenJDK (HotSpot)`
+`acicn/jdk` 基于 `acicn/centos:8` 和 `AdoptOpenJDK (HotSpot)`
 
 ## 标签
 
