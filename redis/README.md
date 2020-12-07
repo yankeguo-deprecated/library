@@ -1,6 +1,6 @@
 # redis
 
-`acicn/redis` 基于 `acicn/ubuntu:20.04` ，从源代码编译 `redis`
+`acicn/redis` 基于 `acicn/centos:8` ，从源代码编译 `redis`
 
 ## 标签
 

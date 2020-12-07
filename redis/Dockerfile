@@ -1,7 +1,6 @@
-FROM {{.repo_base}}/ubuntu:20.04
+FROM {{.repo_base}}/centos:8
 
-RUN apt-get update && \
-  apt-get install -y build-essential && \
+RUN yum install -y make automake gcc gcc-c++ kernel-devel && \
   curl -sSLo redis.tar.gz "{{.redis_download_url}}" && \
   mkdir -p /opt/src/redis && \
   tar -C /opt/src/redis --strip-components 1 -xf redis.tar.gz && \
@@ -9,8 +8,9 @@ RUN apt-get update && \
   cd /opt/src/redis && \
   make && \
   make PREFIX=/opt install && \
-  apt-get remove -y build-essential --auto-remove && \
-  rm -rf /var/lib/apt/lists/*
+  yum remove -y make automake gcc gcc-c++ kernel-devel && \
+  yum autoremove -y && \
+  yum clean all
 
 WORKDIR /data
 
