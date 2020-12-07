@@ -77,7 +77,6 @@ ENV MINIT_MAIN "java-wrapper -cp .:./lib/* -Dspring.profiles.active=${SPRING_PRO
 
 `acicn/jdk:builder-xxx` 系列镜像额外安装了如下工具
 
-* `build-essential`
 * `maven`
 
 ## 默认配置

@@ -28,11 +28,15 @@
     
     详细参考 https://github.com/acicn/minit
 
+* `npm-mirror-use-aliyun`
+
+    一个辅助脚本，执行后会写入 `~/.npmrc` 文件，使用阿里云 NPM 镜像
+
 ## 构建环境
 
 `acicn/node:builder-xxx` 系列镜像额外安装了如下工具
 
-* `build-essential`
+* `常见编译工具`
 * `cnpm`
 
 ## 默认配置
