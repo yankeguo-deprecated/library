@@ -28,4 +28,4 @@ tags:
       upstream: 11
       maven_download_url: "https://archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz"
 vars:
-  arthas_download_url: "https://github.com/alibaba/arthas/releases/download/arthas-all-3.4.3/arthas-3.4.3.deb"
+  arthas_download_url: "https://github.com/alibaba/arthas/releases/download/arthas-all-3.4.5/arthas-3.4.5.deb"
