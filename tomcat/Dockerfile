@@ -4,6 +4,7 @@ RUN curl -sSL -o tomcat.tar.gz "{{.tomcat_download_url}}" && \
     mkdir -p /usr/local/tomcat && \
     tar -C /usr/local/tomcat --strip-components 1 -xf tomcat.tar.gz && \
     rm -f tomcat.tar.gz && \
+    rm -rf /usr/local/tomcat/webapps/* \
     yum install -y tomcat-native && \
     yum clean all
 
