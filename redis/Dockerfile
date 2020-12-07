@@ -1,6 +1,6 @@
 FROM {{.repo_base}}/centos:8
 
-RUN yum install -y make automake gcc gcc-c++ kernel-devel && \
+RUN yum install -y make automake diffutils gcc gcc-c++ kernel-devel && \
   curl -sSLo redis.tar.gz "{{.redis_download_url}}" && \
   mkdir -p /opt/src/redis && \
   tar -C /opt/src/redis --strip-components 1 -xf redis.tar.gz && \
@@ -8,7 +8,7 @@ RUN yum install -y make automake gcc gcc-c++ kernel-devel && \
   cd /opt/src/redis && \
   make && \
   make PREFIX=/opt install && \
-  yum remove -y make automake gcc gcc-c++ kernel-devel && \
+  yum remove -y make automake diffutils gcc gcc-c++ kernel-devel && \
   yum autoremove -y && \
   yum clean all
 
