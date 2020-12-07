@@ -1,0 +1,10 @@
+name: centos
+tags:
+  - name: 8
+    vars:
+      centos_version: 8
+      fix_lang: false
+  - name: 7
+    vars:
+      centos_version: 7
+      fix_lang: true

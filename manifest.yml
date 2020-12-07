@@ -6,9 +6,12 @@ upstreams:
   - ubuntu:18.04
   - mysql:5.7
   - mysql:5.6
+  - centos:8
+  - centos:7
 repos:
   # OS
   - alpine
+  - centos
   - ubuntu
   # Runtime
   - jdk
