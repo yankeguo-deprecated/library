@@ -1,6 +1,6 @@
 # nginx
 
-`acicn/nginx` 镜像基于 Alpine 3.12，使用默认的最新的 nginx 版本
+`acicn/nginx` 镜像基于 `acicn/alpine:3.12`，使用默认的最新的 nginx 版本
 
 ## 标签
 

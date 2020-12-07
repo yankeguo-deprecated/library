@@ -2,7 +2,7 @@ name: python
 tags:
   - name: 3.8
     vars:
-      ubuntu_version: 20.04
+      centos_module: python38
   - name: 3.6
     vars:
-      ubuntu_version: 18.04
+      centos_module: python36

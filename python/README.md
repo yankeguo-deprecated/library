@@ -1,11 +1,11 @@
 # python
 
-`Python` 镜像基于 `acicn/ubuntu:20.04` 和 `acicn/ubuntu:18.04`
+`Python` 镜像基于 `acicn/centos:8`
 
 ## 标签
 
-* `acicn/python:3.8` (基于 `acicn/ubuntu:20.04`)
-* `acicn/python:3.6` (基于 `acicn/ubuntu:18.04`)
+* `acicn/python:3.8`
+* `acicn/python:3.6`
 
 ## 功能
 
