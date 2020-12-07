@@ -1,6 +1,6 @@
 # node
 
-`acicn/node` 基于 `acicn/ubuntu:20.04`
+`acicn/node` 基于 `acicn/centos:8`
 
 ## 标签
 

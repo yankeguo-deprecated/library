@@ -1,9 +1,7 @@
 FROM {{.repo_base}}/node:{{.upstream}}
 
-RUN apt-get update && \
-    apt-get install -y build-essential && \
-    rm -rf /var/lib/apt/lists/* && \
+RUN yum install -y make automake gcc gcc-c++ kernel-devel && \
+    yum clean all && \
     npm install -g cnpm && \
     npm cache clean -f && \
-    npm config set unsafe-perm true && \
     cnpm config set unsafe-perm true
