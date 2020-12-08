@@ -5,6 +5,7 @@
 ## 标签
 
 * `acicn/ubuntu:20.04`
+* `acicn/ubuntu:18.04`
 
 ## 功能
 
