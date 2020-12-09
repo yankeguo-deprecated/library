@@ -36,4 +36,4 @@ mirrors:
   - quay.io/external_storage/nfs-client-provisioner => nfs-client-provisioner
 vars:
   repo_base: acicn
-  minit_version: 1.5.1
+  minit_version: 1.5.2
