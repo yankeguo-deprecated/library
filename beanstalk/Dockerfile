@@ -1,6 +1,6 @@
 FROM {{.repo_base}}/alpine:{{.alpine_version}}
 
-RUN apk-mirror-use-aliyun && apk add --no-cache beanstalkd
+RUN apk add --no-cache beanstalkd
 
 WORKDIR /data
 
