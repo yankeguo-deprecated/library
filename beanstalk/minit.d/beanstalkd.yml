@@ -1,0 +1,6 @@
+name: beanstalkd
+kind: daemon
+dir: /data
+shell: /bin/sh
+command:
+  - exec beanstalkd -l 0.0.0.0 -p 11300 -b /data $BEANSTALKD_OPTS

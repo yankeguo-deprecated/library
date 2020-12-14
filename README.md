@@ -16,6 +16,7 @@
     * [Node](https://github.com/acicn/library/tree/latest/node)
     * [Tomcat](https://github.com/acicn/library/tree/latest/tomcat)
 * 基础服务
+    * [Beanstalk](https://github.com/acicn/library/tree/latest/beanstalk)
     * [Elasticsearch](https://github.com/acicn/library/tree/latest/elasticsearch)
     * [MySQL](https://github.com/acicn/library/tree/latest/mysql)
     * [Mongo](https://github.com/acicn/library/tree/latest/mongo)
