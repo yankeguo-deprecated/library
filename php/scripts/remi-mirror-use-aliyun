@@ -1,4 +1,4 @@
 #!/bin/bash
 
-rm -rf /etc/yun.repos.d/remi*
+rm -rf /etc/yum.repos.d/remi*
 cp -f /opt/acicn/remi-aliyun.repo /etc/yum.repos.d/remi.repo
