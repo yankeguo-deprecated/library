@@ -17,7 +17,11 @@
 
     详细参考 https://github.com/acicn/minit
 
-* REMI 源
+* PHP 扩展 和 REMI 源
+
+  本镜像使用 REMI 源安装 php-fpm 和 PHP 扩展，内置 PHP 扩展可以查阅 Dockerfile 文件
+
+  可以使用脚本 `remi-mirror-use-aliyun` 将 REMI 源的镜像地址切换到 Aliyun
 
 * 使用 `merge-env-to-ini` 工具和环境变量修改 `PHP FPM` 配置文件
 
