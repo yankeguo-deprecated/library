@@ -1,27 +1,14 @@
-FROM {{.repo_base}}/merge-env-to-ini AS utils-merge-env-to-ini
+FROM acicn/merge-env-to-ini AS utils-merge-env-to-ini
 
 FROM {{.repo_base}}/nginx AS utils-nginx
 
-FROM {{.repo_base}}/ubuntu:20.04
+FROM {{.repo_base}}/centos:8
 
 ENV PHP_VERSION {{.php_version}}
 
-RUN apt-get update && \
-    apt-get install -y software-properties-common && \
-    add-apt-repository ppa:ondrej/php && \
-    apt-get update && \
-    apt-get install -y nginx \
-    php{{.php_version}}-fpm \
-    php{{.php_version}}-apcu \
-    php{{.php_version}}-mysql \
-    php{{.php_version}}-redis \
-    php{{.php_version}}-mongo* \
-    php{{.php_version}}-curl \
-    php{{.php_version}}-mbstring \
-    php{{.php_version}}-xml \
-    php{{.php_version}}-zip \
-    php{{.php_version}}-memcache && \
-    rm -rf /var/lib/apt/lists/* && \
+RUN yum module enable -y php:{{.php_version}} && \
+    yum install -y nginx php-* && \
+    yum clean all && \
     rm -rf /etc/nginx && \
     mkdir -p /etc/nginx/default.fastcgi.d
 
@@ -35,13 +22,11 @@ ADD minit.d /etc/minit.d
 ADD index.php /var/www/public/index.php
 ADD php.conf /etc/nginx/default.conf.d/php.conf
 
-ENV PHPCFG_FPM_POOL_WWW_CONF_www__user  "user = root"
-ENV PHPCFG_FPM_POOL_WWW_CONF_www__group "group = root"
-ENV PHPCFG_FPM_POOL_WWW_CONF_www__listen_owner "listen.owner = root"
-ENV PHPCFG_FPM_POOL_WWW_CONF_www__listen_group "listen.group = root"
-ENV PHPCFG_FPM_POOL_WWW_CONF_www__listen "listen = /run/php/php-fpm.sock"
-ENV PHPCFG_FPM_PHP_FPM_CONF_global__pid "pid = /run/php/php-fpm.pid"
-ENV PHPCFG_FPM_PHP_FPM_CONF_global__error_log "error_log = /dev/stderr"
+ENV PHPCFG_PHP_FPM_WWW_CONF_www__user  "user = root"
+ENV PHPCFG_PHP_FPM_WWW_CONF_www__group "group = root"
+ENV PHPCFG_PHP_FPM_WWW_CONF_www__listen "listen = 127.0.0.1:9000"
+ENV PHPCFG_PHP_FPM_CONF_global__pid "pid = /run/php-fpm.pid"
+ENV PHPCFG_PHP_FPM_CONF_global__error_log "error_log = /dev/stderr"
 
 ENV NGXCFG_DEFAULT_EXTRA_INDEX index.php
 

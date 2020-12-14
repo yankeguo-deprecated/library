@@ -1,10 +1,9 @@
 # php
 
-`acicn/php` 镜像基于 `acicn/ubuntu:20.04` 镜像
+`acicn/php` 镜像基于 `centos:8` 镜像
 
 ## 标签
 
-* `acicn/php:5.6`
 * `acicn/php:7.2`
 * `acicn/php:7.4`
 
@@ -18,57 +17,35 @@
 
     详细参考 https://github.com/acicn/minit
 
-* PHP 模块
-
-    - PPA 源 `ondrej/php`
-
-      默认引入 PPA 源 `ondrej/php`，提供众多的 PHP 扩展模块
-
-      详细列表参阅 https://launchpad.net/~ondrej/+archive/ubuntu/php
-
-    - 默认模块
-
-      `apcu`, `mysql`, `redis`, `mongodb`, `curl`, `mbstring`, `xml`, `zip`, `memcache`
-
-    - 额外模块安装脚本 `php-ext-install`
-
-      如果默认模块不符合要求，可以使用该命令安装任何 APT 源中已有的 PHP 模块，并且会自动清理临时文件，缩减镜像尺寸。内部调用 `apt-get install -y php-XXXX`
-
-      示例
-
-      ```dockerfile
-      FROM acicn/php:7.2
-      RUN php-ext-install apcu pgsql
-      ADD . /var/www
-      ```
+* 全部 CentOS 8 / EPEL 8 源中包含的 PHP 模块
 
 * 使用 `merge-env-to-ini` 工具和环境变量修改 `PHP FPM` 配置文件
 
     详细参考 https://github.com/acicn/merge-env-to-ini
 
-    * 环境变量前缀 `PHPCFG_FPM_PHP_INI_` 修改 `/etc/php/${PHP_VERSION}/fpm/php.ini` 文件
+    * 环境变量前缀 `PHPCFG_PHP_INI_` 修改 `/etc/php.ini` 文件
 
         比如
 
-        `PHPCFG_FPM_PHP_INI_aaaa__xxxxxxx=hello=world`
+        `PHPCFG_PHP_INI_aaaa__xxxxxxx=hello=world`
 
-        会在 `/etc/php/${PHP_VERSION}/fpm/php.ini` 文件中的 `[aaaa]` 分段，**增加或者修改**键值 `hello=world`，环境变量名中的 `__xxxx` 后缀会被忽略，用以防止字段名冲突
+        会在 `/etc/php.ini` 文件中的 `[aaaa]` 分段，**增加或者修改**键值 `hello=world`，环境变量名中的 `__xxxx` 后缀会被忽略，用以防止字段名冲突
 
-    * 环境变量前缀 `PHPCFG_FPM_PHP_FPM_CONF_` 修改 `/etc/php/${PHP_VERSION}/fpm/php-fpm.conf` 文件
-
-        比如
-
-        `PHPCFG_FPM_PHP_FPM_CONF_aaaa__xxxxxxx=hello=world`
-
-        会在 `/etc/php/${PHP_VERSION}/fpm/php-fpm.conf` 文件中的 `[aaaa]` 分段，**增加或者修改**键值 `hello=world`，环境变量名中的 `__xxxx` 后缀会被忽略，用以防止字段名冲突
-
-    * 环境变量前缀 `PHPCFG_FPM_POOL_WWW_CONF_` 修改 `/etc/php/${PHP_VERSION}/fpm/pool.d/www.conf` 文件
+    * 环境变量前缀 `PHPCFG_PHP_FPM_CONF_` 修改 `/etc/php-fpm.conf` 文件
 
         比如
 
-        `PHPCFG_FPM_POOL_WWW_CONF_aaaa__xxxxxxx=hello=world`
+        `PHPCFG_PHP_FPM_CONF_aaaa__xxxxxxx=hello=world`
 
-        会在 `/etc/php/${PHP_VERSION}/fpm/pool.d/www.ini` 文件中的 `[aaaa]` 分段，**增加或者修改**键值 `hello=world`，环境变量名中的 `__xxxx` 后缀会被忽略，用以防止字段名冲突
+        会在 `/etc/php-fpm.conf` 文件中的 `[aaaa]` 分段，**增加或者修改**键值 `hello=world`，环境变量名中的 `__xxxx` 后缀会被忽略，用以防止字段名冲突
+
+    * 环境变量前缀 `PHPCFG_PHP_FPM_WWW_CONF_` 修改 `/etc/php-fpm.d/www.conf` 文件
+
+        比如
+
+        `PHPCFG_PHP_FPM_WWW_CONF_aaaa__xxxxxxx=hello=world`
+
+        会在 `/etc/php-fpm.d/www.conf` 文件中的 `[aaaa]` 分段，**增加或者修改**键值 `hello=world`，环境变量名中的 `__xxxx` 后缀会被忽略，用以防止字段名冲突
 
 * `nginx`
 

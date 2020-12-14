@@ -3,27 +3,27 @@ kind: once
 command:
   - merge-env-to-ini
   - --from
-  - PHPCFG_FPM_PHP_INI_
+  - PHPCFG_PHP_INI_
   - --to 
-  - /etc/php/${PHP_VERSION}/fpm/php.ini
+  - /etc/php.ini
 ---
 name: php-fpm-modify-php-fpm-conf
 kind: once
 command:
   - merge-env-to-ini
   - --from 
-  - PHPCFG_FPM_PHP_FPM_CONF_
+  - PHPCFG_PHP_FPM_CONF_
   - --to 
-  - /etc/php/${PHP_VERSION}/fpm/php-fpm.conf
+  - /etc/php-fpm.conf
 ---
 name: php-fpm-modify-pool-www-conf
 kind: once
 command:
   - merge-env-to-ini
   - --from 
-  - PHPCFG_FPM_POOL_WWW_CONF_
+  - PHPCFG_PHP_FPM_WWW_CONF_
   - --to 
-  - /etc/php/${PHP_VERSION}/fpm/pool.d/www.conf
+  - /etc/php-fpm.d/www.conf
 ---
 name: php-fpm-mkdir
 kind: once
@@ -35,8 +35,8 @@ command:
 name: php-fpm
 kind: daemon
 command:
-  - /usr/sbin/php-fpm${PHP_VERSION}
+  - /usr/sbin/php-fpm
   - -R
   - --nodaemonize
   - --fpm-config
-  - /etc/php/${PHP_VERSION}/fpm/php-fpm.conf
+  - /etc/php-fpm.conf
