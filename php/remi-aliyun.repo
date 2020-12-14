@@ -1,0 +1,20 @@
+[remi]
+name=Remi's RPM repository for Enterprise Linux 8 - $basearch
+baseurl=http://mirrors.aliyun.com/remi//enterprise/8/remi/$basearch/
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi.el8
+
+[remi-safe]
+name=Safe Remi's RPM repository for Enterprise Linux 8 - $basearch
+baseurl=http://mirrors.aliyun.com/remi//enterprise/8/safe/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi.el8
+
+[remi-modular]
+name=Remi's Modular repository for Enterprise Linux 8 - $basearch
+baseurl=http://mirrors.aliyun.com/remi//enterprise/8/modular/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi.el8

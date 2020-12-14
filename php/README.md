@@ -17,7 +17,7 @@
 
     详细参考 https://github.com/acicn/minit
 
-* 全部 CentOS 8 / EPEL 8 源中包含的 PHP 模块
+* REMI 源
 
 * 使用 `merge-env-to-ini` 工具和环境变量修改 `PHP FPM` 配置文件
 
