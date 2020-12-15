@@ -1,26 +1,45 @@
 name: tomcat
+vars:
+  jdk-11-centos-8:
+    centos_version: 8
+    upstream: jdk:11-centos-8
+  jdk-8-centos-8:
+    centos_version: 8
+    upstream: jdk:8-centos-8
+  tomcat-8:
+    tomcat_version: 8
+    tomcat_download_url: "https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/archive.apache.org/dist/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz"
+  tomcat-9:
+    tomcat_version: 9
+    tomcat_download_url: "https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/archive.apache.org/dist/tomcat/tomcat-9/v9.0.40/bin/apache-tomcat-9.0.40.tar.gz"
 tags:
-  - name: 8
+  - name: 8-jdk-11-centos-8
+    also:
+      - 8-jdk-11
+      - 8-on-11
+      - 8
     vars:
-      jdk_version: 11
-      tomcat_download_url: "https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz"
-  - name: 9
+      - jdk-11-centos-8
+      - tomcat-8
+  - name: 9-jdk-11-centos-8
+    also:
+      - 9-jdk-11
+      - 9-on-11
+      - 9
     vars:
-      jdk_version: 11
-      tomcat_download_url: "https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.40/bin/apache-tomcat-9.0.40.tar.gz"
-  - name: 8-on-11
+      - jdk-11-centos-8
+      - tomcat-9
+  - name: 8-jdk-8-centos-8
+    also:
+      - 8-jdk-8
+      - 8-on-8
     vars:
-      jdk_version: 11
-      tomcat_download_url: "https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz"
-  - name: 9-on-11
+      - jdk-8-centos-8
+      - tomcat-8
+  - name: 9-jdk-8-centos-8
+    also:
+      - 9-jdk-8
+      - 9-on-8
     vars:
-      jdk_version: 11
-      tomcat_download_url: "https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.40/bin/apache-tomcat-9.0.40.tar.gz"
-  - name: 8-on-8
-    vars:
-      jdk_version: 8
-      tomcat_download_url: "https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz"
-  - name: 9-on-8
-    vars:
-      jdk_version: 8
-      tomcat_download_url: "https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.40/bin/apache-tomcat-9.0.40.tar.gz"
+      - jdk-8-centos-8
+      - tomcat-9
