@@ -1,10 +1,22 @@
 name: php
+vars:
+  centos-8:
+    centos_version: 8
+    upstream: centos:8
+  php-7.2:
+    php_version: 7.2
+  php-7.4:
+    php_version: 7.4
 tags:
-  - name: 7.2
+  - name: 7.2-centos-8
+    also:
+      - 7.2
     vars:
-      php_version: 7.2
-      has_interbase: true
-  - name: 7.4
+      - centos-8
+      - php-7.2
+  - name: 7.4-centos-8
+    also:
+      - 7.4
     vars:
-      php_version: 7.4
-      has_interbase: false
+      - centos-8
+      - php-7.4

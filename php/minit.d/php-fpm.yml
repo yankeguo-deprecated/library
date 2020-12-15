@@ -1,29 +1,29 @@
-name: php-fpm-modify-php-ini
+name: php-fpm-update-php-ini
 kind: once
 command:
   - merge-env-to-ini
   - --from
   - PHPCFG_PHP_INI_
   - --to 
-  - /etc/php.ini
+  - $PHPCFG_PATH_PHP_INI
 ---
-name: php-fpm-modify-php-fpm-conf
+name: php-fpm-update-php-fpm-conf
 kind: once
 command:
   - merge-env-to-ini
   - --from 
   - PHPCFG_PHP_FPM_CONF_
   - --to 
-  - /etc/php-fpm.conf
+  - $PHPCFG_PATH_PHP_FPM_CONF
 ---
-name: php-fpm-modify-pool-www-conf
+name: php-fpm-update-php-fpm-www-conf
 kind: once
 command:
   - merge-env-to-ini
   - --from 
   - PHPCFG_PHP_FPM_WWW_CONF_
   - --to 
-  - /etc/php-fpm.d/www.conf
+  - $PHPCFG_PATH_PHP_FPM_WWW_CONF
 ---
 name: php-fpm-mkdir
 kind: once
