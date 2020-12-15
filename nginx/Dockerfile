@@ -1,17 +1,15 @@
-FROM {{.repo_base}}/alpine:3.12
+FROM {{.repo_base}}/{{.upstream}}
 
+{{if .alpine_version}}
 RUN apk add --no-cache nginx && \
-    rm -rf /etc/nginx/conf.d /etc/nginx/default.conf.d && \
-    mkdir -p /etc/nginx/conf.d /etc/nginx/default.conf.d /etc/nginx/default.root.conf.d
+    rm -rf /etc/nginx
+{{end}}
 
-ADD nginx.conf      /etc/nginx/nginx.conf
-ADD snippets        /etc/nginx/snippets
-ADD default.conf    /etc/nginx/conf.d/default.conf
-
-ADD index.html      /var/www/public/index.html
-
+ADD nginx   /etc/nginx
 ADD minit.d /etc/minit.d
 
 WORKDIR /var/www/public
+
+ADD index.html  index.html
 
 ENV NGXCFG_SNIPPETS_SPA_INDEX /index.html
