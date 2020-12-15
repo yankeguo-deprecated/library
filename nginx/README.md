@@ -4,7 +4,7 @@
 
 ## 标签
 
-`acicn/nginx`
+* `acicn/nginx:alpine-3.12`
 
 ## 功能
 

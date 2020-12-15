@@ -1,11 +1,16 @@
 # python
 
-`Python` 镜像基于 `acicn/centos:8`
-
 ## 标签
 
-* `acicn/python:3.8`
-* `acicn/python:3.6`
+**运行环境**
+
+* `acicn/python:3.8-centos-8`
+* `acicn/python:3.6-centos-8`
+
+**构建环境**
+
+* `acicn/python:builder-3.8-centos-8`
+* `acicn/python:builder-3.6-centos-8`
 
 ## 功能
 
@@ -18,9 +23,7 @@
     
     详细参考 https://github.com/acicn/minit
 
-* `pip-mirror-use-aliyun`
-
-    一个辅助脚本，执行后会写入 `~/.pip/pip.conf` 文件，使用阿里云 pypi 镜像
+* PIP 默认使用 Aliyun 源
 
 * `venv-wrapper`
 

@@ -31,7 +31,6 @@ COPY --from=utils-merge-env-to-ini /merge-env-to-ini /opt/bin/merge-env-to-ini
 COPY --from=utils-nginx /etc/nginx /etc/nginx
 COPY --from=utils-nginx /etc/minit.d/nginx.yml /etc/minit.d/nginx.yml
 
-ADD scripts /opt/bin
 ADD minit.d /etc/minit.d
 ADD index.php /var/www/public/index.php
 ADD php.conf /etc/nginx/default.conf.d/php.conf

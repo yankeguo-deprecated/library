@@ -1,20 +1,18 @@
 # jdk
 
-`acicn/jdk` 基于 `acicn/centos:8` 和 `AdoptOpenJDK (HotSpot)`
-
 ## 标签
 
 **运行环境**
 
-* `acicn/jdk:8`
-* `acicn/jdk:11`
+* `acicn/jdk:8-centos-8`
+* `acicn/jdk:11-centos-8`
 
 **构建环境**
 
-* `acicn/jdk:builder-8-maven-3.6`
-* `acicn/jdk:builder-8-maven-3.5`
-* `acicn/jdk:builder-11-maven-3.6`
-* `acicn/jdk:builder-11-maven-3.5`
+* `acicn/jdk:builder-8-maven-3.6-centos-8`
+* `acicn/jdk:builder-8-maven-3.5-centos-8`
+* `acicn/jdk:builder-11-maven-3.6-centos-8`
+* `acicn/jdk:builder-11-maven-3.5-centos-8`
 
 ## 运行环境
 

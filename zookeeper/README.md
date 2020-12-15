@@ -1,10 +1,8 @@
 # zookeeper
 
-`acicn/zookeeper` 基于 `acicn/jdk:11`
-
 ## 标签
 
-* `acicn/zookeeper:3.6.2`
+* `acicn/zookeeper:3.6.2-jdk-11-centos-8`
 
 ## 功能
 

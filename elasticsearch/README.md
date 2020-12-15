@@ -1,10 +1,8 @@
 # elasticsearch
 
-`acicn/elasticsearch` 基于 `acicn/jdk11`
-
 ## 标签
 
-* `acicn/elasticsearch:6.3.2`
+* `acicn/elasticsearch:6.3.2-jdk-11-centos-8`
 
 ## 功能
 
@@ -35,12 +33,6 @@
 * 使用 `elasticsearch-tune.jar` Java Agent 允许 Elasticsearch 运行在 root 用户下
 
 * 安装 `analysis-ik`
-
-* 自动初始化空目录 `/opt/elasticsearch/config`
-
-   当检测到 `/opt/elasticsearch/config/.initialized` 文件不存在时，会自动以默认配置初始化该目录
-   
-   因此，可以将该目录直接挂载到空的数据卷上，比如 NFS 卷，镜像会自动填充默认配置文件
 
 * 基于环境变量的 `elasticsearch.yml` 配置文件渲染
 

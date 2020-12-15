@@ -4,8 +4,8 @@
 
 ## 标签
 
-* `acicn/php:7.2`
-* `acicn/php:7.4`
+* `acicn/php:7.2-centos-8`
+* `acicn/php:7.4-centos-8`
 
 ## 功能
 
@@ -19,9 +19,9 @@
 
 * PHP 扩展 和 REMI 源
 
-  本镜像使用 REMI 源安装 php-fpm 和 PHP 扩展，内置 PHP 扩展可以查阅 Dockerfile 文件
+  默认激活 Aliyun REMI 源
 
-  可以使用脚本 `remi-mirror-use-aliyun` 将 REMI 源的镜像地址切换到 Aliyun
+  本镜像使用 REMI 源安装 php-fpm 和 PHP 扩展，内置 PHP 扩展可以查阅 Dockerfile 文件
 
 * 使用 `merge-env-to-ini` 工具和环境变量修改 `PHP FPM` 配置文件
 
@@ -69,5 +69,4 @@
 
 ## 默认配置
 
-* PHP-FPM 配置目录 `/etc/php/${PHP_VERSION}/fpm`
 * PHP 项目地址 `/var/www/public`

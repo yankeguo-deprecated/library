@@ -1,11 +1,8 @@
 # centos
 
-`CentOS` 镜像基于官方镜像修改
-
 ## 标签
 
 * `acicn/centos:8`
-* `acicn/centos:7`
 
 ## 功能
 

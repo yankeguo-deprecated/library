@@ -1,10 +1,9 @@
 # redis
 
-`acicn/redis` 基于 `acicn/centos:8` ，从源代码编译 `redis`
-
 ## 标签
 
-* `acicn/redis:5`
+* `acicn/redis:5-alpine-3.12`
+* `acicn/redis:5-centos-8`
 
 ## 功能
 

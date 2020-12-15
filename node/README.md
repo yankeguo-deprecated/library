@@ -6,17 +6,17 @@
 
 **运行环境**
 
-* `acicn/node:8`
-* `acicn/node:10`
-* `acicn/node:12`
-* `acicn/node:14`
+* `acicn/node:8-centos-8`
+* `acicn/node:10-centos-8`
+* `acicn/node:12-centos-8`
+* `acicn/node:14-centos-8`
 
 **构建环境**
 
-* `acicn/node:builder-8`
-* `acicn/node:builder-10`
-* `acicn/node:builder-12`
-* `acicn/node:builder-14`
+* `acicn/node:builder-8-centos-8`
+* `acicn/node:builder-10-centos-8`
+* `acicn/node:builder-12-centos-8`
+* `acicn/node:builder-14-centos-8`
 
 ## 运行环境
 
@@ -28,9 +28,7 @@
     
     详细参考 https://github.com/acicn/minit
 
-* `npm-mirror-use-aliyun`
-
-    一个辅助脚本，执行后会写入 `~/.npmrc` 文件，使用阿里云 NPM 镜像
+* npm 默认使用 Aliyun 镜像源
 
 ## 构建环境
 
