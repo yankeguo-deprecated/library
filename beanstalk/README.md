@@ -1,10 +1,9 @@
 # beanstalk
 
-`acicn/beanstalk` 基于 `acicn/alpine:3.12`
-
 ## 标签
 
-* `acicn/beanstalk:1`
+* `acicn/beanstalk:1-alpine-3.12`
+    * `acicn/beanstalk:1`
 
 ## 功能
 

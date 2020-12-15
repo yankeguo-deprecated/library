@@ -205,7 +205,7 @@ func build(opts optsBuild) (err error) {
 	if err = ioutil.WriteFile(
 		filepath.Join(opts.dir, "banner.minit.txt"),
 		[]byte(fmt.Sprintf(
-			"本镜像基于 %s/%s:%s 制作，详细信息参阅 %s\n",
+			"本镜像基于 %s/%s:%s 制作，详细信息参阅 %s",
 			opts.base,
 			opts.repo,
 			opts.tag,

@@ -1,7 +1,5 @@
 # alpine
 
-`Alpine` 镜像基于官方镜像修改
-
 ## 标签
 
 * `acicn/alpine:3.12`
@@ -14,12 +12,9 @@
     - 支持一次性，配置文件渲染，定时任务等多个多种类型的进程
     - 内建 WebDAV 服务器，便于输出调试文件
 
-    
     详细参考 https://github.com/acicn/minit
 
-* 内置一些功能性脚本
-
-    - 使用 `apk-mirror-use-aliyun` 命令，可以将软件源切换到阿里云，执行 `apk` 操作速度会更快
+* 切换源到 `Aliyun`
 
 * 切换时区到 `CST`
 
