@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -34,16 +35,17 @@ type manifestGlobal struct {
 }
 
 type manifestRepo struct {
-	Name string                 `yaml:"string"`
-	Desc string                 `yaml:"desc"`
-	Tags []manifestTag          `yaml:"tags"`
-	Vars map[string]interface{} `yaml:"vars"`
+	Name string                            `yaml:"string"`
+	Desc string                            `yaml:"desc"`
+	Tags []manifestTag                     `yaml:"tags"`
+	Vars map[string]map[string]interface{} `yaml:"vars"`
 }
 
 type manifestTag struct {
-	Name       string                 `yaml:"name"`
-	Dockerfile string                 `yaml:"dockerfile"`
-	Vars       map[string]interface{} `yaml:"vars"`
+	Name       string   `yaml:"name"`
+	Also       []string `yaml:"also"`
+	Dockerfile string   `yaml:"dockerfile"`
+	Vars       []string `yaml:"vars"`
 }
 
 func exit(err *error) {
@@ -108,11 +110,14 @@ func main() {
 			for k, v := range global.Vars {
 				vars[k] = v
 			}
-			for k, v := range repo.Vars {
-				vars[k] = v
-			}
-			for k, v := range tag.Vars {
-				vars[k] = v
+			for _, kg := range tag.Vars {
+				if repo.Vars[kg] == nil {
+					err = errors.New("missing vars group: " + kg)
+					return
+				}
+				for k, v := range repo.Vars[kg] {
+					vars[k] = v
+				}
 			}
 			log.Printf("Vars: %v", vars)
 			if err = build(optsBuild{
@@ -122,6 +127,7 @@ func main() {
 				desc:       repo.Desc,
 				repo:       repo.Name,
 				tag:        tag.Name,
+				also:       tag.Also,
 				dockerfile: tag.Dockerfile,
 				vars:       vars,
 			}); err != nil {
@@ -182,6 +188,7 @@ type optsBuild struct {
 	repo       string
 	desc       string
 	tag        string
+	also       []string
 	dockerfile string
 	vars       map[string]interface{}
 }
@@ -204,7 +211,7 @@ func build(opts optsBuild) (err error) {
 		return
 	}
 	var tmpl *template.Template
-	if tmpl, err = template.New("__main__").Option("missingkey=error").Funcs(tmplFuncs).Parse(string(buf)); err != nil {
+	if tmpl, err = template.New("__main__").Option("missingkey=zero").Funcs(tmplFuncs).Parse(string(buf)); err != nil {
 		return
 	}
 	out := &bytes.Buffer{}
@@ -220,12 +227,26 @@ func build(opts optsBuild) (err error) {
 	if err = execute(opts.dir, "docker", "build", "-t", canonicalName, "-f", defaultDockerfileOut, "."); err != nil {
 		return
 	}
+	for _, alt := range opts.also {
+		altCanonicalName := fmt.Sprintf("%s/%s:%s", opts.base, opts.repo, alt)
+		log.Println("Tag:", canonicalName, altCanonicalName)
+		if err = execute(opts.dir, "docker", "tag", canonicalName, altCanonicalName); err != nil {
+			return
+		}
+	}
 	if optOnly != "" {
 		return
 	}
 	log.Println("Push:", canonicalName)
 	if err = execute(opts.dir, "docker", "push", canonicalName); err != nil {
 		return
+	}
+	for _, alt := range opts.also {
+		altCanonicalName := fmt.Sprintf("%s/%s:%s", opts.base, opts.repo, alt)
+		log.Println("Push:", canonicalName, altCanonicalName)
+		if err = execute(opts.dir, "docker", "push", altCanonicalName); err != nil {
+			return
+		}
 	}
 	return
 }

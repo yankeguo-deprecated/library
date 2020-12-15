@@ -1,31 +1,69 @@
 name: jdk
-tags:
-  - name: 11
-    vars:
-      jdk_download_url: "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.9+11.1/OpenJDK11U-jdk_x64_linux_hotspot_11.0.9_11.tar.gz"
-  - name: 8
-    vars:
-      jdk_download_url: "https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u272-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u272b10.tar.gz"
-  # builder 系列
-  - name: builder-8-maven-3.6
-    dockerfile: Dockerfile.builder
-    vars:
-      upstream: 8
-      maven_download_url: "https://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz"
-  - name: builder-11-maven-3.6
-    dockerfile: Dockerfile.builder
-    vars:
-      upstream: 11
-      maven_download_url: "https://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz"
-  - name: builder-8-maven-3.5
-    dockerfile: Dockerfile.builder
-    vars:
-      upstream: 8
-      maven_download_url: "https://archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz"
-  - name: builder-11-maven-3.5
-    dockerfile: Dockerfile.builder
-    vars:
-      upstream: 11
-      maven_download_url: "https://archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz"
 vars:
-  arthas_download_url: "https://github.com/alibaba/arthas/releases/download/arthas-all-3.4.5/arthas-bin.zip"
+  arthas:
+    arthas_version: 3.4
+    arthas_download_url: "https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/github.com/alibaba/arthas/releases/download/arthas-all-3.4.5/arthas-bin.zip"
+  centos-8:
+    centos_version: 8
+    upstream: centos:8
+  adoptopenjdk-11:
+    jdk_version: 11
+    jdk_download_url: "https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/github.com/adoptopenjdk/openjdk11-binaries/releases/download/jdk-11.0.9.1_1/openjdk11u-jdk_x64_linux_hotspot_11.0.9.1_1.tar.gz"
+  adoptopenjdk-8:
+    jdk_version: 8
+    jdk_download_url: "https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/github.com/adoptopenjdk/openjdk8-binaries/releases/download/jdk8u275-b01/openjdk8u-jdk_x64_linux_hotspot_8u275b01.tar.gz"
+  maven-3.6:
+    maven_version: 3.6
+    maven_download_url: "https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz"
+  maven-3.5:
+    maven_version: 3.5
+    maven_download_url: "https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz"
+tags:
+  - name: 11-centos-8
+    also:
+      - 11
+    vars:
+      - arthas
+      - centos-8
+      - adoptopenjdk-11
+  - name: 8-centos-8
+    also:
+      - 8
+    vars:
+      - arthas
+      - centos-8
+      - adoptopenjdk-8
+  - name: builder-11-maven-3.6-centos-8
+    also:
+      - builder-11-maven-3.6
+      - builder-11
+    vars:
+      - arthas
+      - centos-8
+      - adoptopenjdk-11
+      - maven-3.6
+  - name: builder-8-maven-3.6-centos-8
+    also:
+      - builder-8-maven-3.6
+      - builder-8
+    vars:
+      - arthas
+      - centos-8
+      - adoptopenjdk-8
+      - maven-3.6
+  - name: builder-11-maven-3.5-centos-8
+    also:
+      - builder-11-maven-3.5
+    vars:
+      - arthas
+      - centos-8
+      - adoptopenjdk-11
+      - maven-3.5
+  - name: builder-8-maven-3.5-centos-8
+    also:
+      - builder-8-maven-3.5
+    vars:
+      - arthas
+      - centos-8
+      - adoptopenjdk-8
+      - maven-3.5

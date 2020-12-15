@@ -1,4 +1,4 @@
-FROM {{.repo_base}}/alpine:{{.alpine_version}}
+FROM {{.repo_base}}/{{.upstream}}
 
 RUN apk add --no-cache beanstalkd
 

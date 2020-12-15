@@ -1,8 +1,11 @@
 name: ubuntu
+vars:
+  use-aliyun-mirror:
+    apt_mirror: mirrors.aliyun.com
+  ubuntu-20.04:
+    upstream_version: 20.04
 tags:
   - name: 20.04
     vars:
-      ubuntu_version: 20.04
-  - name: 18.04
-    vars:
-      ubuntu_version: 18.04
+      - ubuntu-20.04
+      - use-aliyun-mirror

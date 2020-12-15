@@ -1,10 +1,8 @@
 name: centos
+vars:
+  centos-8:
+    upstream_version: 8
 tags:
   - name: 8
     vars:
-      centos_version: 8
-      fix_lang: false
-  - name: 7
-    vars:
-      centos_version: 7
-      fix_lang: true
+      - centos-8

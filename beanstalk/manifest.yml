@@ -1,5 +1,8 @@
 name: beanstalk
+vars:
+  beanstalk-1:
+    upstream: alpine:3.12
 tags:
   - name: "1"
     vars:
-      alpine_version: 3.12
+      - beanstalk-1
