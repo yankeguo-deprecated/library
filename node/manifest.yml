@@ -1,32 +1,78 @@
 name: node
+vars:
+  centos-8:
+    centos_version: 8
+    upstream: centos:8
+  node-14:
+    node_version: 14
+    node_download_url: 'https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/nodejs.org/download/release/v14.15.0/node-v14.15.0-linux-x64.tar.gz'
+  node-12:
+    node_version: 12
+    node_download_url: 'https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/nodejs.org/download/release/v12.19.0/node-v12.19.0-linux-x64.tar.gz'
+  node-10:
+    node_version: 10
+    node_download_url: 'https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/nodejs.org/download/release/v10.23.0/node-v10.23.0-linux-x64.tar.gz'
+  node-8:
+    node_version: 8
+    node_download_url: 'https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/nodejs.org/download/release/v8.17.0/node-v8.17.0-linux-x64.tar.gz'
+  cnpm:
+    install_cnpm: true
+  devel:
+    install_devel: true
 tags:
-  # base series
-  - name: 14
+  - name: 14-centos-8
+    also:
+      - 14
     vars:
-      node_download_url: 'https://nodejs.org/download/release/v14.15.0/node-v14.15.0-linux-x64.tar.gz'
-  - name: 12
+      - centos-8
+      - node-14
+  - name: 12-centos-8
+    also:
+      - 12
     vars:
-      node_download_url: 'https://nodejs.org/download/release/v12.19.0/node-v12.19.0-linux-x64.tar.gz'
-  - name: 10
+      - centos-8
+      - node-12
+  - name: 10-centos-8
+    also:
+      - 10
     vars:
-      node_download_url: 'https://nodejs.org/download/release/v10.23.0/node-v10.23.0-linux-x64.tar.gz'
-  - name: 8
+      - centos-8
+      - node-10
+  - name: 8-centos-8
+    also:
+      - 8
     vars:
-      node_download_url: 'https://nodejs.org/download/release/v8.17.0/node-v8.17.0-linux-x64.tar.gz'
-  # builder series
-  - name: builder-8
-    dockerfile: Dockerfile.builder
+      - centos-8
+      - node-8
+  - name: builder-14-centos-8
+    also:
+      - builder-14
     vars:
-      upstream: 8
-  - name: builder-10
-    dockerfile: Dockerfile.builder
+      - centos-8
+      - node-14
+      - cnpm
+      - devel
+  - name: builder-12-centos-8
+    also:
+      - builder-12
     vars:
-      upstream: 10
-  - name: builder-12
-    dockerfile: Dockerfile.builder
+      - centos-8
+      - node-12
+      - cnpm
+      - devel
+  - name: builder-10-centos-8
+    also:
+      - builder-10
     vars:
-      upstream: 12
-  - name: builder-14
-    dockerfile: Dockerfile.builder
+      - centos-8
+      - node-10
+      - cnpm
+      - devel
+  - name: builder-8-centos-8
+    also:
+      - builder-8
     vars:
-      upstream: 14
+      - centos-8
+      - node-8
+      - cnpm
+      - devel
