@@ -15,3 +15,6 @@
 # vendor/
 
 banner.minit.txt
+
+# GoLand
+.idea/
