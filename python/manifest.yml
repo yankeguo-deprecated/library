@@ -1,8 +1,35 @@
 name: python
+vars:
+  python-3.8-centos-8:
+    centos_version: 8
+    upstream: centos:8
+    centos_module: python38
+  python-3.6-centos-8:
+    centos_version: 8
+    upstream: centos:8
+    centos_module: python36
+  devel:
+    install_devel: true
 tags:
-  - name: 3.8
+  - name: 3.8-centos-8
+    also:
+      - 3.8
     vars:
-      centos_module: python38
-  - name: 3.6
+      - python-3.8-centos-8
+  - name: 3.6-centos-8
+    also:
+      - 3.6
     vars:
-      centos_module: python36
+      - python-3.6-centos-8
+  - name: builder-3.8-centos-8
+    also:
+      - builder-3.8
+    vars:
+      - python-3.8-centos-8
+      - devel
+  - name: builder-3.6-centos-8
+    also:
+      - builder-3.6
+    vars:
+      - python-3.6-centos-8
+      - devel
