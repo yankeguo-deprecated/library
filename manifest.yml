@@ -5,6 +5,14 @@ upstreams:
   - ubuntu:20.04
   - mysql:5.7
   - mysql:5.6
+  - mongo:3.6
+  - mongo:4.0
+  - mongo:4.2
+  - mongo:4.4
+  - postgres:9.6
+  - postgres:10.15
+  - postgres:11.10
+  - postgres:12.5
   - centos:8
   - acicn/merge-env-to-ini
 repos:
