@@ -57,6 +57,7 @@ func exit(err *error) {
 
 var (
 	optOnly     string
+	optNoPull   bool
 	optNoBuild  bool
 	optNoPush   bool
 	optNoMirror bool
@@ -67,6 +68,7 @@ func main() {
 	defer exit(&err)
 
 	flag.StringVar(&optOnly, "only", "", "只构建某个目录，用于调试")
+	flag.BoolVar(&optNoPull, "no-pull", false, "no pull")
 	flag.BoolVar(&optNoBuild, "no-build", false, "no build")
 	flag.BoolVar(&optNoPush, "no-push", false, "no push")
 	flag.BoolVar(&optNoMirror, "no-mirror", false, "no mirror")
@@ -82,7 +84,7 @@ func main() {
 		return
 	}
 
-	if optOnly == "" {
+	if !optNoPull {
 		for _, upstream := range global.Upstreams {
 			if err = execute("", "docker", "pull", upstream); err != nil {
 				return
