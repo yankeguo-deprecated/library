@@ -1,5 +1,25 @@
 name: redis
+vars:
+  alpine-3.12:
+    alpine_version: 3.12
+    upstream: alpine:3.12
+  centos-8:
+    centos_version: 8
+    upstream: centos:8
+  redis-5:
+    redis_version: 5
+    redis_download_url: "https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/download.redis.io/releases/redis-5.0.10.tar.gz"
 tags:
-  - name: 5
+  - name: 5-alpine-3.12
+    also:
+      - 5-alpine
+      - 5
     vars:
-      redis_download_url: "https://download.redis.io/releases/redis-5.0.10.tar.gz"
+      - alpine-3.12
+      - redis-5
+  - name: 5-centos-8
+    also:
+      - 5-centos
+    vars:
+      - centos-8
+      - redis-5

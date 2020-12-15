@@ -1,4 +1,4 @@
-FROM {{.repo_base}}/jdk:11
+FROM {{.repo_base}}/{{.upstream}}
 
 RUN curl -sSL -o zookeeper.tar.gz "{{.zookeeper_download_url}}" && \
     mkdir -p /opt/zookeeper && \

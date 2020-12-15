@@ -1,5 +1,16 @@
 name: zookeeper
+vars:
+  jdk-11-centos-8:
+    centos_version: 8
+    upstream: jdk:11-centos-8
+  zookeeper-3.6.2:
+    zookeeper_version: 3.6.2
+    zookeeper_download_url: "https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/downloads.apache.org/zookeeper/zookeeper-3.6.2/apache-zookeeper-3.6.2-bin.tar.gz"
 tags:
-  - name: 3.6.2
+  - name: 3.6.2-jdk-11-centos-8
+    also:
+      - 3.6.2-jdk-11
+      - 3.6.2
     vars:
-      zookeeper_download_url: "https://downloads.apache.org/zookeeper/zookeeper-3.6.2/apache-zookeeper-3.6.2-bin.tar.gz"
+      - jdk-11-centos-8
+      - zookeeper-3.6.2

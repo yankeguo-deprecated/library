@@ -56,7 +56,10 @@ func exit(err *error) {
 }
 
 var (
-	optOnly string
+	optOnly     string
+	optNoBuild  bool
+	optNoPush   bool
+	optNoMirror bool
 )
 
 func main() {
@@ -64,6 +67,9 @@ func main() {
 	defer exit(&err)
 
 	flag.StringVar(&optOnly, "only", "", "只构建某个目录，用于调试")
+	flag.BoolVar(&optNoBuild, "no-build", false, "no build")
+	flag.BoolVar(&optNoPush, "no-push", false, "no push")
+	flag.BoolVar(&optNoMirror, "no-mirror", false, "no mirror")
 	flag.Parse()
 
 	var buf []byte
@@ -85,7 +91,7 @@ func main() {
 	}
 
 	for _, dir := range global.Repos {
-		if optOnly != "" && dir != optOnly {
+		if optNoBuild || (optOnly != "" && dir != optOnly) {
 			continue
 		}
 		log.Println("Dir:", dir)
@@ -136,7 +142,7 @@ func main() {
 		}
 	}
 
-	if optOnly != "" {
+	if optNoMirror {
 		return
 	}
 
@@ -234,7 +240,7 @@ func build(opts optsBuild) (err error) {
 			return
 		}
 	}
-	if optOnly != "" {
+	if optNoPush {
 		return
 	}
 	log.Println("Push:", canonicalName)

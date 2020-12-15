@@ -1,4 +1,4 @@
-FROM mongo:{{.base_version}}
+FROM mongo:{{.upstream_version}}
 
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone

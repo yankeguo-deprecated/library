@@ -1,4 +1,4 @@
-FROM mysql:{{.base_version}}
+FROM mysql:{{.upstream_version}}
 
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone

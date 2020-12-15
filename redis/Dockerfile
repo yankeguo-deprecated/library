@@ -1,16 +1,20 @@
-FROM {{.repo_base}}/alpine:3.12
+FROM {{.repo_base}}/{{.upstream}}
 
-RUN apk add --virtual .build-dependencies --no-cache build-base linux-headers && \
-  curl -sSLo redis.tar.gz "{{.redis_download_url}}" && \
-  mkdir -p redis-src && \
-  tar -C redis-src --strip-components 1 -xf redis.tar.gz && \
-  cd redis-src && \
-  make && \
-  make PREFIX=/opt INSTALL_BIN=/opt/bin install && \
-  cd .. && \
-  rm -f redis.tar.gz && \
-  rm -rf redis-src && \
-  apk del .build-dependencies
+RUN : && \
+    {{if .alpine_version}}apk add --virtual .build-dependencies --no-cache build-base linux-headers && \{{end}}
+    {{if .centos_version}}yum install -y make automake gcc gcc-c++ kernel-devel && \{{end}}
+    curl -sSLo redis.tar.gz "{{.redis_download_url}}" && \
+    mkdir -p redis-src && \
+    tar -C redis-src --strip-components 1 -xf redis.tar.gz && \
+    cd redis-src && \
+    make && \
+    make PREFIX=/opt INSTALL_BIN=/opt/bin install && \
+    cd .. && \
+    rm -f redis.tar.gz && \
+    rm -rf redis-src && \
+    {{if .alpine_version}}apk del .build-dependencies && \{{end}}
+    {{if .centos_version}}yum remove -y make automake gcc gcc-c++ kernel-devel && yum autoremove -y && yum clean all && \{{end}}
+    :
 
 WORKDIR /data
 

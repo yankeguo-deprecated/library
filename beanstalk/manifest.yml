@@ -7,6 +7,5 @@ tags:
   - name: 1-alpine-3.12
     also:
       - 1
-      - latest
     vars:
       - beanstalk-1-alpine-3.12

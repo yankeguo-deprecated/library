@@ -1,14 +1,23 @@
 name: mongo
+vars:
+  mongo-3.6:
+    upstream_version: 3.6
+  mongo-4.0:
+    upstream_version: 4.0
+  mongo-4.2:
+    upstream_version: 4.2
+  mongo-4.4:
+    upstream_version: 4.4
 tags:
   - name: 3.6
     vars:
-      base_version: 3.6
+      - mongo-3.6
   - name: 4.0
     vars:
-      base_version: 4.0
+      - mongo-4.0
   - name: 4.2
     vars:
-      base_version: 4.2
+      - mongo-4.2
   - name: 4.4
     vars:
-      base_version: 4.4
+      - mongo-4.4
