@@ -1,6 +1,8 @@
 FROM {{.repo_base}}/{{.upstream}}
 
+{{if .alpine_version}}
 RUN apk add --no-cache beanstalkd
+{{end}}
 
 WORKDIR /data
 

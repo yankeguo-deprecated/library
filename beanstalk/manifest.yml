@@ -1,8 +1,12 @@
 name: beanstalk
 vars:
-  beanstalk-1:
+  beanstalk-1-alpine-3.12:
+    alpine_version: 3.12
     upstream: alpine:3.12
 tags:
-  - name: "1"
+  - name: 1-alpine-3.12
+    also:
+      - 1
+      - latest
     vars:
-      - beanstalk-1
+      - beanstalk-1-alpine-3.12
