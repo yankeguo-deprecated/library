@@ -24,6 +24,8 @@
 
 ## 运行环境
 
+* 使用 DEB 或者 RPM 包管理器安装 AdoptOpenJDK (Hotspot) 8/11
+
 * 内置 `minit`
 
     - 可以使用 `/etc/minit.d` 目录, `MINIT_MAIN` 环境变量 或者 `CMD` 指定要启动的进程
