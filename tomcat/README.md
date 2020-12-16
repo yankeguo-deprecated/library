@@ -2,6 +2,11 @@
 
 ## 标签
 
+* `acicn/tomcat:8-jdk-11-debian-10`
+* `acicn/tomcat:9-jdk-11-debian-10`
+* `acicn/tomcat:8-jdk-8-debian-10`
+* `acicn/tomcat:9-jdk-8-debian-10`
+
 * `acicn/tomcat:8-jdk-11-centos-8`
 * `acicn/tomcat:9-jdk-11-centos-8`
 * `acicn/tomcat:8-jdk-8-centos-8`

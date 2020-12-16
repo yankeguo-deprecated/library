@@ -5,6 +5,12 @@ RUN yum install -y tomcat-native && \
     yum clean all
 {{end}}
 
+{{if .debian_version }}
+RUN apt-get update && \
+    apt-get install -y libtcnative-1 && \
+    rm -rf /var/lib/apt/lists/*
+{{end}}
+
 RUN curl -sSL -o tomcat.tar.gz "{{.tomcat_download_url}}" && \
     mkdir -p /usr/local/tomcat && \
     tar -C /usr/local/tomcat --strip-components 1 -xf tomcat.tar.gz && \

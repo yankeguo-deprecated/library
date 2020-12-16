@@ -6,6 +6,12 @@ vars:
   jdk-8-centos-8:
     centos_version: 8
     upstream: jdk:8-centos-8
+  jdk-11-debian-10:
+    debian_version: 10
+    upstream: jdk:11-debian-10
+  jdk-8-debian-10:
+    debian_version: 10
+    upstream: jdk:8-debian-10
   tomcat-8:
     tomcat_version: 8
     tomcat_download_url: "https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/archive.apache.org/dist/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz"
@@ -13,6 +19,24 @@ vars:
     tomcat_version: 9
     tomcat_download_url: "https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/archive.apache.org/dist/tomcat/tomcat-9/v9.0.40/bin/apache-tomcat-9.0.40.tar.gz"
 tags:
+  # debian 10
+  - name: 8-jdk-11-debian-10
+    vars:
+      - jdk-11-debian-10
+      - tomcat-8
+  - name: 9-jdk-11-debian-10
+    vars:
+      - jdk-11-debian-10
+      - tomcat-9
+  - name: 8-jdk-8-debian-10
+    vars:
+      - jdk-8-debian-10
+      - tomcat-8
+  - name: 9-jdk-8-debian-10
+    vars:
+      - jdk-8-debian-10
+      - tomcat-9
+  # centos 8
   - name: 8-jdk-11-centos-8
     also:
       - 8-jdk-11

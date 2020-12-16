@@ -2,27 +2,32 @@ FROM {{.repo_base}}/{{.upstream}}
 
 # JDK
 {{if .jdk_version }}
-RUN curl -sSLo openjdk.tar.gz '{{.jdk_download_url}}' && \
-    mkdir -p /opt/jdk && \
-    tar -C /opt/jdk --strip-components 1 -xf openjdk.tar.gz && \
-    rm -f openjdk.tar.gz && \
-    {{if .centos_version}}
-    yum install -y fontconfig && \
+
+{{if .centos_version}}
+{{if ne .centos_version 8}}
+BAD
+{{end}}
+RUN curl -sSLo jdk.rpm '{{.jdk_el8_rpm_download_url}}' && \
+    yum install -y ./jdk.rpm && \
     yum clean all && \
-    {{end}}
-    :
+    rm -f jdk.rpm
+{{end}}
 
-ENV JRE_VERSION {{.jdk_version}}
-ENV JDK_VERSION {{.jdk_version}}
-ENV JAVA_VERSION {{.jdk_version}}
+{{if .debian_version}}
+RUN curl -sSLo jdk.deb '{{.jdk_deb_download_url}}' && \
+    apt-get update && \
+    apt-get install -y ./jdk.deb && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -f jdk.deb
 
-ENV JRE_HOME  /opt/jdk
-ENV JDK_HOME  /opt/jdk
-ENV JAVA_HOME /opt/jdk
-
-ENV PATH "${JAVA_HOME}/bin:${PATH}"
+ENV LD_LIBRARY_PATH "/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/local/lib/x86_64-linux-gnu"
+{{end}}
 
 ADD scripts/java-wrapper /opt/bin/java-wrapper
+
+ENV JRE_VERSION  {{.jdk_version}}
+ENV JDK_VERSION  {{.jdk_version}}
+ENV JAVA_VERSION {{.jdk_version}}
 {{end}}
 
 # Arthas
@@ -31,6 +36,11 @@ RUN mkdir -p /opt/arthas && \
     curl -sSLo arthas.zip '{{.arthas_download_url}}' && \
     unzip -d /opt/arthas arthas.zip && \
     rm -rf arthas.zip && \
+    {{if .debian_version}}
+    apt-get update && \
+    apt-get install -y telnet && \
+    rm -rf /var/lib/apt/lists/* && \
+    {{end}}
     {{if .centos_version}}
     yum install -y telnet && \
     yum clean all && \

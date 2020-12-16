@@ -1,0 +1,11 @@
+name: debian
+vars:
+  use-aliyun-mirror:
+    apt_mirror: mirrors.aliyun.com
+  debian-10:
+    upstream_version: 10
+tags:
+  - name: 10
+    vars:
+      - debian-10
+      - use-aliyun-mirror

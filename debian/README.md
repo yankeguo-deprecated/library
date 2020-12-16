@@ -1,8 +1,8 @@
-# ubuntu
+# debian
 
 ## 标签
 
-* `acicn/ubuntu:20.04`
+* `acicn/debian:10`
 
 ## 功能
 

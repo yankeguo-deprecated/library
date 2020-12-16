@@ -19,6 +19,7 @@ repos:
   # OS
   - alpine
   - centos
+  - debian
   - ubuntu
   # Runtime
   - jdk

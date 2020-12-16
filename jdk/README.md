@@ -4,10 +4,18 @@
 
 **运行环境**
 
+* `acicn/jdk:8-debian-10`
+* `acicn/jdk:11-debian-10`
+
 * `acicn/jdk:8-centos-8`
 * `acicn/jdk:11-centos-8`
 
 **构建环境**
+
+* `acicn/jdk:builder-8-maven-3.6-debian-10`
+* `acicn/jdk:builder-8-maven-3.5-debian-10`
+* `acicn/jdk:builder-11-maven-3.6-debian-10`
+* `acicn/jdk:builder-11-maven-3.5-debian-10`
 
 * `acicn/jdk:builder-8-maven-3.6-centos-8`
 * `acicn/jdk:builder-8-maven-3.5-centos-8`
@@ -76,8 +84,3 @@ ENV MINIT_MAIN "java-wrapper -cp .:./lib/* -Dspring.profiles.active=${SPRING_PRO
 `acicn/jdk:builder-xxx` 系列镜像额外安装了如下工具
 
 * `maven`
-
-## 默认配置
-
-* 安装目录 `/opt/jdk`
-* `/opt/jdk/bin` 已经加入 `$PATH` 环境变量
