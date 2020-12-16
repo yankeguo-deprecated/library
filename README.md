@@ -9,6 +9,7 @@
     * [Ubuntu](https://github.com/acicn/library/tree/latest/ubuntu)
     * [Alpine](https://github.com/acicn/library/tree/latest/alpine)
     * [CentOS](https://github.com/acicn/library/tree/latest/centos)
+    * [Debian](https://github.com/acicn/library/tree/latest/debian)
 * 运行环境
     * [JDK](https://github.com/acicn/library/tree/latest/jdk)
     * [PHP](https://github.com/acicn/library/tree/latest/php)
