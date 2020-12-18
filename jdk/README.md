@@ -66,16 +66,16 @@
 ## 用法实例
 
 ``` dockerfile
-FROM acicn/jdk:11
+FROM acicn/jdk:11-debian-10
 WORKDIR /work
-
 ADD target/ms-id.jar ms-id.jar
 
 ENV SPRING_PROFILE "test"
 
 # 把启动项目非必须的调优参数放在这里，供未来在 Kubernetes 管理台上动态调整
-ENV JAVA_OPTS_HEAP "-Xms1g -Xmx1g"
-ENV JAVA_OPTS_GC   "-XX:+UseG1GC"
+ENV JAVA_XMS    "1g"
+ENV JAVA_XMX    "1g"
+ENV JAVA_OPTS   "-XX:+UseG1GC"
 
 # 把启动项目必要的 Java 参数放在这里，比如 "-cp" 和 "-Dspring.profiles.active=${SPRING_PROFILE}" 参数
 ENV MINIT_MAIN "java-wrapper -cp .:./lib/* -Dspring.profiles.active=${SPRING_PROFILE} -jar ms-id.jar"
