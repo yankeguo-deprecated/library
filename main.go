@@ -14,6 +14,7 @@ import (
 	"os/exec"
 	"path"
 	"path/filepath"
+	"sort"
 	"strings"
 	"text/template"
 
@@ -61,11 +62,22 @@ var (
 	optNoBuild  bool
 	optNoPush   bool
 	optNoMirror bool
+
+	canonicalNames map[string]bool
 )
 
 func main() {
 	var err error
 	defer exit(&err)
+
+	defer func() {
+		var names []string
+		for k := range canonicalNames {
+			names = append(names, k)
+		}
+		sort.Strings(names)
+		_ = ioutil.WriteFile("IMAGES.txt", []byte(strings.Join(names, "\n")), 0644)
+	}()
 
 	flag.StringVar(&optOnly, "only", "", "只构建某个目录，用于调试")
 	flag.BoolVar(&optNoPull, "no-pull", false, "no pull")
@@ -174,6 +186,7 @@ func main() {
 				return
 			}
 			dstImage := path.Join(global.Base, dst+":"+tag)
+			canonicalNames[dstImage] = true
 			if err = execute("", "docker", "tag", srcImage, dstImage); err != nil {
 				return
 			}
@@ -231,12 +244,14 @@ func build(opts optsBuild) (err error) {
 		return
 	}
 	canonicalName := fmt.Sprintf("%s/%s:%s", opts.base, opts.repo, opts.tag)
+	canonicalNames[canonicalName] = true
 	log.Println("Build:", canonicalName)
 	if err = execute(opts.dir, "docker", "build", "-t", canonicalName, "-f", defaultDockerfileOut, "."); err != nil {
 		return
 	}
 	for _, alt := range opts.also {
 		altCanonicalName := fmt.Sprintf("%s/%s:%s", opts.base, opts.repo, alt)
+		canonicalNames[altCanonicalName] = true
 		log.Println("Tag:", canonicalName, altCanonicalName)
 		if err = execute(opts.dir, "docker", "tag", canonicalName, altCanonicalName); err != nil {
 			return
