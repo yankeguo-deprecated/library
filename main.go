@@ -63,7 +63,7 @@ var (
 	optNoPush   bool
 	optNoMirror bool
 
-	canonicalNames map[string]bool
+	canonicalNames = map[string]bool{}
 )
 
 func main() {
