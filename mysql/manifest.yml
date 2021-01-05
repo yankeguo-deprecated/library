@@ -4,6 +4,8 @@ vars:
     upstream_version: 5.7
   mysql-5.6:
     upstream_version: 5.6
+  mysql-8.0:
+    upstream_version: 8.0
 tags:
   - name: 5.7
     vars:
@@ -11,3 +13,6 @@ tags:
   - name: 5.6
     vars:
       - mysql-5.6
+  - name: 8.0
+    vars:
+      - mysql-8.0
