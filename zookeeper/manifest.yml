@@ -1,5 +1,8 @@
 name: zookeeper
 vars:
+  jdk-11-debian-10:
+    debian_version: 10
+    upstream: jdk:11-debian-10
   jdk-11-centos-8:
     centos_version: 8
     upstream: jdk:11-centos-8
@@ -13,4 +16,8 @@ tags:
       - 3.6.2
     vars:
       - jdk-11-centos-8
+      - zookeeper-3.6.2
+  - name: 3.6.2-jdk-11-debian-10
+    vars:
+      - jdk-11-debian-10
       - zookeeper-3.6.2
