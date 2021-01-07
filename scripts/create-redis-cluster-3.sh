@@ -6,6 +6,9 @@ NAMESPACE="${NAMESPACE}"
 NAME="${NAME}"
 PVC_CLASS="${PVC_CLASS}"
 PVC_SIZE="${PVC_SIZE}"
+REQUIREPASS="${REQUIREPASS}"
+
+INIT_COMMAND="REDISCLI_AUTH=${REQUIREPASS} redis-cli --cluster create "
 
 for ID in "1" "2" "3"; do
 	
@@ -33,6 +36,8 @@ spec:
 EOF
 
 CLUSTER_IP=$(kubectl get -n ${NAMESPACE} service ${NAME}-c${ID} -o go-template --template {{.spec.clusterIP}})
+
+INIT_COMMAND="${INIT_COMMAND} ${CLUSTER_IP}:6379"
 
 echo "Cluster IP Created: ${CLUSTER_IP}"
 
@@ -82,9 +87,17 @@ spec:
               value: "nodes.conf"
             - name: REDISCFG_cluster_announce_ip
               value: "${CLUSTER_IP}"
+            - name: REDISCFG_requirepass
+              value: "${REQUIREPASS}"
           volumeMounts:
             - name: vol-data
               mountPath: /data
 EOF
 
 done
+
+
+INIT_COMMAND="${INIT_COMMAND} --cluster-replicas 0"
+
+echo "Initialization Command:"
+echo "${INIT_COMMAND}"
