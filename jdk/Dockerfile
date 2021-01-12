@@ -8,7 +8,7 @@ FROM {{.repo_base}}/{{.upstream}}
 BAD
 {{end}}
 RUN curl -sSLo jdk.rpm '{{.jdk_el8_rpm_download_url}}' && \
-    yum install -y ./jdk.rpm && \
+    yum install -y ./jdk.rpm fontconfig && \
     yum clean all && \
     rm -f jdk.rpm
 {{end}}
@@ -16,7 +16,7 @@ RUN curl -sSLo jdk.rpm '{{.jdk_el8_rpm_download_url}}' && \
 {{if .debian_version}}
 RUN curl -sSLo jdk.deb '{{.jdk_deb_download_url}}' && \
     apt-get update && \
-    apt-get install -y ./jdk.deb && \
+    apt-get install -y ./jdk.deb fontconfig && \
     rm -rf /var/lib/apt/lists/* && \
     rm -f jdk.deb
 
