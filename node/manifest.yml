@@ -5,16 +5,16 @@ vars:
     upstream: centos:8
   node-14:
     node_version: 14
-    node_download_url: 'https://assets-guoyk-net.oss-accelerate.aliyuncs.com/nodejs.org/download/release/v14.15.0/node-v14.15.0-linux-x64.tar.gz'
+    node_download_url: 'https://mirrors-guoyk-net.oss-accelerate.aliyuncs.com/nodejs.org/download/release/v14.15.0/node-v14.15.0-linux-x64.tar.gz'
   node-12:
     node_version: 12
-    node_download_url: 'https://assets-guoyk-net.oss-accelerate.aliyuncs.com/nodejs.org/download/release/v12.19.0/node-v12.19.0-linux-x64.tar.gz'
+    node_download_url: 'https://mirrors-guoyk-net.oss-accelerate.aliyuncs.com/nodejs.org/download/release/v12.19.0/node-v12.19.0-linux-x64.tar.gz'
   node-10:
     node_version: 10
-    node_download_url: 'https://assets-guoyk-net.oss-accelerate.aliyuncs.com/nodejs.org/download/release/v10.23.0/node-v10.23.0-linux-x64.tar.gz'
+    node_download_url: 'https://mirrors-guoyk-net.oss-accelerate.aliyuncs.com/nodejs.org/download/release/v10.23.0/node-v10.23.0-linux-x64.tar.gz'
   node-8:
     node_version: 8
-    node_download_url: 'https://assets-guoyk-net.oss-accelerate.aliyuncs.com/nodejs.org/download/release/v8.17.0/node-v8.17.0-linux-x64.tar.gz'
+    node_download_url: 'https://mirrors-guoyk-net.oss-accelerate.aliyuncs.com/nodejs.org/download/release/v8.17.0/node-v8.17.0-linux-x64.tar.gz'
   cnpm:
     install_cnpm: true
   devel:
