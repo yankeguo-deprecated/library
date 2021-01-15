@@ -1,4 +1,0 @@
-#!/bin/bash
-
-
-exec go run -mod vendor main.go "$@"
