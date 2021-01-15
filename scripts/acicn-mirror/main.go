@@ -22,26 +22,21 @@ func main() {
 
 	var names []string
 
-	for _, task := range library.Builds {
-		for _, name := range task.Names {
-			names = append(names, name)
-		}
-	}
 	for _, task := range library.Mirrors {
 		var subTasks []library.MirrorSubTask
 		if subTasks, err = task.SubTasks(context.Background()); err != nil {
 			return
 		}
 		for _, subTask := range subTasks {
+			if err = subTask.Do(); err != nil {
+				return
+			}
 			names = append(names, subTask.To)
 		}
 	}
 
-	for _, name := range names {
-		log.Println("Canonical Name:", name)
-	}
 	sort.Strings(names)
-	if err = ioutil.WriteFile("IMAGES.txt", []byte(strings.Join(names, "\n")), 0644); err != nil {
+	if err = ioutil.WriteFile("MIRRORS.txt", []byte(strings.Join(names, "\n")), 0644); err != nil {
 		return
 	}
 }

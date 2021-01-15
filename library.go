@@ -1,14 +1,20 @@
 package library
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io/ioutil"
 	"path"
 	"path/filepath"
 	"strings"
+	"text/template"
 
 	"gopkg.in/yaml.v3"
+)
+
+const (
+	dockerfileOut = "Dockerfile.out"
 )
 
 type manifestGlobal struct {
@@ -37,12 +43,78 @@ type PullTask struct {
 	Name string
 }
 
+func (p PullTask) Do() error {
+	return Execute("", "docker", "pull", p.Name)
+}
+
 type BuildTask struct {
 	Dir        string
+	Repo       string
 	Names      []string
 	Doc        string
 	Dockerfile string
 	Vars       map[string]interface{}
+}
+
+func sanitize(buf []byte) []byte {
+	lines := bytes.Split(buf, []byte{'\n'})
+	out := make([][]byte, 0, len(lines))
+	for _, line := range lines {
+		line = bytes.TrimSpace(line)
+		if len(line) == 0 {
+			continue
+		}
+		out = append(out, line)
+	}
+	return bytes.Join(out, []byte{'\n'})
+}
+
+func (b BuildTask) Do(push bool) (err error) {
+	if err = ioutil.WriteFile(
+		filepath.Join(b.Dir, "banner.minit.txt"),
+		[]byte(fmt.Sprintf(
+			"本镜像基于 %s 制作，详细信息参阅 %s",
+			b.Names[0],
+			strings.ReplaceAll(b.Doc, "{{.Repo}}", b.Repo),
+		)),
+		0644); err != nil {
+		return
+	}
+	var buf []byte
+	if buf, err = ioutil.ReadFile(filepath.Join(b.Dir, b.Dockerfile)); err != nil {
+		return
+	}
+	var tmpl *template.Template
+	if tmpl, err = template.New("__main__").Option("missingkey=zero").Parse(string(buf)); err != nil {
+		return
+	}
+	out := &bytes.Buffer{}
+	if err = tmpl.Execute(out, b.Vars); err != nil {
+		return
+	}
+	out.WriteString("\nADD banner.minit.txt /etc/banner.minit.txt")
+	if err = ioutil.WriteFile(filepath.Join(b.Dir, dockerfileOut), sanitize(out.Bytes()), 0640); err != nil {
+		return
+	}
+	if err = Execute(b.Dir, "docker", "build", "-t", b.Names[0], "-f", dockerfileOut, "."); err != nil {
+		return
+	}
+	for _, altName := range b.Names[1:] {
+		if err = Execute(b.Dir, "docker", "tag", b.Names[0], altName); err != nil {
+			return
+		}
+	}
+	if push {
+		if err = Execute(b.Dir, "docker", "push", b.Names[0]); err != nil {
+			return
+		}
+		for _, altName := range b.Names[1:] {
+			if err = Execute(b.Dir, "docker", "push", altName); err != nil {
+				return
+			}
+		}
+	}
+	return
 }
 
 type MirrorTask struct {
@@ -62,6 +134,19 @@ func (m MirrorTask) SubTasks(ctx context.Context) (tasks []MirrorSubTask, err er
 			From: m.From + ":" + tag,
 			To:   m.To + ":" + tag,
 		})
+	}
+	return
+}
+
+func (s MirrorSubTask) Do() (err error) {
+	if err = Execute("", "docker", "pull", s.From); err != nil {
+		return
+	}
+	if err = Execute("", "docker", "tag", s.From, s.To); err != nil {
+		return
+	}
+	if err = Execute("", "docker", "push", s.To); err != nil {
+		return
 	}
 	return
 }
@@ -134,6 +219,7 @@ func init() {
 			Builds = append(Builds, BuildTask{
 				Dir:        dir,
 				Names:      names,
+				Repo:       repo.Name,
 				Doc:        global.Doc,
 				Dockerfile: tag.Dockerfile,
 				Vars:       vars,
