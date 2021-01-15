@@ -18,3 +18,7 @@ banner.minit.txt
 
 # GoLand
 .idea/
+
+# List
+/IMAGES.txt
+/MIRRORS.txt
