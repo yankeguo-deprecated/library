@@ -8,7 +8,7 @@ vars:
     upstream: centos:8
   redis-5:
     redis_version: 5
-    redis_download_url: "https://acicn-assets.oss-cn-shenzhen.aliyuncs.com/download.redis.io/releases/redis-5.0.10.tar.gz"
+    redis_download_url: "https://assets-guoyk-net.oss-accelerate.aliyuncs.com/download.redis.io/releases/redis-5.0.10.tar.gz"
 tags:
   - name: 5-alpine-3.12
     also:
