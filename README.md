@@ -24,6 +24,21 @@
     * [PostgreSQL](https://github.com/acicn/library/tree/latest/postgres)
     * [Redis](https://github.com/acicn/library/tree/latest/redis)
     * [Zookeeper](https://github.com/acicn/library/tree/latest/zookeeper)
+    
+## 外部镜像
+
+除了自制镜像外，我还导入了常用的外部镜像，映射关系如下
+
+```
+k8s.gcr.io/ingress-nginx/controller    =>  acicn/ingress-nginx-controller
+k8s.gcr.io/defaultbackend-amd64        =>  acicn/ingress-nginx-defaultbackend
+jettech/kube-webhook-certgen           =>  acicn/ingress-nginx-kube-webhook-certgen
+quay.io/external_storage/nfs-client-provisioner    =>    acicn/nfs-client-provisioner
+```
+
+## 国内源
+
+除了标准的 DockerHub 源之外，我还对等地创建了 腾讯云 和 阿里云 两个源，分别在 `registry.cn-shenzhen.aliyuncs.com/acicn` 和 `ccr.ccs.tencentyun.com/acicn` 命名空间下
 
 ## 许可证
 
