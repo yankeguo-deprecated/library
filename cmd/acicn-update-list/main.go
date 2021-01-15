@@ -2,8 +2,11 @@ package main
 
 import (
 	"context"
+	"io/ioutil"
 	"log"
 	"os"
+	"sort"
+	"strings"
 
 	"github.com/acicn/library"
 )
@@ -36,5 +39,9 @@ func main() {
 
 	for _, name := range names {
 		log.Println("Canonical Name:", name)
+	}
+	sort.Strings(names)
+	if err = ioutil.WriteFile("IMAGES.txt", []byte(strings.Join(names, "\n")), 0644); err != nil {
+		return
 	}
 }
