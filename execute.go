@@ -8,7 +8,11 @@ import (
 )
 
 func Execute(dir, name string, args ...string) (err error) {
-	log.Printf("Execute: [%s] %s %s", dir, name, strings.Join(args, " "))
+	if dir == "" {
+		log.Printf("Execute: %s %s", name, strings.Join(args, " "))
+	} else {
+		log.Printf("Execute: [%s] %s %s", dir, name, strings.Join(args, " "))
+	}
 	cmd := exec.Command(name, args...)
 	cmd.Dir = dir
 	cmd.Stderr = os.Stderr
