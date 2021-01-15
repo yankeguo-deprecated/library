@@ -26,16 +26,28 @@
     * [PostgreSQL](https://github.com/acicn/library/tree/latest/postgres)
     * [Redis](https://github.com/acicn/library/tree/latest/redis)
     * [Zookeeper](https://github.com/acicn/library/tree/latest/zookeeper)
+
+自制镜像列表可以访问如下地址获得:
+
+```
+https://acicn-guoyk-net.oss-cn-shenzhen.aliyuncs.com/library/IMAGES.txt
+```
     
 ### 外部镜像
 
-除了自制镜像外，我还导入了常用的外部镜像，详细列表参考 `manifest.yml` 文件，以下为示例
+除了自制镜像外，我还导入了常用的外部镜像，对应关系参考 `manifest.yml` 文件，以下为示例
 
 ```
 k8s.gcr.io/ingress-nginx/controller    =>  acicn/ingress-nginx-controller
 k8s.gcr.io/defaultbackend-amd64        =>  acicn/ingress-nginx-defaultbackend
 jettech/kube-webhook-certgen           =>  acicn/ingress-nginx-kube-webhook-certgen
 quay.io/external_storage/nfs-client-provisioner    =>    acicn/nfs-client-provisioner
+```
+
+外部镜像列表可以访问如下地址获得:
+
+```
+https://acicn-guoyk-net.oss-cn-shenzhen.aliyuncs.com/library/MIRRORS.txt
 ```
 
 ### 镜像源
