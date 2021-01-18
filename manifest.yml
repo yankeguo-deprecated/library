@@ -41,6 +41,7 @@ repos:
 mirrors:
   - k8s.gcr.io/ingress-nginx/controller =>  ingress-nginx-controller
   - k8s.gcr.io/defaultbackend-amd64     =>  ingress-nginx-defaultbackend
+  - k8s.gcr.io/metrics-server/metrics-server        => metrics-server
   - jettech/kube-webhook-certgen        =>  ingress-nginx-kube-webhook-certgen
   - quay.io/external_storage/nfs-client-provisioner => nfs-client-provisioner
 vars:
