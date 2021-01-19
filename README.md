@@ -30,7 +30,7 @@
 自制镜像列表可以访问如下地址获得:
 
 ```
-https://acicn-guoyk-net.oss-cn-shenzhen.aliyuncs.com/library/IMAGES.txt
+https://acicn.guoyk.net/library/IMAGES.txt
 ```
     
 ### 外部镜像
@@ -47,7 +47,7 @@ quay.io/external_storage/nfs-client-provisioner    =>    acicn/nfs-client-provis
 外部镜像列表可以访问如下地址获得:
 
 ```
-https://acicn-guoyk-net.oss-cn-shenzhen.aliyuncs.com/library/MIRRORS.txt
+https://acicn.guoyk.net/library/MIRRORS.txt
 ```
 
 ### 镜像源

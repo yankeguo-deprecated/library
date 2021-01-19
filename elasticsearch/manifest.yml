@@ -1,11 +1,11 @@
 name: elasticsearch
 vars:
   elasticsearch-tune:
-    elasticsearch_tune_download_url: "https://mirrors-guoyk-net.oss-accelerate.aliyuncs.com/github.com/guoyk93/elasticsearch-tune/releases/download/v1.0/elasticsearch-tune-1.0.jar"
+    elasticsearch_tune_download_url: "https://mirrors.guoyk.net/github.com/guoyk93/elasticsearch-tune/releases/download/v1.0/elasticsearch-tune-1.0.jar"
   elasticsearch-6.3.2:
     elasticsearch_version: 6.3.2
-    elasticsearch_download_url: "https://mirrors-guoyk-net.oss-accelerate.aliyuncs.com/artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.3.2.tar.gz"
-    analysis_ik_download_url: "https://mirrors-guoyk-net.oss-accelerate.aliyuncs.com/github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.3.2/elasticsearch-analysis-ik-6.3.2.zip"
+    elasticsearch_download_url: "https://mirrors.guoyk.net/artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.3.2.tar.gz"
+    analysis_ik_download_url: "https://mirrors.guoyk.net/github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.3.2/elasticsearch-analysis-ik-6.3.2.zip"
   jdk-11-centos-8:
     centos_version: 8
     upstream: jdk:11-centos-8

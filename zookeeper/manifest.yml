@@ -8,7 +8,7 @@ vars:
     upstream: jdk:11-centos-8
   zookeeper-3.6.2:
     zookeeper_version: 3.6.2
-    zookeeper_download_url: "https://mirrors-guoyk-net.oss-accelerate.aliyuncs.com/downloads.apache.org/zookeeper/zookeeper-3.6.2/apache-zookeeper-3.6.2-bin.tar.gz"
+    zookeeper_download_url: "https://mirrors.guoyk.net/downloads.apache.org/zookeeper/zookeeper-3.6.2/apache-zookeeper-3.6.2-bin.tar.gz"
 tags:
   - name: 3.6.2-jdk-11-centos-8
     also:
