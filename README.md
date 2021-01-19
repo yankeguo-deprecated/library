@@ -66,7 +66,7 @@ Helm 仓库所涉及到的镜像均会作为外部镜像一并导入 `acicn` 命
 地址如下:
 
 ```
-https://acicn-guoyk-net.oss-accelerate.aliyuncs.com/charts
+https://acicn.guoyk.net/charts
 ```
 
 ## 许可证
