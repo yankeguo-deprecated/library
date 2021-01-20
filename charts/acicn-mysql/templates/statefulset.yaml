@@ -45,12 +45,10 @@ spec:
             path: {{.Values.storage.hostPath.path}}
           {{- end }}
           {{- if (eq (lower .Values.storage.type) "persistentvolume")}}
-          subPath: data
           persistentVolumeClaim:
             claimName: {{.Release.Name}}-data
           {{- end }}
           {{- if (eq (lower .Values.storage.type) "persistentvolumeclaim")}}
-          subPath: data
           persistentVolumeClaim:
             claimName: {{.Values.storage.persistentVolumeClaim.name}}
           {{- end }}
@@ -72,6 +70,7 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: vol-data
+              subPath: data
             - mountPath: /etc/mysql/conf.d/00-custom.cnf
               name: vol-cfg
               subPath: 00-custom.cnf
