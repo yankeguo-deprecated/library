@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{.Release.Name}}
+  {{- if .Values.workload.labels }}
+  labels: {{ toYaml .Values.workload.labels | nindent 4 }}
+  {{- end }}
+  {{- if .Values.workload.annotations }}
+  annotations: {{ toYaml .Values.workload.annotations | nindent 4 }}
+  {{- end }}
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: {{.Release.Name}}
+  serviceName: {{.Release.Name}}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        {{- if .Values.workload.podLabels}}
+        {{- toYaml .Values.workload.podLabels | nindent 8 }}
+        {{- end }}
+        app.kubernetes.io/instance: {{.Release.Name}}
+      {{- if .Values.workload.podAnnotations }}
+      annotations:
+      {{- toYaml .Values.workload.podAnnotations | nindent 8 }}
+      {{- end }}
+    spec:
+      {{- if .Values.workload.imagePullSecrets }}
+      imagePullSecrets: {{ toYaml .Values.workload.imagePullSecrets | nindent 8}}
+      {{- end }}
+      {{- if .Values.workload.schedule.nodeName }}
+      nodeName: {{.Values.workload.schedule.nodeName | quote}}
+      {{- end }}
+      {{- if .Values.workload.schedule.nodeSelector }}
+      nodeSelector: {{ toYaml .Values.workload.schedule.nodeSelector | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: vol-cfg
+          configMap:
+            name: {{.Release.Name}}-cfg
+        - name: vol-data
+          {{- if (eq (lower .Values.storage.type) "hostpath") }}
+          hostPath:
+            path: {{.Values.storage.hostPath.path}}
+          {{- end }}
+          {{- if (eq (lower .Values.storage.type) "persistentvolume")}}
+          persistentVolumeClaim:
+            claimName: {{.Release.Name}}-data
+          {{- end }}
+          {{- if (eq (lower .Values.storage.type) "persistentvolumeclaim")}}
+          persistentVolumeClaim:
+            claimName: {{.Values.storage.persistentVolumeClaim.name}}
+          {{- end }}
+      containers:
+        - name: mysql
+          image: {{.Values.workload.image.repository}}:{{.Values.workload.image.tag}}
+          imagePullPolicy: Always
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: {{.Release.Name}}-cfg
+                  key: MYSQL_ROOT_PASSWORD
+          ports:
+            - name: mysql
+              containerPort: 3306
+              protocol: TCP
+          resources: {{ toYaml .Values.workload.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: vol-data
+            - mountPath: /etc/mysql/conf.d/00-custom.cnf
+              name: vol-cfg
+              subPath: 00-custom.cnf

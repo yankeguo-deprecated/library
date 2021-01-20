@@ -1,0 +1,7 @@
+apiVersion: 2
+name: acicn-mysql
+version: 0.1.0
+maintainers:
+  - name: 'Guo Y.K.'
+    email: 'hi@guoyk.net'
+    url: 'https://guoyk.net'

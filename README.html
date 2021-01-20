@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>library</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="library">library</h1>
+<p>镜像源代码仓库，使用了 Go 模板语言进行渲染，便于批量构建和管理</p>
+<h2 id="镜像">镜像</h2>
+<h3 id="自制镜像">自制镜像</h3>
+<p>自制镜像的用法和标签，参考各个子目录</p>
+<ul>
+<li>操作系统
+<ul>
+<li><a href="https://github.com/acicn/library/tree/latest/ubuntu">Ubuntu</a></li>
+<li><a href="https://github.com/acicn/library/tree/latest/alpine">Alpine</a></li>
+<li><a href="https://github.com/acicn/library/tree/latest/centos">CentOS</a></li>
+<li><a href="https://github.com/acicn/library/tree/latest/debian">Debian</a></li>
+</ul>
+</li>
+<li>运行环境
+<ul>
+<li><a href="https://github.com/acicn/library/tree/latest/jdk">JDK</a></li>
+<li><a href="https://github.com/acicn/library/tree/latest/php">PHP</a></li>
+<li><a href="https://github.com/acicn/library/tree/latest/nginx">Nginx</a></li>
+<li><a href="https://github.com/acicn/library/tree/latest/node">Node</a></li>
+<li><a href="https://github.com/acicn/library/tree/latest/tomcat">Tomcat</a></li>
+</ul>
+</li>
+<li>基础服务
+<ul>
+<li><a href="https://github.com/acicn/library/tree/latest/beanstalk">Beanstalk</a></li>
+<li><a href="https://github.com/acicn/library/tree/latest/elasticsearch">Elasticsearch</a></li>
+<li><a href="https://github.com/acicn/library/tree/latest/mysql">MySQL</a></li>
+<li><a href="https://github.com/acicn/library/tree/latest/mongo">Mongo</a></li>
+<li><a href="https://github.com/acicn/library/tree/latest/postgres">PostgreSQL</a></li>
+<li><a href="https://github.com/acicn/library/tree/latest/redis">Redis</a></li>
+<li><a href="https://github.com/acicn/library/tree/latest/zookeeper">Zookeeper</a></li>
+</ul>
+</li>
+</ul>
+<p>自制镜像列表可以访问如下地址获得:</p>
+<pre><code><code><div>https://acicn.guoyk.net/library/IMAGES.txt
+</div></code></code></pre>
+<h3 id="外部镜像">外部镜像</h3>
+<p>除了自制镜像外，我还导入了常用的外部镜像，对应关系参考 <code>manifest.yml</code> 文件，以下为示例</p>
+<pre><code><code><div>k8s.gcr.io/ingress-nginx/controller    =&gt;  acicn/ingress-nginx-controller
+k8s.gcr.io/defaultbackend-amd64        =&gt;  acicn/ingress-nginx-defaultbackend
+jettech/kube-webhook-certgen           =&gt;  acicn/ingress-nginx-kube-webhook-certgen
+quay.io/external_storage/nfs-client-provisioner    =&gt;    acicn/nfs-client-provisioner
+</div></code></code></pre>
+<p>外部镜像列表可以访问如下地址获得:</p>
+<pre><code><code><div>https://acicn.guoyk.net/library/MIRRORS.txt
+</div></code></code></pre>
+<h3 id="镜像源">镜像源</h3>
+<p>除了标准的 DockerHub 源之外，我在其他云厂商的公共镜像仓库上也创建了对等的源</p>
+<ul>
+<li>腾讯云: <code>ccr.ccs.tencentyun.com/acicn</code></li>
+<li>阿里云: <code>registry.cn-shenzhen.aliyuncs.com/acicn</code></li>
+</ul>
+<h2 id="helm-仓库">Helm 仓库</h2>
+<p>鉴于官方的 stable 中央仓库已经停用，我复制了一些常用的 Helm 仓库到 <code>charts</code> 子目录下，并定期发布。</p>
+<p>Helm 仓库所涉及到的镜像均会作为外部镜像一并导入 <code>acicn</code> 命名空间</p>
+<p>地址如下:</p>
+<pre><code><code><div>https://acicn.guoyk.net/charts
+</div></code></code></pre>
+<h2 id="许可证">许可证</h2>
+<p>Guo Y.K., MIT License</p>
+
+    </body>
+    </html>

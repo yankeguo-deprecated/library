@@ -1,0 +1,16 @@
+{{if .Values.service.nodePort.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Release.Name}}-np
+  labels: {{ toYaml .Values.service.nodePort.labels | nindent 4}}
+  annotations: {{ toYaml .Values.service.nodePort.annotations | nindent 4}}
+spec:
+  selector:
+    app.kubernetes.io/instance: {{.Release.Name}}
+  type: NodePort
+  ports:
+    - name: mysql
+      port: 3306
+      targetPort: 3306
+{{end}}

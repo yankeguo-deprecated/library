@@ -1,0 +1,16 @@
+{{if .Values.service.loadBalancer.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Release.Name}}-lb
+  labels: {{ toYaml .Values.service.loadBalancer.labels | nindent 4}}
+  annotations: {{ toYaml .Values.service.loadBalancer.annotations | nindent 4}}
+spec:
+  selector:
+    app.kubernetes.io/instance: {{.Release.Name}}
+  type: LoadBalancer
+  ports:
+    - name: mysql
+      port: 3306
+      targetPort: 3306
+{{end}}

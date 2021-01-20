@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{.Release.Name}}-cfg
+data:
+  MYSQL_ROOT_PASSWORD: {{ .Values.config.rootPassword | quote }}
+  00-custom.cnf: {{.Values.config.custom | quote }}

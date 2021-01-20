@@ -1,0 +1,62 @@
+# 工作负载配置，类型固定为 StatefulSet
+workload:
+  # 工作负载本身的 labels
+  labels: {}
+  # 工作负载本身的 annotations
+  annotations: {}
+  # 容器模板的 labels
+  podLabels: {}
+  # 容器模板的 annotations
+  podAnnotations: {}
+  # 调度规则，支持指定主机或者主机选择器
+  schedule:
+    nodeName: ''
+    nodeSelector: {}
+  # 镜像
+  image:
+    repository: "acicn/mysql"
+    tag: "5.7"
+  # 镜像拉取密钥
+  imagePullSecrets: []
+  # 资源申请和限制
+  resources:
+    requests:
+      cpu: '1'
+      memory: 512Mi
+    limits:
+      cpu: '2'
+# 服务，默认自动启用一个 ClusterIP
+service:
+  # 默认 ClusterIP 服务的 labels
+  labels: {}
+  # 默认 ClusterIP 服务的 annotations
+  annotations: {}
+  # 额外启用 NodePort 类型服务
+  nodePort:
+    enabled: false
+    labels: {}
+    annotations: {}
+  # 额外启用 LoadBalancer 类型服务
+  loadBalancer:
+    enabled: false
+    labels: {}
+    annotations: {}
+# 配置
+config:
+  # MySQL 根密码
+  rootPassword: ''
+  # 额外的 MySQL .cnf 配置文件内容
+  custom: ''
+storage:
+  # 支持 'HostPath', 'PersistentVolume', 'PersistentVolumeClaim'
+  type: 'HostPath'
+  # HostPath 模式的配置，注意必须要和 workload.schedule 配合，否则数据会丢失
+  hostPath:
+    path: ''
+  # PersistentVolume 模式，自动创建 PVC
+  persistentVolume:
+    class: 'local-path'
+    capacity: '100Gi'
+  # PersistentVolumeClaim 模式，使用现有的 PVC
+  persistentVolumeClaim:
+    name: ''

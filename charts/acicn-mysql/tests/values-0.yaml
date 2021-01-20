@@ -1,0 +1,34 @@
+workload:
+  schedule:
+    nodeSelector:
+      kubernetes.io/hostname: "tke-test-worker-3"
+config:
+  rootPassword: "qewrtyqwerty"
+  custom: |-
+    [mysqld]
+    federated
+    server-id=11342
+    report_host=eshop-mysql-main
+    character_set_server=utf8
+    max_connections=20000
+    lower_case_table_names=0
+    default_time_zone=+8:00
+    sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER
+    innodb_buffer_pool_size=2048M
+    binlog_format=row
+    binlog_row_image=FULL
+    log_bin=/var/lib/mysql/binlog
+    log_slave_updates=on
+    expire_logs_days=7
+    binlog_cache_size=65536
+    slow_query_log=on
+    slow_query_log_file=slow.log
+    long_query_time=0.5
+    gtid_mode=on
+    enforce_gtid_consistency=on
+    master_info_repository=table
+    relay_log_info_repository=table
+    max_allowed_packet=1024m
+storage:
+  hostPath:
+    path: "/data/test-mysql-data"

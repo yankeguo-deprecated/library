@@ -1,0 +1,14 @@
+{{- if (eq (lower .Values.storage.type) "persistentvolume") }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{.Release.Name}}-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: {{.Values.storage.persistentVolume.capacity}}
+  storageClassName: {{.Values.storage.persistentVolume.class}}
+{{- end }}
