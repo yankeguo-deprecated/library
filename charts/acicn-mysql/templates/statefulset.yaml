@@ -45,10 +45,12 @@ spec:
             path: {{.Values.storage.hostPath.path}}
           {{- end }}
           {{- if (eq (lower .Values.storage.type) "persistentvolume")}}
+          subPath: data
           persistentVolumeClaim:
             claimName: {{.Release.Name}}-data
           {{- end }}
           {{- if (eq (lower .Values.storage.type) "persistentvolumeclaim")}}
+          subPath: data
           persistentVolumeClaim:
             claimName: {{.Values.storage.persistentVolumeClaim.name}}
           {{- end }}
