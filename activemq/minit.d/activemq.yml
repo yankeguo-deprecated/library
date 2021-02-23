@@ -1,0 +1,6 @@
+name: activemq
+kind: daemon
+dir: /opt/activemq
+command:
+  - ./bin/activemq
+  - console

@@ -31,6 +31,7 @@ repos:
   - php
   - python
   # Infrastructure
+  - activemq
   - beanstalk
   - elasticsearch
   - mysql

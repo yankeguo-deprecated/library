@@ -1,0 +1,25 @@
+name: activemq
+vars:
+  jdk-8-debian-10:
+    debian_version: 10
+    upstream: jdk:8-debian-10
+  jdk-11-debian-10:
+    debian_version: 10
+    upstream: jdk:11-debian-10
+  activemq-5.15:
+    activemq_version: 5.15
+    activemq_download_url: "https://mirrors.guoyk.net/archive.apache.org/dist/activemq/5.15.14/apache-activemq-5.15.14-bin.tar.gz"
+tags:
+  - name: 5.15-jdk-11-debian-10
+    also:
+      - 5.15-jdk-11
+      - "5.15"
+    vars:
+      - jdk-11-debian-10
+      - activemq-5.15
+  - name: 5.15-jdk-8-debian-10
+    also:
+      - 5.15-jdk-8
+    vars:
+      - jdk-8-debian-10
+      - activemq-5.15
