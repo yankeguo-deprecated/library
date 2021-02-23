@@ -1,11 +1,9 @@
 name: activemq-init-conf
 kind: once
 dir: /opt/activemq
+shell: "bash -eu"
 command:
-  - cp
-  - -an
-  - conf.orig
-  - conf
+  - cp -an conf.orig/* conf/
 ---
 name: activemq
 kind: daemon
