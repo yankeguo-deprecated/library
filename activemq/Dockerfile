@@ -7,6 +7,8 @@ RUN curl -sSL -o activemq.tar.gz "{{.activemq_download_url}}" && \
 
 WORKDIR /opt/activemq
 
+ADD minit.d /etc/minit.d
+
 ENV PATH "/opt/activemq/bin:$PATH"
 
 ENV ACTIVEMQ_VERSION {{.activemq_version}}
