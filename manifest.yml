@@ -37,6 +37,7 @@ repos:
   - mysql
   - mongo
   - postgres
+  - prometheus
   - redis
   - zookeeper
 mirrors:

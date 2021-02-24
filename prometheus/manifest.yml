@@ -1,0 +1,8 @@
+name: prometheus
+vars:
+  prometheus-2.25:
+    prometheus_download_url: 'https://mirrors.guoyk.net/github.com/prometheus/prometheus/releases/download/v2.25.0/prometheus-2.25.0.linux-amd64.tar.gz'
+tags:
+  - name: "2.25"
+    vars:
+      - prometheus-2.25
