@@ -9,3 +9,5 @@ RUN curl -sSL -o prometheus.tar.gz {{.prometheus_download_url}} && \
 WORKDIR /opt/prometheus
 
 ADD minit.d /etc/minit.d
+
+ADD prometheus.yml /opt/prometheus/prometheus.yml
