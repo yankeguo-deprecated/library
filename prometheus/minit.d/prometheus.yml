@@ -2,7 +2,7 @@ name: prometheus
 kind: daemon
 dir: /opt/prometheus
 command:
-  - ./prometheus
+  - prometheus-wrapper
   - --config.file=prometheus.yml
   - --storage.tsdb.path=/data
   - --web.console.libraries=console_libraries
