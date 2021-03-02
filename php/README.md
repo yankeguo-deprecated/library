@@ -5,6 +5,7 @@
 ## 标签
 
 * `acicn/php:7.2-centos-8`
+* `acicn/php:7.3-centos-8`
 * `acicn/php:7.4-centos-8`
 
 ## 功能

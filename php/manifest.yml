@@ -5,6 +5,8 @@ vars:
     upstream: centos:8
   php-7.2:
     php_version: 7.2
+  php-7.3:
+    php_version: 7.3
   php-7.4:
     php_version: 7.4
 tags:
@@ -20,3 +22,9 @@ tags:
     vars:
       - centos-8
       - php-7.4
+  - name: 7.3-centos-8
+    also:
+      - 7.3
+    vars:
+      - centos-8
+      - php-7.3
