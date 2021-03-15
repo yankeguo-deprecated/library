@@ -47,6 +47,7 @@ mirrors:
   - jettech/kube-webhook-certgen        =>  ingress-nginx-kube-webhook-certgen
   - quay.io/external_storage/nfs-client-provisioner => nfs-client-provisioner
   - rancher/local-path-provisioner      =>  local-path-provisioner
+  - portainer/portainer-ee              =>  portainer
 vars:
   repo_base: acicn
   minit_version: 1.5.2
