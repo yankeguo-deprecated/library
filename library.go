@@ -130,6 +130,9 @@ func (m MirrorTask) SubTasks(ctx context.Context) (tasks []MirrorSubTask, err er
 		return
 	}
 	for _, tag := range tags {
+		if strings.Contains(strings.ToLower(tag), "windows") {
+			continue
+		}
 		tasks = append(tasks, MirrorSubTask{
 			From: m.From + ":" + tag,
 			To:   m.To + ":" + tag,
