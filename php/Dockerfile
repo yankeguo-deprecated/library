@@ -35,6 +35,7 @@ ADD minit.d /etc/minit.d
 ADD index.php /var/www/public/index.php
 ADD php.conf /etc/nginx/default.conf.d/php.conf
 
+ENV PHPCFG_PHP_INI_Date__timezone 'date.timezone = "Asia/Shanghai"'
 ENV PHPCFG_PHP_FPM_WWW_CONF_www__user  "user = root"
 ENV PHPCFG_PHP_FPM_WWW_CONF_www__group "group = root"
 ENV PHPCFG_PHP_FPM_WWW_CONF_www__listen "listen = 127.0.0.1:9000"
