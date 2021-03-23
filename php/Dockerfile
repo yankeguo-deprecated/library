@@ -12,11 +12,12 @@ RUN rpm -i https://mirrors.aliyun.com/remi/enterprise/remi-release-8.rpm && \
 ADD remi-aliyun.repo /etc/yum.repos.d/remi-aliyun.repo
 
 RUN yum module enable -y php:remi-{{.php_version}} && \
-    yum install -y nginx php-cli php-fpm php-dbg \
-    php-bcmath php-dba php-enchant php-gd php-imap php-intl php-ldap php-mbstring php-mcrypt \
+    yum install -y nginx aspell aspell-en aspell-sk php-cli php-fpm php-dbg \
+    php-bcmath php-dba php-enchant php-gmp php-gd php-imap php-intl php-ldap php-mbstring php-mcrypt \
     php-mysqlnd php-odbc php-opcache php-pdo php-pear php-pecl-apcu php-pecl-gearman php-pecl-geoip \
-    php-pecl-igbinary php-pecl-memcache php-pecl-memcached php-pecl-mongodb php-pecl-redis php-pecl-xdebug php-pgsql \
-    php-process php-pspell php-recode php-snmp php-soap php-tidy php-xml php-xmlrpc && \
+    php-pecl-imagick php-pecl-igbinary php-pecl-memcache php-pecl-memcached php-pecl-mongodb php-pecl-redis \
+    php-pecl-rdkafka php-pecl-swoole php-pecl-zip php-pgsql \
+    php-process php-pspell php-recode php-snmp php-soap php-sodium php-tidy php-xml php-xmlrpc && \
     yum clean all && \
     rm -rf /etc/nginx && \
     mkdir -p /etc/nginx/default.fastcgi.d
