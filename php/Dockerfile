@@ -16,7 +16,7 @@ RUN yum module enable -y php:remi-{{.php_version}} && \
     php-bcmath php-dba php-enchant php-gmp php-gd php-imap php-intl php-ldap php-mbstring php-mcrypt \
     php-mysqlnd php-odbc php-opcache php-pdo php-pear php-pecl-apcu php-pecl-gearman php-pecl-geoip \
     php-pecl-imagick php-pecl-igbinary php-pecl-memcache php-pecl-memcached php-pecl-mongodb php-pecl-redis \
-    php-pecl-rdkafka php-pecl-swoole php-pecl-zip php-pgsql \
+    php-pecl-rdkafka php-pecl-swoole php-pecl-yaml php-pecl-zip php-pgsql \
     php-process php-pspell php-recode php-snmp php-soap php-sodium php-tidy php-xml php-xmlrpc && \
     yum clean all && \
     rm -rf /etc/nginx && \
