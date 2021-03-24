@@ -24,9 +24,9 @@ tags:
        - debian-10
        - php-7.4
        - pagoda
-   - name: 7.4-ubuntu-20.04
+   - name: 7.4-debian-10
      vars:
-       - ubuntu-20.04
+       - debian-10
        - php-7.4
    - name: 7.2-centos-8
      also:
