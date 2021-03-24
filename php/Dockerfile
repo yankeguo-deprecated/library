@@ -96,7 +96,7 @@ RUN acicn-php-ext-install php-mcrypt 'https://mirrors.guoyk.net/pecl.php.net/get
     acicn-php-ext-install php-redis 'https://mirrors.guoyk.net/pecl.php.net/get/redis-4.2.0.tgz' && \
     acicn-php-ext-install php-rdkafka 'https://mirrors.guoyk.net/pecl.php.net/get/rdkafka-5.0.0.tgz' \
         --with-rdkafka && \
-    acicn-php-ext-install php-swoole 'https://mirrors.guoyk.net/pecl.php.net/get/swoole-4.2.13.tgz' && \
+    acicn-php-ext-install php-swoole 'https://mirrors.guoyk.net/pecl.php.net/get/swoole-4.3.6.tgz' && \
     acicn-php-ext-install php-geoip 'https://mirrors.guoyk.net/pecl.php.net/get/geoip-1.1.1.tgz' \
         --with-geoip && \
     acicn-php-ext-install php-imagick 'https://mirrors.guoyk.net/pecl.php.net/get/imagick-3.4.4.tgz' && \
