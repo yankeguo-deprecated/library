@@ -76,7 +76,8 @@ RUN acicn-php-ext-install php-rdkafka 'https://mirrors.guoyk.net/pecl.php.net/ge
 RUN acicn-php-ext-install php-swoole 'https://mirrors.guoyk.net/pecl.php.net/get/swoole-4.4.23.tgz'
 RUN acicn-php-ext-install php-geoip 'https://mirrors.guoyk.net/pecl.php.net/get/geoip-1.1.1.tgz' \
         --with-geoip
-RUN acicn-php-ext-install php-imagick 'https://mirrors.guoyk.net/pecl.php.net/get/imagick-3.4.4.tgz'
+RUN apt-get update && apt-get install -y libmagick++-dev && acicn-php-ext-install php-imagick 'https://mirrors.guoyk.net/pecl.php.net/get/imagick-3.4.4.tgz'
+RUN acicn-php-ext-install php-yaml 'https://mirrors.guoyk.net/pecl.php.net/get/yaml-2.2.1.tgz'
 
 ADD {{.php_version}}/etc /etc
 

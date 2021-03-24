@@ -35,7 +35,7 @@ command:
 name: php-fpm
 kind: daemon
 command:
-  - /usr/sbin/php-fpm
+  - php-fpm
   - -R
   - --nodaemonize
   - --fpm-config
