@@ -14,3 +14,4 @@ phpize
 ./configure --with-php-config=/opt/bin/php-config ${EXT_CONFIGURE_OPTS}
 make
 make install
+rm -f ${EXT_NAME}.tar.gz
