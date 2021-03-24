@@ -21,7 +21,7 @@ vars:
 tags:
    - name: 7.4-pagoda
      vars:
-       - ubuntu-20.04
+       - debian-10
        - php-7.4
        - pagoda
    - name: 7.4-ubuntu-20.04
