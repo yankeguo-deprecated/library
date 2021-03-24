@@ -16,22 +16,18 @@ vars:
   php-7.4:
     php_version: 7.4
     php_download_url: 'https://mirrors.guoyk.net/www.php.net/distributions/php-7.4.16.tar.gz'
-  bgy:
-    bgy: true
+  pagoda:
+    pagoda: true
 tags:
+   - name: 7.4-pagoda
+     vars:
+       - ubuntu-20.04
+       - php-7.4
+       - pagoda
    - name: 7.4-ubuntu-20.04
      vars:
        - ubuntu-20.04
        - php-7.4
-   - name: 7.4-debian-10
-     vars:
-       - debian-10
-       - php-7.4
-   - name: 7.4-bgy
-     vars:
-       - debian-10
-       - php-7.4
-       - bgy
    - name: 7.2-centos-8
      also:
        - 7.2
