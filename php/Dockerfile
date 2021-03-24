@@ -76,7 +76,7 @@ RUN acicn-php-ext-install php-mcrypt 'https://mirrors.guoyk.net/pecl.php.net/get
     acicn-php-ext-install php-swoole 'https://mirrors.guoyk.net/pecl.php.net/get/swoole-4.2.13.tgz' && \
     acicn-php-ext-install php-geoip 'https://mirrors.guoyk.net/pecl.php.net/get/geoip-1.1.1.tgz' \
         --with-geoip && \
-    acicn-php-ext-install php-imagick 'https://mirrors.guoyk.net/pecl.php.net/get/imagick-3.4.4.tgz' && \
+    acicn-php-ext-install php-imagick 'https://mirrors.guoyk.net/pecl.php.net/get/imagick-3.4.4.tgz'
 
 ADD {{.php_version}}/etc /etc
 
