@@ -60,7 +60,7 @@ ENV PATH "/opt/sbin:$PATH"
 
 ADD scripts /opt/bin
 
-RUN mkdir -p /opt/src/libmemcached && \
+RUN mkdir -p /opt/src/libmemcached &&
     curl -sSL -o libmemcached.tar.gz 'https://mirrors.guoyk.net/launchpad.net/libmemcached/1.0/1.0.18/_download/libmemcached-1.0.18.tar.gz' && \
     tar -xf libmemcached.tar.gz -C /opt/src/libmemcached --strip-components 1 && \
     rm -f libmemcached.tar.gz && \
