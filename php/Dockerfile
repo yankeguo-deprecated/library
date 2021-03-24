@@ -95,12 +95,14 @@ ADD minit.d /etc/minit.d
 ADD index.php /var/www/public/index.php
 ADD php.conf /etc/nginx/default.conf.d/php.conf
 
+{{if .centos_version}}
 ENV PHPCFG_PHP_INI_Date__timezone 'date.timezone = "Asia/Shanghai"'
 ENV PHPCFG_PHP_FPM_WWW_CONF_www__user  "user = root"
 ENV PHPCFG_PHP_FPM_WWW_CONF_www__group "group = root"
 ENV PHPCFG_PHP_FPM_WWW_CONF_www__listen "listen = 127.0.0.1:9000"
 ENV PHPCFG_PHP_FPM_CONF_global__pid "pid = /run/php-fpm.pid"
 ENV PHPCFG_PHP_FPM_CONF_global__error_log "error_log = /dev/stderr"
+{{end}}
 
 ENV NGXCFG_DEFAULT_EXTRA_INDEX index.php
 
