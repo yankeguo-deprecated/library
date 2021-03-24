@@ -32,7 +32,7 @@ RUN apt-get update && \
     apt-get install -y nginx build-essential autoconf cmake cmake-extras openssl libssl-dev libsodium-dev \
                        libxml2-dev libsqlite3-dev libgd-dev libxpm-dev libicu-dev libbz2-dev libcurl4-openssl-dev \
                        libenchant-dev libgmp-dev libldap2-dev libaspell-dev libreadline-dev libsnmp-dev \
-                       libxslt1-dev libgeoip-dev imagemagick libmemcached-dev libevent-dev liblz4-dev \
+                       libxslt1-dev libgeoip-dev imagemagick libevent-dev liblz4-dev \
                        librdkafka-dev libpq-dev libyaml-dev libzip-dev libtidy-dev libmcrypt-dev libonig-dev \
                        libmysqlclient-dev libpcre3-dev libpspell-dev libldap2-dev libsasl2-dev && \
     rm -rf /var/lib/apt/lists
@@ -60,6 +60,14 @@ ENV PATH "/opt/sbin:$PATH"
 
 ADD scripts /opt/bin
 
+RUN mkdir -p /opt/src/libmemcached &&
+    curl -sSL -o libmemcached.tar.gz 'https://mirrors.guoyk.net/launchpad.net/libmemcached/1.0/1.0.18/_download/libmemcached-1.0.18.tar.gz' && \
+    tar -xf libmemcached.tar.gz -C /opt/src/libmemcached --strip-components 1 && \
+    rm -f libmemcached.tar.gz && \
+    cd /opt/src/libmemcached && \
+    ./configure --enable-libmemcachedprotocol --enable-hsieh_hash --enable-memaslap --enable-deprecated && \
+    make && make install
+
 RUN acicn-php-ext-install php-mcrypt 'https://mirrors.guoyk.net/pecl.php.net/get/mcrypt-1.0.4.tgz' && \
     acicn-php-ext-install php-igbinary 'https://mirrors.guoyk.net/pecl.php.net/get/igbinary-3.2.1.tgz' && \
     acicn-php-ext-install php-memcached 'https://mirrors.guoyk.net/pecl.php.net/get/memcached-3.1.5.tgz' \
@@ -70,8 +78,7 @@ RUN acicn-php-ext-install php-mcrypt 'https://mirrors.guoyk.net/pecl.php.net/get
         --enable-memcached-protocol && \
     acicn-php-ext-install php-memcache 'https://mirrors.guoyk.net/pecl.php.net/get/memcache-4.0.5.2.tgz' && \
     acicn-php-ext-install php-mongodb 'https://mirrors.guoyk.net/pecl.php.net/get/mongodb-1.5.5.tgz' \
-        --enable-mongodb \
-        --with-mongodb-sasl=no && \
+        --enable-mongodb && \
     acicn-php-ext-install php-redis 'https://mirrors.guoyk.net/pecl.php.net/get/redis-4.2.0.tgz' && \
     acicn-php-ext-install php-rdkafka 'https://mirrors.guoyk.net/pecl.php.net/get/rdkafka-5.0.0.tgz' \
         --with-rdkafka && \
