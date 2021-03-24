@@ -7,6 +7,7 @@
 * `acicn/php:7.2-centos-8`
 * `acicn/php:7.3-centos-8`
 * `acicn/php:7.4-centos-8`
+* `acicn/php:7.4-ubuntu-20.04`
 
 ## 功能
 
@@ -18,11 +19,15 @@
 
     详细参考 https://github.com/acicn/minit
 
-* PHP 扩展 和 REMI 源
+* PHP 扩展 和 REMI 源 (CentOS 版本)
 
   默认激活 Aliyun REMI 源
 
   本镜像使用 REMI 源安装 php-fpm 和 PHP 扩展，内置 PHP 扩展可以查阅 Dockerfile 文件
+
+* PHP 扩展 (Ubuntu 版本)
+
+  Ubuntu 版本使用另外一种方式，即从源代码编译 PHP 和 PHP-FPM 以及各种扩展，更加精准可控
 
 * 使用 `merge-env-to-ini` 工具和环境变量修改 `PHP FPM` 配置文件
 

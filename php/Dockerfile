@@ -34,7 +34,7 @@ RUN apt-get update && \
                        libenchant-dev libgmp-dev libldap2-dev libaspell-dev libreadline-dev libsnmp-dev \
                        libxslt1-dev libgeoip-dev imagemagick libmemcached-dev libevent-dev liblz4-dev \
                        librdkafka-dev libpq-dev libyaml-dev libzip-dev libtidy-dev libmcrypt-dev libonig-dev \
-                       libmysqlclient-dev libpcre3-dev libpspell-dev libldap2-dev libsasl2-dev && \
+                       libmysqlclient-dev libpcre3-dev libpspell-dev libldap2-dev libsasl2-dev libmagick++-dev && \
     rm -rf /var/lib/apt/lists
 
 RUN mkdir -p /opt/src/php && \
@@ -60,24 +60,24 @@ ENV PATH "/opt/sbin:$PATH"
 
 ADD scripts /opt/bin
 
-RUN acicn-php-ext-install php-mcrypt 'https://mirrors.guoyk.net/pecl.php.net/get/mcrypt-1.0.4.tgz'
-RUN acicn-php-ext-install php-igbinary 'https://mirrors.guoyk.net/pecl.php.net/get/igbinary-3.2.1.tgz'
-RUN acicn-php-ext-install php-memcached 'https://mirrors.guoyk.net/pecl.php.net/get/memcached-3.1.5.tgz' \
+RUN acicn-php-ext-install php-mcrypt 'https://mirrors.guoyk.net/pecl.php.net/get/mcrypt-1.0.4.tgz' && \
+    acicn-php-ext-install php-igbinary 'https://mirrors.guoyk.net/pecl.php.net/get/igbinary-3.2.1.tgz' && \
+    acicn-php-ext-install php-memcached 'https://mirrors.guoyk.net/pecl.php.net/get/memcached-3.1.5.tgz' \
         --enable-memcached \
         --enable-memcached-session \
         --enable-memcached-igbinary \
-        --enable-memcached-json
-RUN acicn-php-ext-install php-memcache 'https://mirrors.guoyk.net/pecl.php.net/get/memcache-4.0.5.2.tgz'
-RUN acicn-php-ext-install php-mongodb 'https://mirrors.guoyk.net/pecl.php.net/get/mongodb-1.5.5.tgz' \
-        --enable-mongodb
-RUN acicn-php-ext-install php-redis 'https://mirrors.guoyk.net/pecl.php.net/get/redis-4.2.0.tgz'
-RUN acicn-php-ext-install php-rdkafka 'https://mirrors.guoyk.net/pecl.php.net/get/rdkafka-5.0.0.tgz' \
-        --with-rdkafka
-RUN acicn-php-ext-install php-swoole 'https://mirrors.guoyk.net/pecl.php.net/get/swoole-4.4.23.tgz'
-RUN acicn-php-ext-install php-geoip 'https://mirrors.guoyk.net/pecl.php.net/get/geoip-1.1.1.tgz' \
-        --with-geoip
-RUN apt-get update && apt-get install -y libmagick++-dev && acicn-php-ext-install php-imagick 'https://mirrors.guoyk.net/pecl.php.net/get/imagick-3.4.4.tgz'
-RUN acicn-php-ext-install php-yaml 'https://mirrors.guoyk.net/pecl.php.net/get/yaml-2.2.1.tgz'
+        --enable-memcached-json && \
+    acicn-php-ext-install php-memcache 'https://mirrors.guoyk.net/pecl.php.net/get/memcache-4.0.5.2.tgz' && \
+    acicn-php-ext-install php-mongodb 'https://mirrors.guoyk.net/pecl.php.net/get/mongodb-1.5.5.tgz' \
+        --enable-mongodb && \
+    acicn-php-ext-install php-redis 'https://mirrors.guoyk.net/pecl.php.net/get/redis-4.2.0.tgz' && \
+    acicn-php-ext-install php-rdkafka 'https://mirrors.guoyk.net/pecl.php.net/get/rdkafka-5.0.0.tgz' \
+        --with-rdkafka && \
+    acicn-php-ext-install php-swoole 'https://mirrors.guoyk.net/pecl.php.net/get/swoole-4.4.23.tgz' && \
+    acicn-php-ext-install php-geoip 'https://mirrors.guoyk.net/pecl.php.net/get/geoip-1.1.1.tgz' \
+        --with-geoip && \
+    acicn-php-ext-install php-imagick 'https://mirrors.guoyk.net/pecl.php.net/get/imagick-3.4.4.tgz' && \
+    acicn-php-ext-install php-yaml 'https://mirrors.guoyk.net/pecl.php.net/get/yaml-2.2.1.tgz'
 
 ADD {{.php_version}}/etc /etc
 
