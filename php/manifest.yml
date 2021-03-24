@@ -3,28 +3,36 @@ vars:
   centos-8:
     centos_version: 8
     upstream: centos:8
+  ubuntu-20.04:
+    ubuntu_version: 20.04
+    upstream: ubuntu:20.04
   php-7.2:
     php_version: 7.2
   php-7.3:
     php_version: 7.3
   php-7.4:
     php_version: 7.4
+    php_download_url: 'https://mirrors.guoyk.net/www.php.net/distributions/php-7.4.16.tar.gz'
 tags:
-  - name: 7.2-centos-8
-    also:
-      - 7.2
-    vars:
-      - centos-8
-      - php-7.2
-  - name: 7.4-centos-8
-    also:
-      - 7.4
-    vars:
-      - centos-8
-      - php-7.4
-  - name: 7.3-centos-8
-    also:
-      - 7.3
-    vars:
-      - centos-8
-      - php-7.3
+   - name: 7.4-ubuntu-20.04
+     vars:
+       - ubuntu-20.04
+       - php-7.4
+   - name: 7.2-centos-8
+     also:
+       - 7.2
+     vars:
+       - centos-8
+       - php-7.2
+   - name: 7.4-centos-8
+     also:
+       - 7.4
+     vars:
+       - centos-8
+       - php-7.4
+   - name: 7.3-centos-8
+     also:
+       - 7.3
+     vars:
+       - centos-8
+       - php-7.3

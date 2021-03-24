@@ -27,6 +27,66 @@ ENV PHPCFG_PATH_PHP_FPM_WWW_CONF    /etc/php-fpm.d/www.conf
 ENV PHPCFG_PATH_PHP_INI             /etc/php.ini
 {{end}}
 
+{{if .ubuntu_version}}
+RUN apt-get update && \
+    apt-get install -y nginx build-essential autoconf cmake cmake-extras openssl libssl-dev libsodium-dev \
+                       libxml2-dev libsqlite3-dev libgd-dev libxpm-dev libicu-dev libbz2-dev libcurl4-openssl-dev \
+                       libenchant-dev libgmp-dev libldap2-dev libaspell-dev libreadline-dev libsnmp-dev \
+                       libxslt1-dev libgeoip-dev imagemagick libmemcached-dev libevent-dev liblz4-dev \
+                       librdkafka-dev libpq-dev libyaml-dev libzip-dev libtidy-dev libmcrypt-dev libonig-dev \
+                       libmysqlclient-dev libpcre3-dev libpspell-dev libldap2-dev libsasl2-dev && \
+    rm -rf /var/lib/apt/lists
+
+RUN mkdir -p /opt/src/php && \
+    curl -sSL -o php.tar.gz '{{.php_download_url}}' && \
+    tar -xf php.tar.gz -C /opt/src/php --strip-components 1 && \
+    rm -f php.tar.gz && \
+    cd /opt/src/php && \
+    ./configure --prefix=/opt --enable-fpm --enable-gd --with-external-gd \
+                --with-config-file-path=/etc --with-config-file-scan-dir=/etc/php.d \
+                --with-jpeg --with-webp --with-xpm --with-freetype --enable-bcmath --with-zlib \
+                --with-pcre-jit --enable-sockets --enable-soap --with-pdo-mysql --with-mysql-sock \
+                --with-mysqli --enable-mysqlnd --with-openssl --with-zip --enable-mbstring \
+                --enable-intl --enable-pcntl --with-bz2 --enable-calendar --enable-sysvmsg \
+                --enable-sysvsem --enable-sysvshm --with-curl --enable-ftp --with-enchant \
+                --enable-exif --with-gmp --with-gettext --with-sodium --enable-dba --with-pspell \
+                --with-readline --with-snmp --with-xsl --enable-shmop --with-xmlrpc \
+                --with-tidy --with-pgsql --with-pdo-pgsql --enable-phpdbg \
+                --enable-phpdbg-webhelper --enable-phpdbg-readline --enable-sigchild \
+                --with-pear --with-ldap --with-ldap-sasl && \
+    make && make install
+
+ENV PATH "/opt/sbin:$PATH"
+
+ADD scripts /opt/bin
+
+RUN acicn-php-ext-install php-mcrypt 'https://mirrors.guoyk.net/pecl.php.net/get/mcrypt-1.0.4.tgz' && \
+    acicn-php-ext-install php-memcached 'https://mirrors.guoyk.net/pecl.php.net/get/memcached-3.1.5.tgz' \
+        --enable-memcached \
+        --enable-memcached-session \
+        --enable-memcached-igbinary \
+        --enable-memcached-json \
+        --enable-memcached-protocol && \
+    acicn-php-ext-install php-memcache 'https://mirrors.guoyk.net/pecl.php.net/get/memcache-4.0.5.2.tgz' && \
+    acicn-php-ext-install php-mongodb 'https://mirrors.guoyk.net/pecl.php.net/get/mongodb-1.5.5.tgz' \
+        --enable-mongodb \
+        --with-mongodb-sasl=no && \
+    acicn-php-ext-install php-redis 'https://mirrors.guoyk.net/pecl.php.net/get/redis-4.2.0.tgz' && \
+    acicn-php-ext-install php-rdkafka 'https://mirrors.guoyk.net/pecl.php.net/get/rdkafka-5.0.0.tgz' \
+        --with-rdkafka && \
+    acicn-php-ext-install php-swoole 'https://mirrors.guoyk.net/pecl.php.net/get/swoole-4.2.13.tgz' && \
+    acicn-php-ext-install php-geoip 'https://mirrors.guoyk.net/pecl.php.net/get/geoip-1.1.1.tgz' \
+        --with-geoip && \
+    acicn-php-ext-install php-igbinary 'https://mirrors.guoyk.net/pecl.php.net/get/igbinary-3.2.1.tgz' && \
+    acicn-php-ext-install php-imagick 'https://mirrors.guoyk.net/pecl.php.net/get/imagick-3.4.4.tgz' && \
+
+ADD {{.php_version}}/etc /etc
+
+ENV PHPCFG_PATH_PHP_FPM_CONF        /etc/php-fpm.conf
+ENV PHPCFG_PATH_PHP_FPM_WWW_CONF    /etc/php-fpm.d/www.conf
+ENV PHPCFG_PATH_PHP_INI             /etc/php.ini
+{{end}}
+
 COPY --from=utils-merge-env-to-ini /merge-env-to-ini /opt/bin/merge-env-to-ini
 
 COPY --from=utils-nginx /etc/nginx /etc/nginx
