@@ -12,7 +12,7 @@ RUN rpm -i https://mirrors.aliyun.com/remi/enterprise/remi-release-8.rpm && \
 ADD remi-aliyun.repo /etc/yum.repos.d/remi-aliyun.repo
 
 RUN yum module enable -y php:remi-{{.php_version}} && \
-    yum install -y nginx aspell aspell-en aspell-sk php-cli php-fpm php-devel php-dbg \
+    yum install -y nginx aspell aspell-en aspell-sk php-cli php-fpm php-dbg \
     php-bcmath php-dba php-enchant php-gmp php-gd php-imap php-intl php-ldap php-mbstring php-mcrypt \
     php-mysqlnd php-odbc php-opcache php-pdo php-pear php-pecl-apcu php-pecl-gearman php-pecl-geoip \
     php-pecl-imagick php-pecl-igbinary php-pecl-memcache php-pecl-memcached php-pecl-mongodb php-pecl-redis \
