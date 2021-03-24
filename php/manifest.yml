@@ -3,6 +3,9 @@ vars:
   centos-8:
     centos_version: 8
     upstream: centos:8
+  debian-10:
+    debian_version: 10
+    upstream: debian:10
   ubuntu-20.04:
     ubuntu_version: 20.04
     upstream: ubuntu:20.04
@@ -17,6 +20,10 @@ tags:
    - name: 7.4-ubuntu-20.04
      vars:
        - ubuntu-20.04
+       - php-7.4
+   - name: 7.4-debian-10
+     vars:
+       - debian-10
        - php-7.4
    - name: 7.2-centos-8
      also:
