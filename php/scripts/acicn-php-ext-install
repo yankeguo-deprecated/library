@@ -9,9 +9,9 @@ EXT_CONFIGURE_OPTS="${@:3}"
 mkdir -p /opt/src/${EXT_NAME}
 curl -sSL -o ${EXT_NAME}.tar.gz "${EXT_DOWNLOAD_URL}"
 tar -xf ${EXT_NAME}.tar.gz -C /opt/src/${EXT_NAME} --strip-components 1
+rm -f ${EXT_NAME}.tar.gz
 cd /opt/src/${EXT_NAME}
 phpize
 ./configure --with-php-config=/opt/bin/php-config ${EXT_CONFIGURE_OPTS}
 make
 make install
-rm -f ${EXT_NAME}.tar.gz
