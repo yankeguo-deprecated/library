@@ -54,7 +54,8 @@ RUN apt-get update && \
                        libenchant-dev libgmp-dev libldap2-dev libaspell-dev libreadline-dev libsnmp-dev \
                        libxslt1-dev libgeoip-dev imagemagick libmemcached-dev libevent-dev liblz4-dev \
                        librdkafka-dev libpq-dev libyaml-dev libzip-dev libtidy-dev libmcrypt-dev libonig-dev \
-                       libmariadb-dev libpcre3-dev libpspell-dev libldap2-dev libsasl2-dev libmagick++-dev && \
+                       libmariadb-dev libpcre3-dev libpspell-dev libldap2-dev libsasl2-dev libmagick++-dev \
+                       subversion libsvn-dev && \
     rm -rf /var/lib/apt/lists
 {{end}}
 
@@ -109,7 +110,8 @@ RUN acicn-php-ext-install php-apcu 'https://mirrors.guoyk.net/pecl.php.net/get/a
     acicn-php-ext-install php-geoip 'https://mirrors.guoyk.net/pecl.php.net/get/geoip-1.1.1.tgz' \
         --with-geoip && \
     acicn-php-ext-install php-imagick 'https://mirrors.guoyk.net/pecl.php.net/get/imagick-3.4.4.tgz' && \
-    acicn-php-ext-install php-yaml 'https://mirrors.guoyk.net/pecl.php.net/get/yaml-2.2.1.tgz'
+    acicn-php-ext-install php-yaml 'https://mirrors.guoyk.net/pecl.php.net/get/yaml-2.2.1.tgz' && \
+    acicn-php-ext-install php-svn 'https://mirrors.guoyk.net/pecl.php.net/get/svn-2.0.3.tgz'
 
 ADD pagoda/etc /etc
 {{end}}
