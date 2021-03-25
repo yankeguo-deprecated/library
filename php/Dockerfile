@@ -97,7 +97,8 @@ RUN acicn-php-ext-install php-apcu 'https://mirrors.guoyk.net/pecl.php.net/get/a
     acicn-php-ext-install php-redis 'https://mirrors.guoyk.net/pecl.php.net/get/redis-5.3.4.tgz' \
         --enable-redis-igbinary \
         --enable-redis-lzf \
-        --enable-redis-lz4 && \
+        --enable-redis-lz4 \
+        --with-liblz4 && \
     acicn-php-ext-install php-rdkafka 'https://mirrors.guoyk.net/pecl.php.net/get/rdkafka-5.0.0.tgz' \
         --with-rdkafka && \
     acicn-php-ext-install php-swoole 'https://mirrors.guoyk.net/pecl.php.net/get/swoole-4.4.23.tgz' \
