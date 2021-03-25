@@ -126,3 +126,5 @@ ADD php.conf /etc/nginx/default.conf.d/php.conf
 ENV NGXCFG_DEFAULT_EXTRA_INDEX index.php
 ENV NGXCFG_SNIPPETS_ENABLE_SPA true
 ENV NGXCFG_SNIPPETS_SPA_INDEX  "/index.php?\$query_string"
+
+WORKDIR /var/www
