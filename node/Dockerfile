@@ -28,5 +28,7 @@ RUN npm install -g cnpm && \
 
 {{if .install_yarn}}
 RUN npm install -g yarn && \
-    npm cache clean -f
+    npm cache clean -f && \
+    yarn config set cache-folder $HOME/.npm/yarn && \
+    yarn config set registry https://registry.npm.taobao.org
 {{end}}
