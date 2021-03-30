@@ -25,3 +25,8 @@ RUN npm install -g cnpm && \
     npm cache clean -f && \
     cnpm config set unsafe-perm true
 {{end}}
+
+{{if .install_yarn}}
+RUN npm install -g yarn && \
+    npm cache clean -f
+{{end}}

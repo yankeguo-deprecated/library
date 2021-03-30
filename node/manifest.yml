@@ -19,6 +19,8 @@ vars:
     install_cnpm: true
   devel:
     install_devel: true
+  yarn:
+    install_yarn: true
 tags:
   - name: 14-centos-8
     also:
@@ -52,6 +54,7 @@ tags:
       - node-14
       - cnpm
       - devel
+      - yarn
   - name: builder-12-centos-8
     also:
       - builder-12
@@ -60,6 +63,7 @@ tags:
       - node-12
       - cnpm
       - devel
+      - yarn
   - name: builder-10-centos-8
     also:
       - builder-10
@@ -68,6 +72,7 @@ tags:
       - node-10
       - cnpm
       - devel
+      - yarn
   - name: builder-8-centos-8
     also:
       - builder-8
@@ -76,3 +81,4 @@ tags:
       - node-8
       - cnpm
       - devel
+      - yarn
