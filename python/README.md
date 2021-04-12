@@ -39,10 +39,9 @@
     ADD requirements.txt requirements.txt
 
     RUN python3 -m venv venv && \
-        source venv/bin/activate && \
-        pip install -r requirements.txt
+        venv-wrapper pip install -r requirements.txt
 
     ADD . .
-
-    CMD ["/opt/bin/minit", "--", "venv-wrapper", "python", "main.py" ]
+    
+    ENV MINIT_MAIN "venv-wrapper python main.py"
     ```
