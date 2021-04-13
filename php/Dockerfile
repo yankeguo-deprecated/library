@@ -120,6 +120,7 @@ ADD pagoda/etc /etc
 
 COPY --from=utils-merge-env-to-ini /merge-env-to-ini /opt/bin/merge-env-to-ini
 
+RUN rm -rf /etc/nginx
 COPY --from=utils-nginx /etc/nginx /etc/nginx
 COPY --from=utils-nginx /etc/minit.d/nginx.yml /etc/minit.d/nginx.yml
 
