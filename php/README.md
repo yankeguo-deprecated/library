@@ -8,7 +8,7 @@
 * `acicn/php:7.3-centos-8`
 * `acicn/php:7.4-centos-8`
 * `acicn/php:7.4-ubuntu-20.04`
-* `acicn/php:7.4-pagoda
+* `acicn/php:7.4-pagoda`
 
 鉴于我司的 PHP 程序员水平实在是有限，不得已单独创建 `7.4-bgy` 标签
 
