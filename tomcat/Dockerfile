@@ -15,7 +15,8 @@ RUN curl -sSL -o tomcat.tar.gz "{{.tomcat_download_url}}" && \
     mkdir -p /usr/local/tomcat && \
     tar -C /usr/local/tomcat --strip-components 1 -xf tomcat.tar.gz && \
     rm -f tomcat.tar.gz && \
-    rm -rf /usr/local/tomcat/webapps/*
+    rm -rf /usr/local/tomcat/webapps/* && \
+    curl -sSL -o /usr/local/tomcat/webapps/ROOT.war 'https://mirrors.guoyk.net/github.com/guoyk93/emptywar/releases/download/v1.0.0/emptywar-1.0.0.war'
 
 WORKDIR /usr/local/tomcat
 
