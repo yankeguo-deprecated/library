@@ -132,4 +132,6 @@ ENV NGXCFG_DEFAULT_EXTRA_INDEX index.php
 ENV NGXCFG_SNIPPETS_ENABLE_SPA true
 ENV NGXCFG_SNIPPETS_SPA_INDEX  "/index.php?\$query_string"
 
+RUN mkdir -p /etc/nginx/default.fastcgi.d /var/lib/php/session
+
 WORKDIR /var/www
