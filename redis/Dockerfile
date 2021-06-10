@@ -85,3 +85,9 @@ ENV REDISCFG_hz 10
 ENV REDISCFG_dynamic_hz yes
 ENV REDISCFG_aof_rewrite_incremental_fsync yes
 ENV REDISCFG_rdb_save_incremental_fsync yes
+ENV REDISCFG_activedefrag yes
+ENV REDISCFG_active_defrag_ignore_bytes 100mb
+ENV REDISCFG_active_defrag_threshold_lower 10
+ENV REDISCFG_active_defrag_threshold_upper 100
+ENV REDISCFG_active_defrag_cycle_min 25
+ENV REDISCFG_active_defrag_cycle_max 75
