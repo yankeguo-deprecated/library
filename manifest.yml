@@ -48,6 +48,13 @@ mirrors:
   - quay.io/external_storage/nfs-client-provisioner => nfs-client-provisioner
   - rancher/local-path-provisioner      =>  local-path-provisioner
   - portainer/portainer-ce              =>  portainer-ce
+  - k8s.gcr.io/kube-apiserver           =>  k8s-gcr-kube-apiserver
+  - k8s.gcr.io/kube-controller-manager  =>  k8s-gcr-kube-controller-manager
+  - k8s.gcr.io/kube-scheduler           =>  k8s-gcr-kube-scheduler
+  - k8s.gcr.io/kube-proxy               =>  k8s-gcr-kube-proxy
+  - k8s.gcr.io/pause                    =>  k8s-gcr-pause
+  - k8s.gcr.io/etcd                     =>  k8s-gcr-etcd
+  - k8s.gcr.io/coredns/coredns          =>  k8s-gcr-coredns
 vars:
   repo_base: acicn
   minit_version: 1.5.2
