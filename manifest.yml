@@ -50,10 +50,10 @@ mirrors:
   - k8s.gcr.io/coredns/coredns          =>  coredns
   - k8s.gcr.io/ingress-nginx/controller =>  ingress-nginx-controller
   - k8s.gcr.io/defaultbackend-amd64     =>  ingress-nginx-defaultbackend
-  - k8s.gcr.io/metrics-server/metrics-server        => metrics-server
   - jettech/kube-webhook-certgen        =>  ingress-nginx-kube-webhook-certgen
-  - quay.io/external_storage/nfs-client-provisioner => nfs-client-provisioner
   - rancher/local-path-provisioner      =>  local-path-provisioner
+  - quay.io/external_storage/nfs-client-provisioner => nfs-client-provisioner
+  - k8s.gcr.io/metrics-server/metrics-server        => metrics-server
   - portainer/portainer-ce              =>  portainer-ce
 vars:
   repo_base: acicn
