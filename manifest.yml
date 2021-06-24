@@ -41,13 +41,6 @@ repos:
   - redis
   - zookeeper
 mirrors:
-  - k8s.gcr.io/ingress-nginx/controller =>  ingress-nginx-controller
-  - k8s.gcr.io/defaultbackend-amd64     =>  ingress-nginx-defaultbackend
-  - k8s.gcr.io/metrics-server/metrics-server        => metrics-server
-  - jettech/kube-webhook-certgen        =>  ingress-nginx-kube-webhook-certgen
-  - quay.io/external_storage/nfs-client-provisioner => nfs-client-provisioner
-  - rancher/local-path-provisioner      =>  local-path-provisioner
-  - portainer/portainer-ce              =>  portainer-ce
   - k8s.gcr.io/kube-apiserver           =>  kube-apiserver
   - k8s.gcr.io/kube-controller-manager  =>  kube-controller-manager
   - k8s.gcr.io/kube-scheduler           =>  kube-scheduler
@@ -55,6 +48,13 @@ mirrors:
   - k8s.gcr.io/pause                    =>  pause
   - k8s.gcr.io/etcd                     =>  etcd
   - k8s.gcr.io/coredns/coredns          =>  coredns
+  - k8s.gcr.io/ingress-nginx/controller =>  ingress-nginx-controller
+  - k8s.gcr.io/defaultbackend-amd64     =>  ingress-nginx-defaultbackend
+  - k8s.gcr.io/metrics-server/metrics-server        => metrics-server
+  - jettech/kube-webhook-certgen        =>  ingress-nginx-kube-webhook-certgen
+  - quay.io/external_storage/nfs-client-provisioner => nfs-client-provisioner
+  - rancher/local-path-provisioner      =>  local-path-provisioner
+  - portainer/portainer-ce              =>  portainer-ce
 vars:
   repo_base: acicn
   minit_version: 1.5.2
