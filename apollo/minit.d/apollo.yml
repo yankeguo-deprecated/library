@@ -2,7 +2,7 @@ name: apollo-portal
 kind: daemon
 dir: /apollo/portal
 command:
-    - /java-wrapper.sh
+    - java-wrapper
     - -Deureka.instance.ip-address=${EUREKA_INSTANCE_IP_ADDDRESS}
     - -jar
     - apollo-portal-${APOLLO_VERSION}.jar
@@ -11,7 +11,7 @@ name: apollo-configservice
 kind: daemon
 dir: /apollo/configservice
 command:
-    - /java-wrapper.sh
+    - java-wrapper
     - -Deureka.instance.ip-address=${EUREKA_INSTANCE_IP_ADDDRESS}
     - -jar
     - apollo-configservice-${APOLLO_VERSION}.jar
@@ -20,7 +20,7 @@ name: apollo-adminservice
 kind: daemon
 dir: /apollo/adminservice
 command:
-    - /java-wrapper.sh
+    - java-wrapper
     - -Deureka.instance.ip-address=${EUREKA_INSTANCE_IP_ADDDRESS}
     - -jar
     - apollo-adminservice-${APOLLO_VERSION}.jar
