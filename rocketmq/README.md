@@ -31,7 +31,7 @@
       RMQBROKERCFG_namesrvAddr = rocketmq-namesrv.common:9876
       ```
 
-    常见参数摘录如下，详情请访问 https://github.com/apache/rocketmq/blob/73bb4b402a5da02faf9feded8f4d79dd1ba88348/docs/en/Operations_Broker.md
+    常见参数请访问 https://github.com/apache/rocketmq/blob/73bb4b402a5da02faf9feded8f4d79dd1ba88348/docs/en/Operations_Broker.md
 
 * `java-wrapper`
 
