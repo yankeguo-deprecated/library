@@ -33,6 +33,7 @@ repos:
   # Infrastructure
   - apollo
   - activemq
+  - rocketmq
   - beanstalk
   - elasticsearch
   - mysql

@@ -1,0 +1,9 @@
+name: rocketmq-namesrv
+kind: daemon
+dir: /opt/rocketmq
+command:
+  - java-wrapper
+  - -server
+  - -cp
+  - ".:conf:lib/*"
+  - org.apache.rocketmq.namesrv.NamesrvStartup

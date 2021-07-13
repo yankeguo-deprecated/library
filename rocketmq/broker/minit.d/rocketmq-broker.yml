@@ -1,0 +1,24 @@
+name: rocketmq-broker-render-conf
+kind: render
+files:
+  - /opt/rocketmq/conf/broker.conf
+---
+name: rocketmq-broker-mkdir
+kind: once
+command:
+  - mkdir
+  - -p
+  - $RMQBROKERCFG_storePathCommitLog
+  - $RMQBROKERCFG_storePathConsumerQueue
+---
+name: rocketmq-broker
+kind: daemon
+dir: /opt/rocketmq
+command:
+  - java-wrapper
+  - -server
+  - -cp
+  - ".:conf:lib/*"
+  - org.apache.rocketmq.broker.BrokerStartup
+  - -c
+  - conf/broker.conf
