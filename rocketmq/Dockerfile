@@ -7,6 +7,8 @@ RUN curl -sSLo rocketmq.zip "{{.rocketmq_download_url}}" && \
 
 WORKDIR /opt/rocketmq
 
+ENV ROCKETMQ_HOME /opt/rocketmq
+
 ADD {{.component}}/minit.d /etc/minit.d
 
 {{if (eq .component "broker")}}
