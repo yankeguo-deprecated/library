@@ -4,6 +4,8 @@
 
 * `acicn/rocketmq:4.6.1-broker`
 * `acicn/rocketmq:4.6.1-namesrv`
+* `acicn/rocketmq:4.8.0-broker`
+* `acicn/rocketmq:4.8.0-namesrv`
 
 ## 功能
 

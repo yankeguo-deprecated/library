@@ -7,6 +7,10 @@ vars:
     rocketmq_version: 4.6.1
     rocketmq_download_url: "http://mirrors.guoyk.net/archive.apache.org/dist/rocketmq/4.6.1/rocketmq-all-4.6.1-bin-release.zip"
     rocketmq_download_junk_dir: "rocketmq-all-4.6.1-bin-release"
+  rocketmq-4.8.0:
+    rocketmq_version: 4.8.0
+    rocketmq_download_url: "http://mirrors.guoyk.net/archive.apache.org/dist/rocketmq/4.8.0/rocketmq-all-4.8.0-bin-release.zip"
+    rocketmq_download_junk_dir: "rocketmq-all-4.8.0-bin-release"
   mode-namesrv:
     component: namesrv
   mode-broker:
@@ -27,4 +31,20 @@ tags:
     vars:
       - jdk-8-debian-10
       - rocketmq-4.6.1
+      - mode-namesrv
+  - name: 4.8.0-broker-jdk-8-debian-10
+    also:
+      - 4.8.0-broker-jdk-8
+      - 4.8.0-broker
+    vars:
+      - jdk-8-debian-10
+      - rocketmq-4.8.0
+      - mode-broker
+  - name: 4.8.0-namesrv-jdk-8-debian-10
+    also:
+      - 4.8.0-namesrv-jdk-8
+      - 4.8.0-namesrv
+    vars:
+      - jdk-8-debian-10
+      - rocketmq-4.8.0
       - mode-namesrv
