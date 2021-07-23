@@ -1,0 +1,7 @@
+name: rocketmq-console
+kind: daemon
+dir: /opt/rocketmq
+command:
+  - java-wrapper
+  - -jar
+  - console.jar

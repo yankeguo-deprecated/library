@@ -11,6 +11,9 @@ vars:
     component: namesrv
   mode-broker:
     component: broker
+  mode-console:
+    rocketmq_console_download_url: "http://mirrors.guoyk.net/rocketmq-console-ng-2.0.0.jar"
+    component: console
 tags:
   - name: 4.6.1-broker-jdk-8-debian-10
     also:
@@ -28,3 +31,7 @@ tags:
       - jdk-8-debian-10
       - rocketmq-4.6.1
       - mode-namesrv
+  - name: console
+    vars:
+      - jdk-8-debian-10
+      - mode-console

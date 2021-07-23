@@ -26,3 +26,7 @@ ENV RMQBROKERCFG_storePathCommitLog /data/commitlog
 ENV RMQBROKERCFG_storePathConsumerQueue /data/consumequeue
 
 {{end}}
+
+{{if (eq .component "console")}}
+RUN curl -sSL -o console.jar {{.rocketmq_console_download_url}}
+{{end}}
