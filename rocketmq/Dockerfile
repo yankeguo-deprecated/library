@@ -1,13 +1,17 @@
 FROM {{.repo_base}}/{{.upstream}}
 
+{{if (ne .component "console")}}
 RUN curl -sSLo rocketmq.zip "{{.rocketmq_download_url}}" && \
     unzip rocketmq.zip && \
     rm -f rocketmq.zip && \
     mv {{.rocketmq_download_junk_dir}} /opt/rocketmq
+{{end}}
 
 WORKDIR /opt/rocketmq
 
+{{if (ne .component "console")}}
 ENV ROCKETMQ_HOME /opt/rocketmq
+{{end}}
 
 ADD {{.component}}/minit.d /etc/minit.d
 
