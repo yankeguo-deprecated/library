@@ -13,6 +13,8 @@ ADD {{.component}}/minit.d /etc/minit.d
 
 {{if (eq .component "broker")}}
 
+RUN mkdir -p /data && ln -sf /data /root/store
+
 ADD broker.conf /opt/rocketmq/conf/broker.conf
 
 ENV RMQBROKERCFG_brokerClusterName  DefaultCluster
@@ -22,8 +24,6 @@ ENV RMQBROKERCFG_deleteWhen         04
 ENV RMQBROKERCFG_fileReservedTime   48
 ENV RMQBROKERCFG_brokerRole         ASYNC_MASTER
 ENV RMQBROKERCFG_flushDiskType      ASYNC_FLUSH
-ENV RMQBROKERCFG_storePathCommitLog /data/commitlog
-ENV RMQBROKERCFG_storePathConsumerQueue /data/consumequeue
 
 {{end}}
 
