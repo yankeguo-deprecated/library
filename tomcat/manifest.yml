@@ -14,10 +14,10 @@ vars:
     upstream: jdk:8-debian-10
   tomcat-8:
     tomcat_version: 8
-    tomcat_download_url: "https://mirrors.guoyk.net/archive.apache.org/dist/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz"
+    tomcat_download_url: "https://mirrors.guoyk.net/archive.apache.org/dist/tomcat/tomcat-8/v8.5.69/bin/apache-tomcat-8.5.69.tar.gz"
   tomcat-9:
     tomcat_version: 9
-    tomcat_download_url: "https://mirrors.guoyk.net/archive.apache.org/dist/tomcat/tomcat-9/v9.0.40/bin/apache-tomcat-9.0.40.tar.gz"
+    tomcat_download_url: "https://mirrors.guoyk.net/archive.apache.org/dist/tomcat/tomcat-9/v9.0.50/bin/apache-tomcat-9.0.50.tar.gz"
 tags:
   # debian 10
   - name: 8-jdk-11-debian-10
