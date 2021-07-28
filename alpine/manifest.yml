@@ -2,10 +2,10 @@ name: alpine
 vars:
   use-aliyun-mirror:
     apk_mirror: mirrors.aliyun.com
-  alpine-3.12:
-    upstream_version: 3.12
+  alpine-3.14:
+    upstream_version: 3.14
 tags:
-  - name: 3.12
+  - name: 3.14
     vars:
-      - alpine-3.12
+      - alpine-3.14
       - use-aliyun-mirror

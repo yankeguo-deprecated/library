@@ -2,7 +2,7 @@
 
 ## 标签
 
-* `acicn/redis:5-alpine-3.12`
+* `acicn/redis:5-alpine-3.14`
 * `acicn/redis:5-centos-8`
 
 ## 功能

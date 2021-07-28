@@ -2,7 +2,7 @@
 
 ## 标签
 
-* `acicn/alpine:3.12`
+* `acicn/alpine:3.14`
 
 ## 功能
 
