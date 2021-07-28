@@ -1,7 +1,7 @@
 base: acicn
 doc: https://github.com/acicn/library/tree/latest/{{.Repo}}
 upstreams:
-  - alpine:3.12
+  - alpine:3.14
   - ubuntu:20.04
   - centos:8
   - debian:10

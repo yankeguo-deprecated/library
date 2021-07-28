@@ -1,10 +1,10 @@
 # nginx
 
-`acicn/nginx` 镜像基于 `acicn/alpine:3.12`，使用默认的最新的 nginx 版本
+`acicn/nginx` 镜像基于 `acicn/alpine:3.14`，使用默认的最新的 nginx 版本
 
 ## 标签
 
-* `acicn/nginx:alpine-3.12`
+* `acicn/nginx:alpine-3.14`
 
 ## 功能
 

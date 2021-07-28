@@ -1,8 +1,8 @@
 name: redis
 vars:
-  alpine-3.12:
-    alpine_version: 3.12
-    upstream: alpine:3.12
+  alpine-3.14:
+    alpine_version: 3.14
+    upstream: alpine:3.14
   centos-8:
     centos_version: 8
     upstream: centos:8
@@ -10,12 +10,12 @@ vars:
     redis_version: 5
     redis_download_url: "https://mirrors.guoyk.net/download.redis.io/releases/redis-5.0.10.tar.gz"
 tags:
-  - name: 5-alpine-3.12
+  - name: 5-alpine-3.14
     also:
       - 5-alpine
       - 5
     vars:
-      - alpine-3.12
+      - alpine-3.14
       - redis-5
   - name: 5-centos-8
     also:

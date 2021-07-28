@@ -1,11 +1,11 @@
 name: nginx
 vars:
-  alpine-3.12:
-    alpine_version: 3.12
-    upstream: alpine:3.12
+  alpine-3.14:
+    alpine_version: 3.14
+    upstream: alpine:3.14
 tags:
-  - name: alpine-3.12
+  - name: alpine-3.14
     also:
       - latest
     vars:
-      - alpine-3.12
+      - alpine-3.14

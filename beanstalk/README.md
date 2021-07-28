@@ -2,7 +2,7 @@
 
 ## 标签
 
-* `acicn/beanstalk:1-alpine-3.12`
+* `acicn/beanstalk:1-alpine-3.14`
 
 ## 功能
 
