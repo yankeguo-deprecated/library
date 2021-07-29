@@ -1,0 +1,6 @@
+name: filebeat
+kind: daemon
+dir: /usr/share/filebeat
+command:
+  - ./filebeat
+  - -e

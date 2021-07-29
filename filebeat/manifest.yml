@@ -1,0 +1,15 @@
+name: filebeat
+vars:
+  debian-10:
+    debian_version: 10
+    upstream: "debian:10"
+  filebeat-6.3.2:
+    filebeat_version: 6.3.2
+    filebeat_download_url: "https://mirrors.guoyk.net/artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.3.2-linux-x86_64.tar.gz"
+tags:
+  - name: 6.3.2-debian-10
+    also:
+      - 6.3.2
+    vars:
+      - debian-10
+      - filebeat-6.3.2

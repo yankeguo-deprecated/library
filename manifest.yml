@@ -35,6 +35,7 @@ repos:
   - activemq
   - rocketmq
   - beanstalk
+  - filebeat
   - elasticsearch
   - mysql
   - mongo
