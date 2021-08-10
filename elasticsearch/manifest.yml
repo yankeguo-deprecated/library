@@ -6,10 +6,26 @@ vars:
     elasticsearch_version: 6.3.2
     elasticsearch_download_url: "https://mirrors.guoyk.net/artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.3.2.tar.gz"
     analysis_ik_download_url: "https://mirrors.guoyk.net/github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.3.2/elasticsearch-analysis-ik-6.3.2.zip"
+  elasticsearch-6.8.18:
+    elasticsearch_version: 6.8.18
+    elasticsearch_download_url: "https://mirrors.guoyk.net/artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.8.18.tar.gz"
+    # self-packaged
+    analysis_ik_download_url: "https://mirrors.guoyk.net/elasticsearch-analysis-ik-6.8.18.zip"
   jdk-11-centos-8:
     centos_version: 8
     upstream: jdk:11-centos-8
+  jdk-11-debian-10:
+    debian_version: 10
+    upstream: jdk:11-debian-10
 tags:
+  - name: 6.8.18-jdk-11-debian-10
+    also:
+      - 6.8.18-jdk-11
+      - 6.8.18
+    vars:
+      - elasticsearch-tune
+      - elasticsearch-6.8.18
+      - jdk-11-debian-10
   - name: 6.3.2-jdk-11-centos-8
     also:
       - 6.3.2-jdk-11
